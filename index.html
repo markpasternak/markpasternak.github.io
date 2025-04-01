@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mark Pasternak - CTO / Engineering & Product Leadership</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23FFF1EE'/><text x='50' y='50' text-anchor='middle' dy='.35em' font-size='60' font-family='sans-serif' font-weight='bold' fill='%234A4A4A'>MP</text></svg>" type="image/svg+xml">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23FFF1EE'/><text x='50' y='50' text-anchor='middle' dy='.35em' font-size='60' font-family='sans-serif' font-weight='bold' fill='%234A4A4A'>MP</text></svg>"
+        type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -14,119 +17,169 @@
           :ROOT - Custom Properties (Variables)
         \*------------------------------------*/
         :root {
-          /* Colors */
-          --bg-page: #e0e0e0; /* Grey background for screen */
-          --bg-left-col: #FFF1EE; /* Light peach for left column */
-          --bg-right-col: #ffffff; /* White for right column */
-          --text-dark: #222222; /* Very dark grey for main text */
-          --text-medium: #4A4A4A; /* Medium grey for secondary text */
-          --text-light: #555555; /* Lighter grey for tertiary text */
-          --accent-color: #000000; /* Black for headings and accents */
-          --border-color: #e0e0e0; /* Light grey for borders */
-          --link-color: var(--text-dark); /* Link color */
-          --link-hover-color: var(--accent-color); /* Link hover color */
-          --focus-outline-color: var(--text-medium); /* Focus outline */
-          --placeholder-bg: #f8f8f8; /* Background for logo placeholders */
-          --placeholder-icon: #cccccc;
-          --placeholder-text: #aaaaaa;
+            /* Colors */
+            --bg-page: #e0e0e0;
+            /* Grey background for screen */
+            --bg-left-col: #FFF1EE;
+            /* Light peach for left column */
+            --bg-right-col: #ffffff;
+            /* White for right column */
+            --text-dark: #222222;
+            /* Very dark grey for main text */
+            --text-medium: #4A4A4A;
+            /* Medium grey for secondary text */
+            --text-light: #555555;
+            /* Lighter grey for tertiary text */
+            --accent-color: #000000;
+            /* Black for headings and accents */
+            --border-color: #e0e0e0;
+            /* Light grey for borders */
+            --link-color: var(--text-dark);
+            /* Link color */
+            --link-hover-color: var(--accent-color);
+            /* Link hover color */
+            --focus-outline-color: var(--text-medium);
+            /* Focus outline */
+            --placeholder-bg: #f8f8f8;
+            /* Background for logo placeholders */
+            --placeholder-icon: #cccccc;
+            --placeholder-text: #aaaaaa;
 
-          /* Typography */
-          --font-primary: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-          --base-font-size: 16px; /* Base size for browser rendering (screen) */
-          --line-height-base: 1.6;
-          --line-height-heading: 1.2;
+            /* Typography */
+            --font-primary: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --base-font-size: 16px;
+            /* Base size for browser rendering (screen) */
+            --line-height-base: 1.6;
+            --line-height-heading: 1.2;
 
-          /* Spacing */
-          --spacing-unit: 1rem;
-          --spacing-xs: calc(var(--spacing-unit) * 0.25); /* ~4px */
-          --spacing-sm: calc(var(--spacing-unit) * 0.5);  /* ~8px */
-          --spacing-md: var(--spacing-unit);             /* ~16px */
-          --spacing-lg: calc(var(--spacing-unit) * 1.5); /* ~24px */
-          --spacing-xl: calc(var(--spacing-unit) * 2);   /* ~32px */
-          --spacing-xxl: calc(var(--spacing-unit) * 2.5);/* ~40px */
+            /* Spacing */
+            --spacing-unit: 1rem;
+            --spacing-xs: calc(var(--spacing-unit) * 0.25);
+            /* ~4px */
+            --spacing-sm: calc(var(--spacing-unit) * 0.5);
+            /* ~8px */
+            --spacing-md: var(--spacing-unit);
+            /* ~16px */
+            --spacing-lg: calc(var(--spacing-unit) * 1.5);
+            /* ~24px */
+            --spacing-xl: calc(var(--spacing-unit) * 2);
+            /* ~32px */
+            --spacing-xxl: calc(var(--spacing-unit) * 2.5);
+            /* ~40px */
 
-          /* Layout & Borders */
-          --container-max-width: 900px; /* Max width on screen */
-          --left-col-width: 35%; /* Width of left column */
-          --right-col-width: 65%; /* Width of right column */
-          --header-sep-width: 100px; /* Width of separator under headings */
-          --header-sep-height: 3px; /* Height of separator */
-          --logo-size: 50px; /* Size of company logos */
-          --profile-img-size: 130px; /* Size of profile image */
-          --border-radius-sm: 4px; /* Small border radius */
-          --box-shadow-main: 0 5px 15px rgba(0, 0, 0, 0.1); /* Shadow for container */
+            /* Layout & Borders */
+            --container-max-width: 900px;
+            /* Max width on screen */
+            --left-col-width: 35%;
+            /* Width of left column */
+            --right-col-width: 65%;
+            /* Width of right column */
+            --header-sep-width: 100px;
+            /* Width of separator under headings */
+            --header-sep-height: 3px;
+            /* Height of separator */
+            --logo-size: 50px;
+            /* Size of company logos */
+            --profile-img-size: 130px;
+            /* Size of profile image */
+            --border-radius-sm: 4px;
+            /* Small border radius */
+            --box-shadow-main: 0 5px 15px rgba(0, 0, 0, 0.1);
+            /* Shadow for container */
 
-          /* Transitions */
-          --transition-duration: 0.2s;
-          --transition-timing: ease-in-out;
+            /* Transitions */
+            --transition-duration: 0.2s;
+            --transition-timing: ease-in-out;
         }
 
         /*------------------------------------*\
           :GLOBAL STYLES & RESETS
         \*------------------------------------*/
-        *, *::before, *::after {
-            box-sizing: border-box; /* Use border-box sizing */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            /* Use border-box sizing */
         }
 
         html {
-            font-size: var(--base-font-size); /* Set base font size */
-            scroll-behavior: smooth; /* Smooth scrolling */
+            font-size: var(--base-font-size);
+            /* Set base font size */
+            scroll-behavior: smooth;
+            /* Smooth scrolling */
         }
 
         body {
             font-family: var(--font-primary);
-            background-color: var(--bg-page); /* Page background for screen */
+            background-color: var(--bg-page);
+            /* Page background for screen */
             color: var(--text-dark);
             margin: 0;
             padding: 0;
             line-height: var(--line-height-base);
-            -webkit-font-smoothing: antialiased; /* Improve font rendering */
+            -webkit-font-smoothing: antialiased;
+            /* Improve font rendering */
             -moz-osx-font-smoothing: grayscale;
             text-rendering: optimizeLegibility;
-            font-size: 0.9rem; /* Default body text size (~14.4px) for screen */
-            overflow-wrap: break-word; /* Prevent long words from breaking layout */
+            font-size: 0.9rem;
+            /* Default body text size (~14.4px) for screen */
+            overflow-wrap: break-word;
+            /* Prevent long words from breaking layout */
         }
 
         /* Basic Typography */
-        h2, h3, h4 {
+        h2,
+        h3,
+        h4 {
             margin: 0 0 var(--spacing-sm) 0;
             font-weight: 700;
             line-height: var(--line-height-heading);
             color: var(--accent-color);
         }
+
         p {
             margin: 0 0 var(--spacing-sm) 0;
         }
+
         ul {
             list-style: none;
             padding: 0;
             margin: 0 0 var(--spacing-sm) 0;
         }
+
         li {
-             margin-bottom: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
         }
+
         a {
             color: var(--link-color);
             text-decoration: none;
             transition: color var(--transition-duration) var(--transition-timing),
-                        text-decoration var(--transition-duration) var(--transition-timing);
+                text-decoration var(--transition-duration) var(--transition-timing);
         }
+
         a:hover {
             color: var(--link-hover-color);
             text-decoration: underline;
         }
-        a:focus-visible { /* Accessibility outline */
-             outline: 2px solid var(--focus-outline-color);
-             outline-offset: 2px;
-             border-radius: 2px;
+
+        a:focus-visible {
+            /* Accessibility outline */
+            outline: 2px solid var(--focus-outline-color);
+            outline-offset: 2px;
+            border-radius: 2px;
         }
+
         strong {
-            font-weight: 600; /* Use 600 for semi-bold */
+            font-weight: 600;
+            /* Use 600 for semi-bold */
         }
-        blockquote { /* Basic blockquote reset */
-             margin: 0 0 var(--spacing-md) 0;
-             padding: 0;
-             border: none;
+
+        blockquote {
+            /* Basic blockquote reset */
+            margin: 0 0 var(--spacing-md) 0;
+            padding: 0;
+            border: none;
         }
 
         /*------------------------------------*\
@@ -134,11 +187,15 @@
         \*------------------------------------*/
         .cv-container {
             max-width: var(--container-max-width);
-            margin: var(--spacing-xl) auto; /* Center on screen */
+            margin: var(--spacing-xl) auto;
+            /* Center on screen */
             box-shadow: var(--box-shadow-main);
-            overflow: hidden; /* Contain children */
-            display: flex; /* Enable flex columns */
-            background-color: var(--bg-right-col); /* Default background */
+            overflow: hidden;
+            /* Contain children */
+            display: flex;
+            /* Enable flex columns */
+            background-color: var(--bg-right-col);
+            /* Default background */
         }
 
         .left-column {
@@ -146,13 +203,15 @@
             color: var(--text-dark);
             padding: var(--spacing-xl);
             width: var(--left-col-width);
-            border-right: 1px solid var(--border-color); /* Subtle column separator */
+            border-right: 1px solid var(--border-color);
+            /* Subtle column separator */
         }
 
         .right-column {
             background-color: var(--bg-right-col);
             color: var(--text-dark);
-            padding: var(--spacing-xxl); /* More padding on right for balance */
+            padding: var(--spacing-xxl);
+            /* More padding on right for balance */
             width: var(--right-col-width);
         }
 
@@ -160,29 +219,40 @@
           :SHARED COMPONENTS (Headers, Lists, Sections)
         \*------------------------------------*/
         /* Section Vertical Spacing */
-        .left-column section + section,
-        .right-column section + section {
-             margin-top: var(--spacing-xl); /* Consistent space between sections */
+        .left-column section+section,
+        .right-column section+section {
+            margin-top: var(--spacing-xl);
+            /* Consistent space between sections */
         }
 
         /* Section Headers */
-        .left-column h3, .right-column h3 {
+        .left-column h3,
+        .right-column h3 {
             text-transform: uppercase;
             letter-spacing: 0.05em;
             font-weight: 700;
-            margin-bottom: var(--spacing-md); /* Space below header */
-            position: relative; /* For the ::after pseudo-element */
-            padding-bottom: var(--spacing-sm); /* Space above the separator line */
+            margin-bottom: var(--spacing-md);
+            /* Space below header */
+            position: relative;
+            /* For the ::after pseudo-element */
+            padding-bottom: var(--spacing-sm);
+            /* Space above the separator line */
             text-align: left;
         }
+
         .left-column h3 {
-             font-size: 0.9rem; /* ~14.4px */
+            font-size: 0.9rem;
+            /* ~14.4px */
         }
+
         .right-column h3 {
-            font-size: 1.0rem; /* 16px */
+            font-size: 1.0rem;
+            /* 16px */
         }
+
         /* Separator line below section headers */
-        .left-column h3::after, .right-column h3::after {
+        .left-column h3::after,
+        .right-column h3::after {
             content: '';
             display: block;
             width: var(--header-sep-width);
@@ -196,523 +266,889 @@
         /* Bullet List Style (Used in Summary, Skills, Personal) */
         .bullet-list li {
             margin-bottom: var(--spacing-sm);
-            position: relative; /* For positioning the bullet */
-            padding-left: var(--spacing-lg); /* Space for the bullet */
-            font-size: 0.8rem; /* ~12.8px */
+            position: relative;
+            /* For positioning the bullet */
+            padding-left: var(--spacing-lg);
+            /* Space for the bullet */
+            font-size: 0.8rem;
+            /* ~12.8px */
             transition: color var(--transition-duration) var(--transition-timing);
         }
+
         .bullet-list li::before {
-            content: '\2022'; /* Bullet character */
+            content: '\2022';
+            /* Bullet character */
             position: absolute;
             left: 0;
             color: var(--accent-color);
-            font-size: 1.2em; /* Slightly larger bullet */
-            line-height: 1; /* Align bullet vertically */
-            top: 0.15em; /* Fine-tuned vertical alignment */
+            font-size: 1.2em;
+            /* Slightly larger bullet */
+            line-height: 1;
+            /* Align bullet vertically */
+            top: 0.15em;
+            /* Fine-tuned vertical alignment */
         }
-         .bullet-list li:hover {
-             color: var(--text-medium); /* Subtle hover effect */
-         }
+
+        .bullet-list li:hover {
+            color: var(--text-medium);
+            /* Subtle hover effect */
+        }
 
         /*------------------------------------*\
           :LEFT COLUMN SPECIFIC STYLES
         \*------------------------------------*/
         .profile-image {
-            border-radius: 50%; /* Circular image */
+            border-radius: 50%;
+            /* Circular image */
             width: var(--profile-img-size);
             height: var(--profile-img-size);
-            object-fit: cover; /* Ensure image covers the area */
-            margin: 0 auto var(--spacing-xl) auto; /* Center and space below */
+            object-fit: cover;
+            /* Ensure image covers the area */
+            margin: 0 auto var(--spacing-xl) auto;
+            /* Center and space below */
             display: block;
-            border: none; /* Remove default image border */
+            border: none;
+            /* Remove default image border */
         }
 
         /* Contact List */
         .left-column #contact li {
             margin-bottom: var(--spacing-md);
-            display: flex; /* Align icon and text */
-            align-items: flex-start; /* Align items to the top */
-            font-size: 0.8rem; /* ~12.8px */
+            display: flex;
+            /* Align icon and text */
+            align-items: flex-start;
+            /* Align items to the top */
+            font-size: 0.8rem;
+            /* ~12.8px */
         }
-        .left-column #contact li i { /* Font Awesome Icons */
-            margin-right: var(--spacing-md); /* Space between icon and text */
-            width: 18px; /* Fixed width for alignment */
+
+        .left-column #contact li i {
+            /* Font Awesome Icons */
+            margin-right: var(--spacing-md);
+            /* Space between icon and text */
+            width: 18px;
+            /* Fixed width for alignment */
             text-align: center;
-            color: var(--text-medium); /* Icon color */
-            margin-top: 0.15rem; /* Align icon slightly lower */
-            flex-shrink: 0; /* Prevent icon from shrinking */
+            color: var(--text-medium);
+            /* Icon color */
+            margin-top: 0.15rem;
+            /* Align icon slightly lower */
+            flex-shrink: 0;
+            /* Prevent icon from shrinking */
         }
 
         /* Education & Volunteering Sections */
-        .education-item, .volunteering-item {
-             margin-bottom: var(--spacing-lg); /* Space between items */
-         }
-        .education-item h4, .volunteering-item h4 { /* Degree/Volunteering Title */
-             font-weight: 600;
-             font-size: 0.85rem; /* ~13.6px */
-             margin-bottom: var(--spacing-xs);
-         }
-        .education-item p, .volunteering-item p { /* University/Details */
-             font-size: 0.75rem; /* ~12px */
-             color: var(--text-medium);
-             line-height: 1.4;
-             margin-bottom: var(--spacing-xs);
-         }
-        .volunteering-item p.quote { /* Special quote styling */
-             font-style: italic;
-             margin-top: var(--spacing-sm);
-             color: var(--text-medium);
-             font-size: 0.75rem;
-         }
+        .education-item,
+        .volunteering-item {
+            margin-bottom: var(--spacing-lg);
+            /* Space between items */
+        }
+
+        .education-item h4,
+        .volunteering-item h4 {
+            /* Degree/Volunteering Title */
+            font-weight: 600;
+            font-size: 0.85rem;
+            /* ~13.6px */
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .education-item p,
+        .volunteering-item p {
+            /* University/Details */
+            font-size: 0.75rem;
+            /* ~12px */
+            color: var(--text-medium);
+            line-height: 1.4;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .volunteering-item p.quote {
+            /* Special quote styling */
+            font-style: italic;
+            margin-top: var(--spacing-sm);
+            color: var(--text-medium);
+            font-size: 0.75rem;
+        }
 
         /* Language List */
         .language-list li {
             margin-bottom: var(--spacing-sm);
-            font-size: 0.8rem; /* ~12.8px */
-            display: flex; /* Align icon, language, proficiency */
+            font-size: 0.8rem;
+            /* ~12.8px */
+            display: flex;
+            /* Align icon, language, proficiency */
             align-items: center;
         }
-         .language-list li i { /* Icon styling */
-             margin-right: var(--spacing-md);
-             width: 18px;
-             text-align: center;
-             color: var(--text-medium);
-             flex-shrink: 0;
-         }
-        .language-list span.proficiency { /* Proficiency level text */
+
+        .language-list li i {
+            /* Icon styling */
+            margin-right: var(--spacing-md);
+            width: 18px;
+            text-align: center;
+            color: var(--text-medium);
+            flex-shrink: 0;
+        }
+
+        .language-list span.proficiency {
+            /* Proficiency level text */
             color: var(--text-light);
             margin-left: var(--spacing-sm);
-            font-size: 0.7rem; /* ~11.2px */
+            font-size: 0.7rem;
+            /* ~11.2px */
         }
 
         /*------------------------------------*\
           :RIGHT COLUMN SPECIFIC STYLES
         \*------------------------------------*/
         .right-column header {
-            margin-bottom: var(--spacing-xl); /* Space below name/title */
+            margin-bottom: var(--spacing-xl);
+            /* Space below name/title */
         }
-        .right-column h2 { /* Name */
-            font-size: 2.4rem; /* ~38.4px */
+
+        .right-column h2 {
+            /* Name */
+            font-size: 2.4rem;
+            /* ~38.4px */
             font-weight: 700;
             margin-bottom: var(--spacing-xs);
         }
-        .right-column .title { /* Job Title */
-            font-size: 1.1rem; /* ~17.6px */
-            font-weight: 300; /* Use light weight for contrast */
+
+        .right-column .title {
+            /* Job Title */
+            font-size: 1.1rem;
+            /* ~17.6px */
+            font-weight: 300;
+            /* Use light weight for contrast */
             color: var(--text-medium);
-            margin-bottom: var(--spacing-xl); /* Space below title */
+            margin-bottom: var(--spacing-xl);
+            /* Space below title */
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
         /* About Section */
         .about-section p {
-             font-size: 0.875rem; /* 14px */
-             line-height: var(--line-height-base);
-             color: var(--text-dark);
-             margin-bottom: var(--spacing-md);
+            font-size: 0.875rem;
+            /* 14px */
+            line-height: var(--line-height-base);
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-md);
         }
+
         .about-section p:last-child {
-            margin-bottom: 0; /* Remove margin from last paragraph */
+            margin-bottom: 0;
+            /* Remove margin from last paragraph */
         }
 
         /* Experience Section */
         .experience-entry {
-            margin-bottom: var(--spacing-lg); /* Space below each entry */
-            padding-bottom: var(--spacing-lg); /* Space above the border */
-            border-bottom: 1px solid var(--border-color); /* Separator line */
-            display: flex; /* Logo and details side-by-side */
-            align-items: flex-start; /* Align items to the top */
-            gap: var(--spacing-lg); /* Space between logo and details */
+            margin-bottom: var(--spacing-lg);
+            /* Space below each entry */
+            padding-bottom: var(--spacing-lg);
+            /* Space above the border */
+            border-bottom: 1px solid var(--border-color);
+            /* Separator line */
+            display: flex;
+            /* Logo and details side-by-side */
+            align-items: flex-start;
+            /* Align items to the top */
+            gap: var(--spacing-lg);
+            /* Space between logo and details */
         }
-        .experience-entry:last-child { /* Remove border from the very last entry */
+
+        .experience-entry:last-child {
+            /* Remove border from the very last entry */
             border-bottom: none;
             margin-bottom: 0;
             padding-bottom: 0;
         }
-        .logo-placeholder { /* Placeholder for company logos */
-            flex-shrink: 0; /* Prevent shrinking */
+
+        .logo-placeholder {
+            /* Placeholder for company logos */
+            flex-shrink: 0;
+            /* Prevent shrinking */
             width: var(--logo-size);
             height: var(--logo-size);
             border-radius: var(--border-radius-sm);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden; /* Clip image if needed */
-            background-color: var(--placeholder-bg); /* Fallback background */
+            overflow: hidden;
+            /* Clip image if needed */
+            background-color: var(--placeholder-bg);
+            /* Fallback background */
         }
-        .logo-placeholder img { /* Actual logo image */
-             width: 80%; /* Size logo within placeholder */
-             height: 80%;
-             object-fit: contain; /* Scale logo nicely */
+
+        .logo-placeholder img {
+            /* Actual logo image */
+            width: 80%;
+            /* Size logo within placeholder */
+            height: 80%;
+            object-fit: contain;
+            /* Scale logo nicely */
         }
+
         .experience-details {
-            flex-grow: 1; /* Allow details to take remaining space */
+            flex-grow: 1;
+            /* Allow details to take remaining space */
         }
-        .experience-entry h4 { /* Job title */
-            font-size: 0.95rem; /* ~15.2px */
+
+        .experience-entry h4 {
+            /* Job title */
+            font-size: 0.95rem;
+            /* ~15.2px */
             font-weight: 700;
-            margin-top: 0; /* Reset margin */
+            margin-top: 0;
+            /* Reset margin */
             margin-bottom: var(--spacing-xs);
         }
-        .experience-entry .company-location { /* Company Name | Location */
+
+        .experience-entry .company-location {
+            /* Company Name | Location */
             color: var(--text-medium);
             margin-bottom: var(--spacing-xs);
-            font-size: 0.8rem; /* ~12.8px */
+            font-size: 0.8rem;
+            /* ~12.8px */
             font-weight: 600;
         }
-        .experience-entry .dates { /* Employment Dates */
+
+        .experience-entry .dates {
+            /* Employment Dates */
             color: var(--text-light);
-            font-size: 0.7rem; /* ~11.2px */
+            font-size: 0.7rem;
+            /* ~11.2px */
             margin-bottom: var(--spacing-md);
         }
-        .experience-entry p, .experience-entry ul { /* Description text and lists */
-            font-size: 0.875rem; /* 14px */
+
+        .experience-entry p,
+        .experience-entry ul {
+            /* Description text and lists */
+            font-size: 0.875rem;
+            /* 14px */
             line-height: var(--line-height-base);
             color: var(--text-dark);
             margin-bottom: var(--spacing-md);
         }
-         .experience-entry ul { /* Bullet points for achievements */
+
+        .experience-entry ul {
+            /* Bullet points for achievements */
             margin-top: var(--spacing-md);
-            padding-left: 0; /* Reset default padding */
+            padding-left: 0;
+            /* Reset default padding */
         }
-         .experience-entry ul li { /* Individual achievement */
-             margin-bottom: var(--spacing-sm);
-             position: relative; /* For bullet positioning */
-             padding-left: var(--spacing-lg); /* Space for bullet */
-             font-size: 0.875rem; /* 14px */
-         }
-         .experience-entry ul li::before { /* Achievement bullet */
-             content: '\2022';
-             position: absolute;
-             left: 0;
-             color: var(--accent-color);
-             font-size: 1.2em;
-             line-height: 1;
-             top: 0.15em; /* Fine-tuned alignment */
-         }
-         .experience-entry ul li strong { /* Bold text within achievements */
-             font-weight: 600;
-         }
-        .previous-experience-link { /* Link to LinkedIn for older roles */
+
+        .experience-entry ul li {
+            /* Individual achievement */
+            margin-bottom: var(--spacing-sm);
+            position: relative;
+            /* For bullet positioning */
+            padding-left: var(--spacing-lg);
+            /* Space for bullet */
+            font-size: 0.875rem;
+            /* 14px */
+        }
+
+        .experience-entry ul li::before {
+            /* Achievement bullet */
+            content: '\2022';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-size: 1.2em;
+            line-height: 1;
+            top: 0.15em;
+            /* Fine-tuned alignment */
+        }
+
+        .experience-entry ul li strong {
+            /* Bold text within achievements */
+            font-weight: 600;
+        }
+
+        .previous-experience-link {
+            /* Link to LinkedIn for older roles */
             font-size: 0.8rem;
             color: var(--text-medium);
             margin-top: var(--spacing-md);
         }
-        .previous-experience-link i { /* External link icon */
+
+        .previous-experience-link i {
+            /* External link icon */
             font-size: 0.8em;
             margin-left: 4px;
         }
 
         /* Recommendations Section */
-        .linkedin-recommendations-link { /* Link to full recommendations */
-            margin-top: calc(-1 * var(--spacing-sm)); /* Adjust spacing relative to heading */
+        .linkedin-recommendations-link {
+            /* Link to full recommendations */
+            margin-top: calc(-1 * var(--spacing-sm));
+            /* Adjust spacing relative to heading */
             margin-bottom: var(--spacing-lg);
-            font-size: 0.8rem; /* ~12.8px */
+            font-size: 0.8rem;
+            /* ~12.8px */
         }
+
         .linkedin-recommendations-link a {
             color: var(--text-medium);
             font-weight: 600;
         }
+
         .linkedin-recommendations-link a:hover {
             color: var(--accent-color);
         }
-        .linkedin-recommendations-link i { /* External link icon */
-             font-size: 0.8em;
-             margin-left: 4px;
-             color: var(--text-light);
+
+        .linkedin-recommendations-link i {
+            /* External link icon */
+            font-size: 0.8em;
+            margin-left: 4px;
+            color: var(--text-light);
         }
-        .recommendation-item { /* Individual recommendation */
+
+        .recommendation-item {
+            /* Individual recommendation */
             margin-bottom: var(--spacing-lg);
             padding-bottom: var(--spacing-lg);
-            border-bottom: 1px solid var(--border-color); /* Separator */
+            border-bottom: 1px solid var(--border-color);
+            /* Separator */
         }
-         .recommendation-item:last-child { /* Remove border from last item */
-             margin-bottom: 0;
-             padding-bottom: 0;
-             border-bottom: none;
-         }
-        .recommendation-item blockquote { /* Recommendation text */
+
+        .recommendation-item:last-child {
+            /* Remove border from last item */
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .recommendation-item blockquote {
+            /* Recommendation text */
             font-style: italic;
             color: var(--text-dark);
             line-height: var(--line-height-base);
-            font-size: 0.875rem; /* 14px */
-            margin: 0; /* Reset blockquote margin */
-            padding: 0; /* Reset blockquote padding */
+            font-size: 0.875rem;
+            /* 14px */
+            margin: 0;
+            /* Reset blockquote margin */
+            padding: 0;
+            /* Reset blockquote padding */
         }
-        .recommendation-item .ref-author { /* Recommender's Name */
+
+        .recommendation-item .ref-author {
+            /* Recommender's Name */
             text-align: left;
-            font-size: 0.8rem; /* ~12.8px */
+            font-size: 0.8rem;
+            /* ~12.8px */
             font-weight: 700;
             color: var(--accent-color);
-            margin-top: var(--spacing-sm); /* Space above author */
+            margin-top: var(--spacing-sm);
+            /* Space above author */
         }
-         .recommendation-item .ref-title { /* Recommender's Title */
-             text-align: left;
-             font-size: 0.75rem; /* ~12px */
-             color: var(--text-medium);
-             margin-top: var(--spacing-xs); /* Space between author/title */
-         }
+
+        .recommendation-item .ref-title {
+            /* Recommender's Title */
+            text-align: left;
+            font-size: 0.75rem;
+            /* ~12px */
+            color: var(--text-medium);
+            margin-top: var(--spacing-xs);
+            /* Space between author/title */
+        }
 
         /*------------------------------------*\
           :RESPONSIVE STYLES (for smaller screens)
         \*------------------------------------*/
         @media (max-width: 768px) {
-             body {
-                 font-size: 0.875rem; /* Base mobile body text size ~14px */
-             }
+            body {
+                font-size: 0.875rem;
+                /* Base mobile body text size ~14px */
+            }
+
             .cv-container {
-                flex-direction: column; /* Stack columns vertically */
-                margin: 0; /* Remove side margins */
-                max-width: 100%; /* Use full width */
-                box-shadow: none; /* Remove shadow */
+                flex-direction: column;
+                /* Stack columns vertically */
+                margin: 0;
+                /* Remove side margins */
+                max-width: 100%;
+                /* Use full width */
+                box-shadow: none;
+                /* Remove shadow */
                 border-radius: 0;
                 /* display: flex; already set */
             }
-            .left-column, .right-column {
-                width: 100%; /* Full width columns */
-                padding: var(--spacing-lg); /* Adjust padding */
-                border-right: none; /* Remove vertical border */
-            }
-            .left-column {
-                 border-bottom: 1px solid var(--border-color); /* Add border below left col */
-                 padding-bottom: var(--spacing-xl); /* Add padding below left column content */
-            }
+
+            .left-column,
             .right-column {
-                 padding-top: var(--spacing-xl); /* Space above right col content */
+                width: 100%;
+                /* Full width columns */
+                padding: var(--spacing-lg);
+                /* Adjust padding */
+                border-right: none;
+                /* Remove vertical border */
             }
+
+            .left-column {
+                border-bottom: 1px solid var(--border-color);
+                /* Add border below left col */
+                padding-bottom: var(--spacing-xl);
+                /* Add padding below left column content */
+            }
+
+            .right-column {
+                padding-top: var(--spacing-xl);
+                /* Space above right col content */
+            }
+
             .profile-image {
-                width: calc(var(--profile-img-size) * 0.7); /* Slightly smaller image */
+                width: calc(var(--profile-img-size) * 0.7);
+                /* Slightly smaller image */
                 height: calc(var(--profile-img-size) * 0.7);
             }
-            .right-column h2 { /* Name */
-                font-size: 1.8rem; /* Adjust heading size */
+
+            .right-column h2 {
+                /* Name */
+                font-size: 1.8rem;
+                /* Adjust heading size */
             }
+
             .right-column .title {
-                font-size: 0.95rem; /* Adjust title size */
+                font-size: 0.95rem;
+                /* Adjust title size */
                 margin-bottom: var(--spacing-lg);
             }
+
             /* Adjust separator line width */
-            .left-column h3::after, .right-column h3::after {
-                 width: calc(var(--header-sep-width) * 0.6);
+            .left-column h3::after,
+            .right-column h3::after {
+                width: calc(var(--header-sep-width) * 0.6);
             }
-             /* Adjust section heading sizes */
-             .left-column h3 { font-size: 0.85rem; }
-             .right-column h3 { font-size: 0.95rem; }
+
+            /* Adjust section heading sizes */
+            .left-column h3 {
+                font-size: 0.85rem;
+            }
+
+            .right-column h3 {
+                font-size: 0.95rem;
+            }
 
             /* Stack experience logo and details vertically */
             .experience-entry {
-                flex-direction: column; /* Ensure it stacks on mobile */
+                flex-direction: column;
+                /* Ensure it stacks on mobile */
                 align-items: flex-start;
                 gap: var(--spacing-md);
             }
+
             /* Adjust experience font sizes */
-            .experience-entry h4 { font-size: 0.9rem; }
-            .experience-entry .company-location { font-size: 0.8rem; }
-            .experience-entry .dates { font-size: 0.7rem; }
-
-            .logo-placeholder { /* Adjust logo size */
-                 width: calc(var(--logo-size) * 0.8);
-                 height: calc(var(--logo-size) * 0.8);
-                 margin-bottom: var(--spacing-sm);
+            .experience-entry h4 {
+                font-size: 0.9rem;
             }
-            /* Adjust recommendation font sizes */
-            .recommendation-item blockquote { font-size: 0.825rem; }
-             .recommendation-item .ref-author { font-size: 0.75rem; }
-             .recommendation-item .ref-title { font-size: 0.7rem; }
 
-             /* Adjust other text sizes for consistency on mobile */
-             .bullet-list li { font-size: 0.8rem; }
-             .left-column #contact li { font-size: 0.8rem; }
-             .language-list li { font-size: 0.8rem; }
-             .education-item h4, .volunteering-item h4 { font-size: 0.85rem; }
-             .education-item p, .volunteering-item p { font-size: 0.75rem; }
-             .language-list span.proficiency { font-size: 0.7rem; }
-             .about-section p { font-size: 0.875rem; } /* Match experience text */
-             .linkedin-recommendations-link { font-size: 0.8rem; }
-             .previous-experience-link { font-size: 0.75rem; }
+            .experience-entry .company-location {
+                font-size: 0.8rem;
+            }
+
+            .experience-entry .dates {
+                font-size: 0.7rem;
+            }
+
+            .logo-placeholder {
+                /* Adjust logo size */
+                width: calc(var(--logo-size) * 0.8);
+                height: calc(var(--logo-size) * 0.8);
+                margin-bottom: var(--spacing-sm);
+            }
+
+            /* Adjust recommendation font sizes */
+            .recommendation-item blockquote {
+                font-size: 0.825rem;
+            }
+
+            .recommendation-item .ref-author {
+                font-size: 0.75rem;
+            }
+
+            .recommendation-item .ref-title {
+                font-size: 0.7rem;
+            }
+
+            /* Adjust other text sizes for consistency on mobile */
+            .bullet-list li {
+                font-size: 0.8rem;
+            }
+
+            .left-column #contact li {
+                font-size: 0.8rem;
+            }
+
+            .language-list li {
+                font-size: 0.8rem;
+            }
+
+            .education-item h4,
+            .volunteering-item h4 {
+                font-size: 0.85rem;
+            }
+
+            .education-item p,
+            .volunteering-item p {
+                font-size: 0.75rem;
+            }
+
+            .language-list span.proficiency {
+                font-size: 0.7rem;
+            }
+
+            .about-section p {
+                font-size: 0.875rem;
+            }
+
+            /* Match experience text */
+            .linkedin-recommendations-link {
+                font-size: 0.8rem;
+            }
+
+            .previous-experience-link {
+                font-size: 0.75rem;
+            }
         }
 
         /*------------------------------------*\
           :PRINT STYLES (NEW - Two Column, Color, Full Page)
         \*------------------------------------*/
         @media print {
+
             /* Define page size and margins */
             @page {
-                size: A4; /* Standard A4 size */
-                margin: 10mm; /* Adjust margins as needed */
+                size: A4;
+                /* Standard A4 size */
+                margin: 10mm;
+                /* Adjust margins as needed */
             }
 
             /* Force printing of background colors and images */
-            body, .cv-container, .left-column, .right-column {
-                -webkit-print-color-adjust: exact !important; /* Chrome, Safari, Edge */
-                print-color-adjust: exact !important; /* Firefox */
+            body,
+            .cv-container,
+            .left-column,
+            .right-column {
+                -webkit-print-color-adjust: exact !important;
+                /* Chrome, Safari, Edge */
+                print-color-adjust: exact !important;
+                /* Firefox */
             }
 
             /* Reset body for print */
             body {
-                background-color: #ffffff !important; /* Ensure white page background */
-                color: var(--text-dark); /* Use default dark text */
-                font-size: 9pt; /* Slightly smaller base font size for print */
-                font-family: 'Inter', Calibri, Arial, Helvetica, sans-serif; /* Keep Inter, add fallbacks */
+                background-color: #ffffff !important;
+                /* Ensure white page background */
+                color: var(--text-dark);
+                /* Use default dark text */
+                font-size: 9pt;
+                /* Slightly smaller base font size for print */
+                font-family: 'Inter', Calibri, Arial, Helvetica, sans-serif;
+                /* Keep Inter, add fallbacks */
                 margin: 0;
                 padding: 0;
-                line-height: 1.4; /* Adjust line height for print */
+                line-height: 1.4;
+                /* Adjust line height for print */
             }
 
             /* Container setup */
             .cv-container {
-                max-width: 100%; /* Use full printable width */
+                max-width: 100%;
+                /* Use full printable width */
                 width: 100%;
-                margin: 0; /* Remove screen margins */
-                box-shadow: none; /* Remove screen shadow */
-                display: flex !important; /* Ensure flex layout */
-                flex-direction: row !important; /* Ensure row layout (two columns) */
-                border: none; /* Remove any potential borders */
-                overflow: visible; /* Allow content to flow naturally */
+                margin: 0;
+                /* Remove screen margins */
+                box-shadow: none;
+                /* Remove screen shadow */
+                display: flex !important;
+                /* Ensure flex layout */
+                flex-direction: row !important;
+                /* Ensure row layout (two columns) */
+                border: none;
+                /* Remove any potential borders */
+                overflow: visible;
+                /* Allow content to flow naturally */
             }
 
             /* Column setup */
             .left-column,
             .right-column {
-                width: var(--left-col-width) !important; /* Restore original width */
-                padding: 5mm !important; /* Reduced padding for print */
-                border: none !important; /* Remove borders between/around columns */
+                width: var(--left-col-width) !important;
+                /* Restore original width */
+                padding: 5mm !important;
+                /* Reduced padding for print */
+                border: none !important;
+                /* Remove borders between/around columns */
                 /* Background colors are inherited via print-color-adjust */
                 /* Text colors are inherited */
             }
+
             .right-column {
-                 width: var(--right-col-width) !important; /* Restore original width */
+                width: var(--right-col-width) !important;
+                /* Restore original width */
             }
 
             /* --- Hide Logos in Print --- */
             .logo-placeholder {
-                display: none !important; /* Hide company logos */
+                display: none !important;
+                /* Hide company logos */
             }
 
             /* Keep other elements visible */
-             .linkedin-recommendations-link {
-                 display: block !important; /* Keep link visible */
-                 margin-bottom: 3mm;
-                 font-size: 8pt;
-             }
-             .previous-experience-link i,
-             .linkedin-recommendations-link i {
-                 display: inline-block !important; /* Keep icons visible */
-                 font-size: 0.8em;
-             }
+            .linkedin-recommendations-link {
+                display: block !important;
+                /* Keep link visible */
+                margin-bottom: 3mm;
+                font-size: 8pt;
+            }
+
+            .previous-experience-link i,
+            .linkedin-recommendations-link i {
+                display: inline-block !important;
+                /* Keep icons visible */
+                font-size: 0.8em;
+            }
 
             /* Adjust image size */
             .profile-image {
-                 width: 25mm; /* Physical unit size for print */
-                 height: 25mm;
-                 margin: 0 auto 5mm auto; /* Center image, reduced margin */
-                 display: block;
-                 border: none; /* No border */
-                 border-radius: 50%; /* Keep circular */
-             }
+                width: 25mm;
+                /* Physical unit size for print */
+                height: 25mm;
+                margin: 0 auto 5mm auto;
+                /* Center image, reduced margin */
+                display: block;
+                border: none;
+                /* No border */
+                border-radius: 50%;
+                /* Keep circular */
+            }
 
             /* Adjust typography sizes using relative units or smaller points */
-            h2 { font-size: 18pt; margin-bottom: 1mm; }
-            .title { font-size: 10pt; color: var(--text-medium); margin-bottom: 5mm; }
-            h3 { font-size: 10pt; margin-bottom: 3mm; padding-bottom: 1mm; }
-            h3::after { height: 1.5pt; width: 25mm; background-color: var(--accent-color); } /* Slightly smaller separator */
-            h4 { font-size: 9.5pt; margin-bottom: 1mm; }
+            h2 {
+                font-size: 18pt;
+                margin-bottom: 1mm;
+            }
+
+            .title {
+                font-size: 10pt;
+                color: var(--text-medium);
+                margin-bottom: 5mm;
+            }
+
+            h3 {
+                font-size: 10pt;
+                margin-bottom: 3mm;
+                padding-bottom: 1mm;
+            }
+
+            h3::after {
+                height: 1.5pt;
+                width: 25mm;
+                background-color: var(--accent-color);
+            }
+
+            /* Slightly smaller separator */
+            h4 {
+                font-size: 9.5pt;
+                margin-bottom: 1mm;
+            }
 
             /* Adjust text sizes */
-            p, ul, li, blockquote {
-                font-size: 8.5pt; /* Slightly smaller body text */
+            p,
+            ul,
+            li,
+            blockquote {
+                font-size: 8.5pt;
+                /* Slightly smaller body text */
                 line-height: 1.4;
             }
-            .bullet-list li, .left-column #contact li, .language-list li {
+
+            .bullet-list li,
+            .left-column #contact li,
+            .language-list li {
                 font-size: 8pt;
             }
-            .company-location { font-size: 8pt; }
-            .dates, .proficiency, .ref-title, .education-item p, .volunteering-item p, .volunteering-item p.quote {
-                font-size: 7.5pt; color: var(--text-light);
+
+            .company-location {
+                font-size: 8pt;
             }
-            .ref-author { font-size: 8.5pt; }
-            .recommendation-item blockquote { font-style: italic; font-size: 8.5pt; } /* Keep italics */
+
+            .dates,
+            .proficiency,
+            .ref-title,
+            .education-item p,
+            .volunteering-item p,
+            .volunteering-item p.quote {
+                font-size: 7.5pt;
+                color: var(--text-light);
+            }
+
+            .ref-author {
+                font-size: 8.5pt;
+            }
+
+            .recommendation-item blockquote {
+                font-style: italic;
+                font-size: 8.5pt;
+            }
+
+            /* Keep italics */
 
             /* Adjust spacing */
-            ul { margin-left: 4mm; margin-bottom: 1.5mm; }
-            li { margin-bottom: 1.5mm; }
-            .bullet-list { padding-left: 4mm; }
-            .left-column #contact li, .language-list li { margin-bottom: 2mm; }
-            .left-column #contact li i, .language-list li i { width: 14px; margin-right: 2mm; } /* Adjust icon spacing */
+            ul {
+                margin-left: 4mm;
+                margin-bottom: 1.5mm;
+            }
+
+            li {
+                margin-bottom: 1.5mm;
+            }
+
+            .bullet-list {
+                padding-left: 4mm;
+            }
+
+            .left-column #contact li,
+            .language-list li {
+                margin-bottom: 2mm;
+            }
+
+            .left-column #contact li i,
+            .language-list li i {
+                width: 14px;
+                margin-right: 2mm;
+            }
+
+            /* Adjust icon spacing */
 
             /* --- Experience Entry Layout (Print - No Logo) --- */
             .experience-entry {
-                gap: 0; /* Remove gap as logo is hidden */
+                gap: 0;
+                /* Remove gap as logo is hidden */
                 padding-bottom: 4mm;
                 margin-bottom: 4mm;
-                border-bottom: 1px solid var(--border-color); /* Keep border for structure */
+                border-bottom: 1px solid var(--border-color);
+                /* Keep border for structure */
                 /* align-items: baseline !important; Removed as logo is hidden */
-                display: block; /* Change from flex to block as logo is gone */
+                display: block;
+                /* Change from flex to block as logo is gone */
             }
-             .experience-details {
-                 width: 100%; /* Ensure details take full width */
-             }
+
+            .experience-details {
+                width: 100%;
+                /* Ensure details take full width */
+            }
 
 
-            .recommendation-item { padding-bottom: 4mm; margin-bottom: 4mm; border-bottom: 1px solid var(--border-color); } /* Keep border */
-            .experience-entry:last-child, .recommendation-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-             /* Special handling for the 'previous experience' link entry */
-             #experience .experience-entry:has(.previous-experience-link) {
-                 border-bottom: none !important;
-                 padding-bottom: 0;
-                 margin-bottom: 0;
-             }
-             .recommendation-item .ref-author { margin-top: 2mm; }
-             .recommendation-item .ref-title { margin-top: 0.5mm; }
-             .left-column section + section, .right-column section + section {
-                 margin-top: 6mm; /* Reduced section spacing */
-             }
+            .recommendation-item {
+                padding-bottom: 4mm;
+                margin-bottom: 4mm;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            /* Keep border */
+            .experience-entry:last-child,
+            .recommendation-item:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+
+            /* Special handling for the 'previous experience' link entry */
+            #experience .experience-entry:has(.previous-experience-link) {
+                border-bottom: none !important;
+                padding-bottom: 0;
+                margin-bottom: 0;
+            }
+
+            .recommendation-item .ref-author {
+                margin-top: 2mm;
+            }
+
+            .recommendation-item .ref-title {
+                margin-top: 0.5mm;
+            }
+
+            .left-column section+section,
+            .right-column section+section {
+                margin-top: 6mm;
+                /* Reduced section spacing */
+            }
 
             /* Links - Keep them styled */
             a {
-                color: var(--link-color); /* Use original link color */
-                text-decoration: none; /* Remove underline for print cleanliness */
+                color: var(--link-color);
+                /* Use original link color */
+                text-decoration: none;
+                /* Remove underline for print cleanliness */
             }
-            a:hover { text-decoration: none; } /* No hover effect needed */
+
+            a:hover {
+                text-decoration: none;
+            }
+
+            /* No hover effect needed */
 
             /* --- PAGE BREAK CONTROL --- */
-            section, .experience-entry, .recommendation-item, .education-item,
-            .volunteering-item, #contact ul li, .language-list li, blockquote, p {
-                page-break-inside: avoid; /* Try to keep these elements intact */
+            section,
+            .experience-entry,
+            .recommendation-item,
+            .education-item,
+            .volunteering-item,
+            #contact ul li,
+            .language-list li,
+            blockquote,
+            p {
+                page-break-inside: avoid;
+                /* Try to keep these elements intact */
             }
-            h2, h3, h4 {
-                page-break-after: avoid; /* Avoid breaking right after headings */
-                page-break-before: avoid; /* Avoid orphan headings */
+
+            h2,
+            h3,
+            h4 {
+                page-break-after: avoid;
+                /* Avoid breaking right after headings */
+                page-break-before: avoid;
+                /* Avoid orphan headings */
             }
-             #experience {
-                 page-break-before: auto; /* Allow break before experience if needed */
-             }
-             #recommendations {
-                 page-break-before: always; /* FORCE break before recommendations */
-             }
-             .right-column header {
-                 page-break-inside: avoid;
-                 page-break-after: auto;
-             }
+
+            #experience {
+                page-break-before: auto;
+                /* Allow break before experience if needed */
+            }
+
+            #recommendations {
+                page-break-before: always;
+                /* FORCE break before recommendations */
+            }
+
+            .right-column header {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <div class="cv-container">
 
         <div class="left-column">
-            <img src="img/profile.jpeg"
-                 alt="Mark Pasternak Profile Picture Placeholder"
-                 class="profile-image"
-                 title="Mark Pasternak Profile Picture"
-                 onerror="this.src='https://placehold.co/130x130/FFF1EE/4A4A4A?text=MP'; this.alt='Placeholder Profile Picture';"> <section id="contact">
+            <img src="img/profile.jpeg" alt="Mark Pasternak Profile Picture Placeholder" class="profile-image"
+                title="Mark Pasternak Profile Picture"
+                onerror="this.src='https://placehold.co/130x130/FFF1EE/4A4A4A?text=MP'; this.alt='Placeholder Profile Picture';">
+            <section id="contact">
                 <h3>Contact</h3>
                 <ul>
                     <li><i class="fas fa-phone" aria-hidden="true"></i>+46 (0) 70 695 79 15</li>
-                    <li><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:mark.pasternak@gmail.com">mark.pasternak@gmail.com</a></li>
-                    <li><i class="fab fa-linkedin" aria-hidden="true"></i><a href="https://linkedin.com/in/markpasternak/" target="_blank" rel="noopener noreferrer">linkedin.com/in/markpasternak/</a></li>
+                    <li><i class="fas fa-envelope" aria-hidden="true"></i><a
+                            href="mailto:mark.pasternak@gmail.com">mark.pasternak@gmail.com</a></li>
+                    <li><i class="fab fa-linkedin" aria-hidden="true"></i><a
+                            href="https://linkedin.com/in/markpasternak/" target="_blank"
+                            rel="noopener noreferrer">linkedin.com/in/markpasternak/</a></li>
                     <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i>Stockholm, Sweden</li>
                 </ul>
             </section>
@@ -720,10 +1156,13 @@
             <section id="summary">
                 <h3>Summary</h3>
                 <ul class="bullet-list">
-                    <li>Experienced CTO with 20+ years in the tech industry, encompassing startups, scaleups and larger listed companies.</li>
+                    <li>Experienced CTO with 20+ years in the tech industry, encompassing startups, scaleups and larger
+                        listed companies.</li>
                     <li>Skilled in scaling systems, teams, and organizations.</li>
-                    <li>Strategic thinker with sharp attention to detail who finds passion in connecting the bigger picture with day-to-day operations.</li>
-                    <li>Inclusive and engaging leader of leaders, who successfully develop high performing teams and strong cross-functional alignment.</li>
+                    <li>Strategic thinker with sharp attention to detail who finds passion in connecting the bigger
+                        picture with day-to-day operations.</li>
+                    <li>Inclusive and engaging leader of leaders, who successfully develop high performing teams and
+                        strong cross-functional alignment.</li>
                     <li>Extensive experience in consumer-focused digital product development.</li>
                 </ul>
             </section>
@@ -744,17 +1183,18 @@
             </section>
 
             <section id="personal">
-                 <h3>Personal</h3>
-                 <ul class="bullet-list">
-                     <li>Stockholm based with international experience, 4-year professional stint in New York.</li>
-                     <li>Passionate about staying active and informed; I am an avid runner and an enthusiastic reader.</li>
-                     <li>12-year-old daughter and beloved pets, two cats and a dog, keeps me busy!</li>
-                 </ul>
-             </section>
+                <h3>Personal</h3>
+                <ul class="bullet-list">
+                    <li>Stockholm based with international experience, 4-year professional stint in New York.</li>
+                    <li>Passionate about staying active and informed; I am an avid runner and an enthusiastic reader.
+                    </li>
+                    <li>12-year-old daughter and beloved pets, two cats and a dog, keeps me busy!</li>
+                </ul>
+            </section>
 
             <section id="education">
                 <h3>Education</h3>
-                 <div class="education-item">
+                <div class="education-item">
                     <h4>Master, Computer Science</h4>
                     <p>Stockholm University</p>
                     <p>1999 – 2003</p>
@@ -762,22 +1202,26 @@
             </section>
 
             <section id="volunteering">
-                 <h3>Volunteering</h3>
-                 <div class="volunteering-item">
-                     <h4>Founder, Stockholm Engineering Leadership Meetup</h4>
-                     <p>~1000 members strong.</p>
-                     <p class="quote">"Leaders are made not born" and this group exists to support aspiring and current engineering leaders to grow.</p>
-                 </div>
-             </section>
+                <h3>Volunteering</h3>
+                <div class="volunteering-item">
+                    <h4>Founder, Stockholm Engineering Leadership Meetup</h4>
+                    <p>~1000 members strong.</p>
+                    <p class="quote">"Leaders are made not born" and this group exists to support aspiring and current
+                        engineering leaders to grow.</p>
+                </div>
+            </section>
 
             <section id="languages">
                 <h3>Languages</h3>
                 <ul class="language-list">
-                    <li><i class="fas fa-language" aria-hidden="true"></i>English <span class="proficiency">(Native or Bilingual)</span></li>
-                    <li><i class="fas fa-language" aria-hidden="true"></i>Swedish <span class="proficiency">(Native or Bilingual)</span></li>
+                    <li><i class="fas fa-language" aria-hidden="true"></i>English <span class="proficiency">(Native or
+                            Bilingual)</span></li>
+                    <li><i class="fas fa-language" aria-hidden="true"></i>Swedish <span class="proficiency">(Native or
+                            Bilingual)</span></li>
                 </ul>
             </section>
-        </div> <div class="right-column">
+        </div>
+        <div class="right-column">
             <header>
                 <h2>Mark Pasternak</h2>
                 <p class="title">Engineering & Product Leadership / CTO</p>
@@ -785,239 +1229,491 @@
 
             <section id="about" class="about-section">
                 <h3>About Me</h3>
-                <p>Throughout my career spanning over two decades—from programmer to tech lead, manager, and executive—I have maintained an unwavering focus on the customer and working backwards from the core problems we aim to solve.</p>
-                <p>As a results-oriented technology executive with extensive experience building and leading engineering organizations, I consistently align technical initiatives closely with business objectives, drive operational effectiveness, and enable sustainable growth by creating or scaling talented teams.</p>
-                <p>My technical leadership style emphasizes ownership, autonomy, and clarity of purpose. I believe lasting outcomes emerge from empowered teams—with a clear understanding of goals, the freedom to engage in meaningful challenges, and a sense of accountability for their results. By fostering a collaborative and inclusive workplace culture rooted in empathy, open communication, and continuous improvement, I enable team members to thrive and consistently deliver impactful results.</p>
+                <p>Throughout my career spanning over two decades—from programmer to tech lead, manager, and executive—I
+                    have maintained an unwavering focus on the customer and working backwards from the core problems we
+                    aim to solve.</p>
+                <p>As a results-oriented technology executive with extensive experience building and leading engineering
+                    organizations, I consistently align technical initiatives closely with business objectives, drive
+                    operational effectiveness, and enable sustainable growth by creating or scaling talented teams.</p>
+                <p>My technical leadership style emphasizes ownership, autonomy, and clarity of purpose. I believe
+                    lasting outcomes emerge from empowered teams—with a clear understanding of goals, the freedom to
+                    engage in meaningful challenges, and a sense of accountability for their results. By fostering a
+                    collaborative and inclusive workplace culture rooted in empathy, open communication, and continuous
+                    improvement, I enable team members to thrive and consistently deliver impactful results.</p>
             </section>
 
             <section id="experience">
                 <h3>Experience</h3>
-                 <div class="experience-entry">
+                <div class="experience-entry">
                     <span class="logo-placeholder" title="Storytel">
-                        <img src="img/2storytel_logo.png" alt="Storytel Logo Placeholder" onerror="this.parentElement.style.backgroundColor='var(--placeholder-bg)'; this.alt='Storytel Logo Placeholder';">
+                        <img src="img/2storytel_logo.png" alt="Storytel Logo Placeholder"
+                            onerror="this.parentElement.style.backgroundColor='var(--placeholder-bg)'; this.alt='Storytel Logo Placeholder';">
                     </span>
                     <div class="experience-details">
                         <h4>CTO</h4>
                         <p class="company-location">Storytel | Stockholm, Sweden</p>
                         <p class="dates">August 2021 – Present</p>
-                        <p>As Chief Technology Officer and a member of the executive management team, I contributed to transformative change that positioned the company for scalability and sustainable, profitable growth. Owning the technology strategy and vision, I successfully aligned business objectives with innovative technological advancements, building an customer-focused, high-performing, and accountable engineering organization. Believing great leadership is about providing clear context, effective structures, and enabling platforms, I built an empowering engineering culture with autonomy, ownership, and accountability at its core. This approach consistently delivered outstanding outcomes, innovation, and productivity.</p>
-                        <p>I established a strategic technology roadmap aligning innovation, operational stability, quality, and engineering productivity with clear business objectives. Regularly engaging with the board, I translated complex technology contexts into impactful strategic insights. Managing a substantial technology budget, I ensured optimal investments for maximum customer value and operational impact.</p>
+                        <p>As Chief Technology Officer and a member of the executive management team, I contributed to
+                            transformative change that positioned the company for scalability and sustainable,
+                            profitable growth. Owning the technology strategy and vision, I successfully aligned
+                            business objectives with innovative technological advancements, building an
+                            customer-focused, high-performing, and accountable engineering organization. Believing great
+                            leadership is about providing clear context, effective structures, and enabling platforms, I
+                            built an empowering engineering culture with autonomy, ownership, and accountability at its
+                            core. This approach consistently delivered outstanding outcomes, innovation, and
+                            productivity.</p>
+                        <p>I established a strategic technology roadmap aligning innovation, operational stability,
+                            quality, and engineering productivity with clear business objectives. Regularly engaging
+                            with the board, I translated complex technology contexts into impactful strategic insights.
+                            Managing a substantial technology budget, I ensured optimal investments for maximum customer
+                            value and operational impact.</p>
                         <ul>
-                            <li><strong>Engineering Transformation:</strong> Successfully restructured technology organization from 200 to 80 FTE, achieving significant improvements in delivery speed, efficiency, quality, and team productivity.</li>
-                            <li><strong>Operational Excellence:</strong> Delivered industry-leading reliability metrics, including 100% streaming uptime in 2024 while reducing incidents by 50% year-on-year, earning top-tier stability rankings.</li>
-                            <li><strong>Cost Optimization:</strong> Reversed previous 30% annual infrastructure cost growth, cutting technology costs by 50% over two years without compromising service quality or customer satisfaction.</li>
-                            <li><strong>Accelerated Delivery:</strong> Advanced software deployment from rigid three-week intervals to continuous, on-demand releases, significantly accelerating new feature delivery and responsiveness.</li>
-                            <li><strong>Data-Driven Innovation:</strong> Built and matured advanced data science and machine learning capabilities, measurably improving user personalization, marketing effectiveness, and competitive differentiation.</li>
-                            <li><strong>Governance & Security:</strong> Implemented structured governance fostering transparent, data-informed decision-making, and significantly strengthened company-wide security and privacy practices.</li>
+                            <li><strong>Engineering Transformation:</strong> Successfully restructured technology
+                                organization from 200 to 80 FTE, achieving significant improvements in delivery speed,
+                                efficiency, quality, and team productivity.</li>
+                            <li><strong>Operational Excellence:</strong> Delivered industry-leading reliability metrics,
+                                including 100% streaming uptime in 2024 while reducing incidents by 50% year-on-year,
+                                earning top-tier stability rankings.</li>
+                            <li><strong>Cost Optimization:</strong> Reversed previous 30% annual infrastructure cost
+                                growth, cutting technology costs by 50% over two years without compromising service
+                                quality or customer satisfaction.</li>
+                            <li><strong>Accelerated Delivery:</strong> Advanced software deployment from rigid
+                                three-week intervals to continuous, on-demand releases, significantly accelerating new
+                                feature delivery and responsiveness.</li>
+                            <li><strong>Data-Driven Innovation:</strong> Built and matured advanced data science and
+                                machine learning capabilities, measurably improving user personalization, marketing
+                                effectiveness, and competitive differentiation.</li>
+                            <li><strong>Governance & Security:</strong> Implemented structured governance fostering
+                                transparent, data-informed decision-making, and significantly strengthened company-wide
+                                security and privacy practices.</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="experience-entry">
-                     <span class="logo-placeholder" title="Discovery Inc">
-                          <img src="img/discoveryinc_logo.jpeg" alt="Discovery Inc Logo Placeholder" onerror="this.parentElement.style.backgroundColor='var(--placeholder-bg)'; this.alt='Discovery Inc Logo Placeholder';">
-                     </span>
-                     <div class="experience-details">
+                    <span class="logo-placeholder" title="Discovery Inc">
+                        <img src="img/discoveryinc_logo.jpeg" alt="Discovery Inc Logo Placeholder"
+                            onerror="this.parentElement.style.backgroundColor='var(--placeholder-bg)'; this.alt='Discovery Inc Logo Placeholder';">
+                    </span>
+                    <div class="experience-details">
                         <h4>Director of Engineering</h4>
                         <p class="company-location">Discovery Inc | Stockholm, Sweden</p>
                         <p class="dates">March 2021 – June 2021</p>
-                        <p>The 7 autonomous teams I lead within the Content & Editorial Platform area owned areas like content ingest, video asset management, metadata and enrichment, editorial tools for managing and packaging content and assets, feature flagging platform, experimentation platform, playback APIs, presentation APIs, content APIs and search all personalised and adapted to individual users, and all central to build up the flagship Discovery+ product. In my role at Discovery+, I focused on two critical areas: preparing the platform for the Olympics and incubating the search team. My responsibilities involved strategic planning, team leadership, and ensuring effective collaboration across different organizational segments.</p>
+                        <p>The 7 autonomous teams I lead within the Content & Editorial Platform area owned areas like
+                            content ingest, video asset management, metadata and enrichment, editorial tools for
+                            managing and packaging content and assets, feature flagging platform, experimentation
+                            platform, playback APIs, presentation APIs, content APIs and search all personalised and
+                            adapted to individual users, and all central to build up the flagship Discovery+ product. In
+                            my role at Discovery+, I focused on two critical areas: preparing the platform for the
+                            Olympics and incubating the search team. My responsibilities involved strategic planning,
+                            team leadership, and ensuring effective collaboration across different organizational
+                            segments.</p>
                         <ul>
-                            <li>Led the initiative to ready our part of the Discovery+ platform for the Tokyo Olympics, overseeing the integration of essential features and optimizing user experience to handle increased traffic and engagement.</li>
-                            <li>Founded and bootstrapped a dedicated search team, ensuring a better and more personalized search experience for Discovery+'s. Crafted strategy, set the team charter and recruited key team members.</li>
+                            <li>Led the initiative to ready our part of the Discovery+ platform for the Tokyo Olympics,
+                                overseeing the integration of essential features and optimizing user experience to
+                                handle increased traffic and engagement.</li>
+                            <li>Founded and bootstrapped a dedicated search team, ensuring a better and more
+                                personalized search experience for Discovery+'s. Crafted strategy, set the team charter
+                                and recruited key team members.</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="experience-entry">
-                     <span class="logo-placeholder" title="Epidemic Sound">
-                           <img src="img/epidemic_sound_logo.jpeg" alt="Epidemic Sound Logo Placeholder" onerror="this.parentElement.style.backgroundColor='var(--placeholder-bg)'; this.alt='Epidemic Sound Logo Placeholder';">
-                     </span>
-                     <div class="experience-details">
+                    <span class="logo-placeholder" title="Epidemic Sound">
+                        <img src="img/epidemic_sound_logo.jpeg" alt="Epidemic Sound Logo Placeholder"
+                            onerror="this.parentElement.style.backgroundColor='var(--placeholder-bg)'; this.alt='Epidemic Sound Logo Placeholder';">
+                    </span>
+                    <div class="experience-details">
                         <h4>Director of Engineering, Interim Director of Product</h4>
                         <p class="company-location">Epidemic Sound | Stockholm, Sweden</p>
                         <p class="dates">August 2019 – March 2021</p>
-                        <p>At Epidemic Sound, my role as a technology and interim product leader focused on the music and discovery product domains. I led teams across various functions, including music intake, distribution, packaging, and the core experience of music discovery, ensuring users find the perfect track for their content.</p>
+                        <p>At Epidemic Sound, my role as a technology and interim product leader focused on the music
+                            and discovery product domains. I led teams across various functions, including music intake,
+                            distribution, packaging, and the core experience of music discovery, ensuring users find the
+                            perfect track for their content.</p>
                         <p>Key responsibilities in my role included:</p>
                         <ul>
-                            <li>Establishing two critical domains/product areas, ensuring cohesive leadership, and aligning product and engineering strategies.</li>
-                            <li>Adding and guiding engineering leadership, driving headcount growth to support our ambitious agenda.</li>
+                            <li>Establishing two critical domains/product areas, ensuring cohesive leadership, and
+                                aligning product and engineering strategies.</li>
+                            <li>Adding and guiding engineering leadership, driving headcount growth to support our
+                                ambitious agenda.</li>
                         </ul>
-                         <p>As Epidemic Sound rapidly found its product-market fit and experienced significant growth, my dual role involved supporting teams, leaders, and engineers by providing context, purpose, and goals, alongside driving organizational development for future scaling. I played an important role in helping to transform Epidemic into a leading music tech company, capitalizing on the burgeoning creator economy and the synergy of video and music. My contributions included scaling the tech organization, introducing comprehensive tech and product strategies, establishing governance processes, defining roles and responsibilities, and spearheading the hiring of top-tier talent.</p>
+                        <p>As Epidemic Sound rapidly found its product-market fit and experienced significant growth, my
+                            dual role involved supporting teams, leaders, and engineers by providing context, purpose,
+                            and goals, alongside driving organizational development for future scaling. I played an
+                            important role in helping to transform Epidemic into a leading music tech company,
+                            capitalizing on the burgeoning creator economy and the synergy of video and music. My
+                            contributions included scaling the tech organization, introducing comprehensive tech and
+                            product strategies, establishing governance processes, defining roles and responsibilities,
+                            and spearheading the hiring of top-tier talent.</p>
                     </div>
                 </div>
 
                 <div class="experience-entry">
-                     <span class="logo-placeholder" title="Schibsted">
-                          <img src="img/schibsted_asa_logo.jpeg" alt="Schibsted Logo Placeholder" onerror="this.parentElement.style.backgroundColor='var(--placeholder-bg)'; this.alt='Schibsted Logo Placeholder';">
-                     </span>
-                     <div class="experience-details">
+                    <span class="logo-placeholder" title="Schibsted">
+                        <img src="img/schibsted_asa_logo.jpeg" alt="Schibsted Logo Placeholder"
+                            onerror="this.parentElement.style.backgroundColor='var(--placeholder-bg)'; this.alt='Schibsted Logo Placeholder';">
+                    </span>
+                    <div class="experience-details">
                         <h4>Director of Engineering</h4>
                         <p class="company-location">Schibsted Media Group | Stockholm, Sweden</p>
                         <p class="dates">February 2017 – May 2019</p>
-                        <p>As the Engineering Leader for Core News Product at Schibsted, I was responsible for the delivery of a crucial component of the News Media strategy: a global, end-to-end product platform that served as the foundation for all of Schibsted Media's digital news products, that reach more than half of the population of Sweden and the Norway.</p>
-                         <p>Key achievements in this role included:</p>
+                        <p>As the Engineering Leader for Core News Product at Schibsted, I was responsible for the
+                            delivery of a crucial component of the News Media strategy: a global, end-to-end product
+                            platform that served as the foundation for all of Schibsted Media's digital news products,
+                            that reach more than half of the population of Sweden and the Norway.</p>
+                        <p>Key achievements in this role included:</p>
                         <ul>
-                            <li>Leading multiple teams comprising around 70 engineers, UX, and product specialists across various locations (Norway, Sweden and Poland). Our tools and services ranged from algorithmic driven front pages, video CMS and delivery, news monitoring tools, content editing tools, the publishing pipeline and the complete news products for native apps and web across Schibsted's news brands.</li>
-                            <li>Interim headed the broader engineering domain of Editorial Solutions on top of my regular role, focusing on our key Swedish brand teams such as Aftonbladet, SvD, and inventory. This involved overseeing an organization comprising 3 domains, 10+ teams, and approximately 100 engineers, ensuring efficient and effective delivery of our products and solutions.</li>
+                            <li>Leading multiple teams comprising around 70 engineers, UX, and product specialists
+                                across various locations (Norway, Sweden and Poland). Our tools and services ranged from
+                                algorithmic driven front pages, video CMS and delivery, news monitoring tools, content
+                                editing tools, the publishing pipeline and the complete news products for native apps
+                                and web across Schibsted's news brands.</li>
+                            <li>Interim headed the broader engineering domain of Editorial Solutions on top of my
+                                regular role, focusing on our key Swedish brand teams such as Aftonbladet, SvD, and
+                                inventory. This involved overseeing an organization comprising 3 domains, 10+ teams, and
+                                approximately 100 engineers, ensuring efficient and effective delivery of our products
+                                and solutions.</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="experience-entry">
-                     <span class="logo-placeholder" title="Klarna">
-                          <img src="img/klarna_logo.jpeg" alt="Klarna Logo Placeholder" onerror="this.parentElement.style.backgroundColor='var(--placeholder-bg)'; this.alt='Klarna Logo Placeholder';">
-                     </span>
-                     <div class="experience-details">
+                    <span class="logo-placeholder" title="Klarna">
+                        <img src="img/klarna_logo.jpeg" alt="Klarna Logo Placeholder"
+                            onerror="this.parentElement.style.backgroundColor='var(--placeholder-bg)'; this.alt='Klarna Logo Placeholder';">
+                    </span>
+                    <div class="experience-details">
                         <h4>Engineering Manager</h4>
                         <p class="company-location">Klarna | Stockholm, Sweden</p>
                         <p class="dates">November 2016 – February 2017</p>
-                        <p>At Klarna, I played a role in incubating the company's significant shift towards consumer-focused services, initially grounded in a merchant-first approach. My contributions were important in ensuring early architectural alignment and recruiting the foundational team members, setting the stage for Klarna's transformation in engaging directly with consumers.</p>
-                         <p>Key responsibilities and achievements in this role included:</p>
+                        <p>At Klarna, I played a role in incubating the company's significant shift towards
+                            consumer-focused services, initially grounded in a merchant-first approach. My contributions
+                            were important in ensuring early architectural alignment and recruiting the foundational
+                            team members, setting the stage for Klarna's transformation in engaging directly with
+                            consumers.</p>
+                        <p>Key responsibilities and achievements in this role included:</p>
                         <ul>
-                            <li>Leading the Consumer Experience Engineering organization, with the primary mission of revolutionizing the online shopping and payment experiences for millions of Klarna customers.</li>
-                            <li>Ensuring key architectural decisions to support the shift of strategy, ensuring the rest of the Klarna teams started to focus on supplying the underlying functionality and APIs for enabling the consumer experience.</li>
+                            <li>Leading the Consumer Experience Engineering organization, with the primary mission of
+                                revolutionizing the online shopping and payment experiences for millions of Klarna
+                                customers.</li>
+                            <li>Ensuring key architectural decisions to support the shift of strategy, ensuring the rest
+                                of the Klarna teams started to focus on supplying the underlying functionality and APIs
+                                for enabling the consumer experience.</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="experience-entry">
-                     <span class="logo-placeholder" title="Ooyala">
-                          <img src="img/ooyala_logo.jpeg" alt="Ooyala Logo Placeholder" onerror="this.parentElement.style.backgroundColor='var(--placeholder-bg)'; this.alt='Ooyala Logo Placeholder';">
-                     </span>
-                     <div class="experience-details">
+                    <span class="logo-placeholder" title="Ooyala">
+                        <img src="img/ooyala_logo.jpeg" alt="Ooyala Logo Placeholder"
+                            onerror="this.parentElement.style.backgroundColor='var(--placeholder-bg)'; this.alt='Ooyala Logo Placeholder';">
+                    </span>
+                    <div class="experience-details">
                         <h4>Senior Engineering Manager</h4>
                         <p class="company-location">Ooyala | Stockholm, Sweden</p>
                         <p class="dates">August 2015 – October 2016</p>
-                        <p>I was responsible for multiple development teams in Stockholm and Dallas building and operating many aspects of Ooyala Pulse: core ad serving and campaign management, forecasting and sell-side programmatic trading. We handled billions of video ads each month that helped many large publishers and broadcasters around the world to monetize their video content.</p>
+                        <p>I was responsible for multiple development teams in Stockholm and Dallas building and
+                            operating many aspects of Ooyala Pulse: core ad serving and campaign management, forecasting
+                            and sell-side programmatic trading. We handled billions of video ads each month that helped
+                            many large publishers and broadcasters around the world to monetize their video content.</p>
                     </div>
-                 </div>
+                </div>
 
-                 <div class="experience-entry">
-                    <div class="experience-details" style="width: 100%;"> <p class="previous-experience-link">
-                          For details on earlier roles and experience prior to 2015, please refer to my <a href="https://www.linkedin.com/in/markpasternak/" target="_blank" rel="noopener noreferrer">LinkedIn profile</a>.
-                      </p>
-                  </div>
-               </div>
-            </section> <section id="recommendations" class="recommendations-section">
+                <div class="experience-entry">
+                    <div class="experience-details" style="width: 100%;">
+                        <p class="previous-experience-link">
+                            For details on earlier roles and experience prior to 2015, please refer to my <a
+                                href="https://www.linkedin.com/in/markpasternak/" target="_blank"
+                                rel="noopener noreferrer">LinkedIn profile</a>.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section id="recommendations" class="recommendations-section">
                 <h3>Recommendations</h3>
                 <p class="linkedin-recommendations-link">
                     <a href="https://se.linkedin.com/in/markpasternak" target="_blank" rel="noopener noreferrer">
                         See more recommendations on LinkedIn <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                     </a>
                 </p>
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
-                        “When I was Mark’s CEO at Storytel from August 2021 to February 2022 and later as a board member, I witnessed Mark’s vision help transform our technical strategy. Mark and his teams rebuilt our technology foundation in a time of limited resources while boosting quality and efficiency. Mark takes good care of his people and combined with his background as a great coder it results in a reliable and grounded leadership. I think Mark is a strong candidate for future CTO and tech leadership roles.”
+                        When I was Mark’s CEO at Storytel from August 2021 to February 2022 and later as a board member,
+                        I witnessed Mark’s vision help transform our technical strategy. Mark and his teams rebuilt our
+                        technology foundation in a time of limited resources while boosting quality and efficiency. Mark
+                        takes good care of his people and combined with his background as a great coder it results in a
+                        reliable and grounded leadership. I think Mark is a strong candidate for future CTO and tech
+                        leadership roles.
                     </blockquote>
                     <p class="ref-author">Jonas Tellander</p>
                     <p class="ref-title">Co-Founder of Storytel & Angel Investor (Former CEO)</p>
                 </div>
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
-                        "I had the privilege of working with Mark during his tenure as CTO at Storytel, where he set the standard for what exceptional technical leadership looks like. Mark's ability to operate effectively at both strategic and hands-on levels helped us build an engineering organization that could deliver both efficiency and excellence.
+                        <p>I had the privilege of working with Mark during his tenure as CTO at Storytel, where he set
+                            the standard for what exceptional technical leadership looks like. Mark's ability to operate
+                            effectively at both strategic and hands-on levels helped us build an engineering
+                            organization that could deliver both efficiency and excellence.</p>
 
-                        What sets Mark apart is his combination of technical brilliance and human connection. He built an engineering culture founded on trust, empowerment, and accountability that enabled teams to innovate boldly and deliver remarkable results with fewer resources. With his leadership, we transformed our product into a best-in-class application that can compete with industry giants.
-                        
-                        Mark champions the engineering discipline without compromising on customer-centricity. He inspires those around him to stand up for their beliefs, challenge assumptions, and aim for meaningful outcomes. His passionate advocacy for tech excellence made him the voice of our technical organization throughout the company.
-                        
-                        Beyond his technical vision, Mark's leadership style is defined by his authenticity and care for his people. He distributes mandates, backs his teams, and creates an environment where people feel valued and motivated to do their best work.
-                        
-                        If you're looking for a leader who can transform systems, empower teams, and inspire an entire organization while maintaining the highest standards of integrity, Mark is that rare find."
+                        <p>What sets Mark apart is his combination of technical brilliance and human connection. He
+                            built an engineering culture founded on trust, empowerment, and accountability that enabled
+                            teams to innovate boldly and deliver remarkable results with fewer resources. With his
+                            leadership, we transformed our product into a best-in-class application that can compete
+                            with industry giants.</p>
+
+                        <p>Mark champions the engineering discipline without compromising on customer-centricity. He
+                            inspires those around him to stand up for their beliefs, challenge assumptions, and aim for
+                            meaningful outcomes. His passionate advocacy for tech excellence made him the voice of our
+                            technical organization throughout the company.</p>
+
+                        <p>Beyond his technical vision, Mark's leadership style is defined by his authenticity and care
+                            for his people. He distributes mandates, backs his teams, and creates an environment where
+                            people feel valued and motivated to do their best work.</p>
+
+                        <p>If you're looking for a leader who can transform systems, empower teams, and inspire an
+                            entire organization while maintaining the highest standards of integrity, Mark is that rare
+                            find.
                     </blockquote>
                     <p class="ref-author">Andra Tolbus</p>
                     <p class="ref-title">Data, AI & Tech Leadership (Reported directly to Mark at Storytel)</p>
                 </div>
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
-                         “Mark possessed a strong vision of excellence and cultivated a high-trust environment, empowering engineers to take full ownership of their work. Storytel’s tech org transformed from a state of technical debt, slow development cycles, and frequent incidents to an efficient and proactive team. Mark’s strategic vision and leadership were key in revitalizing our tech organization. He truly knows ‘what good looks like’ and how to get there.”
+                        Mark's possessed a strong vision of excellence and cultivated a high-trust environment,
+                        empowering engineers to take full ownership of their work. During the years under Mark,
+                        Storytels tech org transformed from a state of technical debt, slow development cycles, and
+                        frequent incidents to a efficient and proactive team with balanced roadmaps that effectively
+                        addressed our platform health. We achieved a full year of zero streaming downtime, significantly
+                        improved our quality of deliverables, and established a culture of continuous learning from
+                        incidents.
                     </blockquote>
                     <p class="ref-author">Ludvig Wadenstein</p>
                     <p class="ref-title">Engineering Manager at Storytel (Reported directly to Mark)</p>
                 </div>
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
-                        “Mark has a well-defined vision for what ‘good’ looks like and continually strives for long-term excellence. During a time of immense turbulence at Storytel he brought calm, focus, and compassion to an organization desperate for all three. By all conceivable metrics our engineering is at all-time highs, and Mark has every right to claim credit for that achievement.”
+                        From my first interactions with Mark in the hiring loop I knew who he was and what he stood for
+                        as Mark is open, honest, and clear in his communication and intentions. He has a well defined
+                        vision for what "good" looks like and continually strives for long term excellence.
+
+                        During a time of immense turbulence at Storytel he brought calm, focus, and compassion to an
+                        organization desperate for all three. By all conceivable metrics our engineering is at all time
+                        highs, and Mark has every right to claim credit for that achievement.
                     </blockquote>
                     <p class="ref-author">Chris Sainty</p>
                     <p class="ref-title">Principal Software Engineer at Storytel (Reported directly to Mark)</p>
                 </div>
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
-                        “Mark transformed Storytel Tech to be a lean and efficient machine, with high engineering standards and discipline. With the mantra of ‘Shipping is the root of all happiness’, he consistently showed us what good looks like, pushing himself and others toward higher standards, and built a high-agency team centered around trust and transparency.”
+                        I highly recommend Mark as CTO based on our work together at Storytel. What impressed me most
+                        was how he's always on the ground with every team member - a true hands-on leader who
+                        understands the daily challenges.
+
+                        Mark transformed Storytel Tech to be a lean and efficient machine, with high engineering
+                        standards and discipline. With the mantra of "Shipping is the root of all happiness"
+
+                        He consistently showed us what good looks like, pushing himself and others toward higher
+                        standards. And built a high agency team centered around trust and transparency.
+
+                        Working with Mark taught me what great technical leadership looks like, and I couldn't recommend
+                        him more strongly.
                     </blockquote>
                     <p class="ref-author">Jesly Varghese</p>
                     <p class="ref-title">Staff Engineer iOS at Storytel (Reported directly to Mark)</p>
                 </div>
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
-                        “Mark is hands down one of the most inspiring and energizing leaders I’ve ever had the opportunity to work with. His passion, enthusiasm, and get-shit-done attitude really make all the difference. What I think makes Mark rather unique is his genuine interest in and ability to truly empower and grow the people around him.”
+                        Mark is hands down one of the most inspiring and energizing leaders I’ve ever had the
+                        opportunity to work with. His passion, enthusiasm and get-shit-done attitude really makes all
+                        the difference. What I think make Mark rather unique is his genuine interest in and ability to
+                        truly empower and grow the people around him.
                     </blockquote>
                     <p class="ref-author">Henric Englund</p>
-                    <p class="ref-title">Head of Engineering at Storytel (Reported directly to Mark at Schibsted and Storytel)</p>
+                    <p class="ref-title">Head of Engineering at Storytel (Reported directly to Mark at Schibsted and
+                        Storytel)</p>
                 </div>
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
-                        “I’ve had the privilege of knowing Mark as both a mentor and a source of inspiration. He’s a unique leader who brings creativity, strategic thinking, and an execution-first mindset to everything he does. Mark has the ability to enthuse teams by painting a clear vision and showing the exact path leading them to successful execution. His talent for shifting altitude effortlessly, going between high-level strategy and detailed implementation is truly exceptional.”
+                        I’ve had the privilege of knowing Mark as both a mentor and a source of inspiration. He’s a
+                        unique leader who brings creativity, strategic thinking, and an execution-first mindset to
+                        everything he does. Mark has the ability to enthuse teams by painting a clear vision and showing
+                        the exact path leading them to successful execution. His talent for shifting altitude
+                        effortlessly, going between high-level strategy and detailed implementation is truly
+                        exceptional. Mark is just about technology; he’s deeply connected to product mechanics and
+                        profoundly understands the business landscape he engages in. I would give an arm and a leg to
+                        work with the guy again, and so should you.
                     </blockquote>
                     <p class="ref-author">Didde Brockman</p>
-                    <p class="ref-title">Chief Product and Technology Officer (Worked alongside Mark at Dreams and reported to him at Universum)</p>
+                    <p class="ref-title">Chief Product and Technology Officer (Worked alongside Mark at Dreams and
+                        reported to him at Universum)</p>
                 </div>
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
-                         “Hands down the most supportive and uplifting manager I've ever had. He helped me grow into someone that with confidence could take on broad cross-functional responsibilities and did an amazing job at continuously and thoughtfully mentoring me. Mark continuously put aside his own troubles to make room for mine, enabling me to do my job the best way possible. He introduced concepts that fundamentally changed engineers’ day-to-day for the better.”
+                        <p>Mark is one of the most charismatic leaders I’ve had the pleasure of working with. He leads
+                            by example, and gives a constant spark of innovative thinking and contagious enthusiasm to
+                            everyone around him. </p>
+
+                        <p>People love working with Mark, because he is genuinely interested in them and helps them
+                            raise their game to a higher level. He doesn’t pressure others - instead he inspires them,
+                            which is a truly special trait. </p>
+
+                        <p>Another thing that struck me about Mark was how he always asked the right questions. He was
+                            never afraid to address the elephant in the room if there was one. On the other hand, he
+                            would readily accept a challenge, and push the original idea even further than anyone else
+                            deemed possible. </p>
+
+                        <p>For all these reasons, I give my sincerest recommendation for Mark, and would be honored to
+                            be working with him again.</p>
                     </blockquote>
-                    <p class="ref-author">Robert Borowiec</p>
-                    <p class="ref-title">Engineering Manager at Schibsted (Reported directly to Mark)</p>
+                    <p class="ref-author">Davor Tomic</p>
+                    <p class="ref-title">Senior Product Designer at Timescale (Worked alongside Mark at Ooyala)</p>
                 </div>
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
-                        “Mark really impressed me as a visionary leader who understood the challenges facing an engineering organization. He has both depth and breadth in software development, which combined with a passionate and caring attitude allowed him to create a deep connection with the engineers he worked with. He breathes energy into an organization.”
+                        Mark really impressed me as a visionary leader who understood the challenges facing an
+                        engineering organisation. He has both depth and breadth in software development, which combined
+                        with a passionate and caring attitude allowed him to create a deep connection with the engineers
+                        he worked with.
+
+                        What struck me was his faith in individuals, and how he worked tirelessly to empower engineers
+                        to deliver strong results. He is an individual who breathes energy into an organisation. By
+                        continuously linking to great material, he started discussions amongst the engineers ranging
+                        from agile and software development processes to front end tooling.
                     </blockquote>
                     <p class="ref-author">Filip Hindemark</p>
                     <p class="ref-title">Product Director at Klarna (Former client of Mark’s)</p>
                 </div>
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
-                        “Mark is one of those people that make a difference in the lives of those he meets and those he works with. Healthy and productive teams are what drives great products, creativity, and employee wellbeing. Mark is passionate and full of energy. He goes all-in when needed and knows when to give his people space to make their own decisions. He is a natural leader with a mission.”
+                        <p>Mark is one of those people that make a difference in the lives of those he meet and those he
+                            work with.</p>
+                        <p> I had the pleasure of managing a group of 70+ PMs, engineers, and UXers with Mark and as a
+                            product manager myself.</p>
+                        <p> I appreciated his keen insistence on making the balance between the different fields of
+                            expertise work to the favor of both the end products and the people crafting the products.
+                            Mark is a believer in people and in making people work together across hurdles and
+                            boundaries. One thing I learned from him is to never name people as resources. People are
+                            individuals that can cooperate - resources can not. And that is a view that is both rare and
+                            extremely valuable in tech. Healthy and productive teams are what drives great products,
+                            creativity, and employee wellbeing. </p>
+
+                        <p>Mark is passionate and full of energy. He goes all in when needed and knows when to give his
+                            people space to make their own decisions. He takes responsibilities beyond his position and
+                            holds himself accountable for what he commits to. He is a natural leader with a mission and
+                            yet, at his core, he is hands down a great guy to hang around with.</p>
                     </blockquote>
                     <p class="ref-author">Hans Martin Cramer</p>
-                    <p class="ref-title">AI & Product Leader at Oschlo (Managed teams together with Mark at Schibsted)</p>
+                    <p class="ref-title">AI & Product Leader at Oschlo (Managed teams together with Mark at Schibsted)
+                    </p>
                 </div>
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
-                        “Mark is a truly user-centric and strategic CTO. He deeply understands the importance of delivering exceptional user experiences, grounded in solid data analysis. His strategic vision and ability to build highly efficient teams are instrumental in driving both user retention and significant growth. Mark is an exceptional manager who cultivates a high-performing team by placing immense trust in his people.”
+                        Mark is a truly user-centric and strategic CTO.
+                        He deeply understands the importance of delivering exceptional user experiences, grounded in
+                        solid data analysis. His strategic vision and ability to build highly efficient teams are
+                        instrumental in driving both user retention and significant growth.
+
+                        Mark is also an exceptional manager who cultivates a high-performing team by placing immense
+                        trust in his people.
+                        He has a remarkable ability to surround himself with highly skilled talent and empower
+                        individuals to excel. Mark's belief in the team's potential, coupled with his guidance,
+                        consistently pushed me to deliver my best work.
+
+                        Furthermore, Mark possesses a keen eye for identifying inefficiencies in tooling and processes.
+                        He proactively addresses these issues, optimizing workflows and empowering the team to work more
+                        effectively together, both within and outside of tech.
+
+                        His commitment to continuous improvement has been invaluable.
+                        I can't recommend Mark highly enough and Storytel Tech would not have been where it is today
+                        without Mark.
                     </blockquote>
                     <p class="ref-author">Joakim Engström</p>
                     <p class="ref-title">Staff Engineer, Android (Reported directly to Mark at Storytel)</p>
                 </div>
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
-                        “Hire him! As a colleague he was awesome, always full of energy, which energises the people around him. As a manager, he is excellent; he sees both the individuals and the teams, enabling the individual to grow and unlock hidden potential while creating room for teams to focus and get stuff done. If you give him the room and the mandate he'll turn the ship around.”
+                        <p>"Hire him!", is what I would say if you asked me to say 2 words about Mark. </p>
+
+                        <p>We worked together at Schibsted and I saw him in action both as a colleague and as his
+                            manager. </p>
+
+                        <p>As a colleague he was awesome, always full of energy, energy which energises the people
+                            around him. What amazed me at the time was his enormous hunger for knowledge which helps his
+                            colleagues as he generously share what he learns with others. </p>
+
+                        <p>As a manager he is excellent, he sees both the individuals and the teams. Enabling the
+                            individual to grow and unlock hidden potential while also creating room for the teams to
+                            focus and get stuff done. </p>
+
+                        <p>If you give him the room and the mandate he'll turn the ship around.</p>
                     </blockquote>
                     <p class="ref-author">Tord Svensson</p>
                     <p class="ref-title">CTO at Doublefin (Managed Mark directly at Schibsted)</p>
                 </div>
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
-                        “Mark was an absolute joy to work for. He knows what good looks like when it comes to tech orgs, and we made strides of progress under his leadership.”
+                        Mark was an absolute joy to work for. He knows what good looks like when it comes to tech orgs,
+                        and we made strides of progress under his leadership.
                     </blockquote>
                     <p class="ref-author">David Karlsson</p>
                     <p class="ref-title">Head of Security at Storytel (Reported directly to Mark)</p>
                 </div>
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
-                        “Mark is a diplomat, but never compromises on his beliefs: that teams need to be cross-functional and set up for flow to continuously ship. Working with Mark, I was amazed by his way of gathering different perspectives, listening in – and then help people come up with win-win solutions. Mark really made a difference for me and my team.”
+                        Mark is a diplomat, but never compromises on his beliefs: that teams need to be cross-functional
+                        and set up for flow to continuously ship. Working with Mark, I was amazed by his way of
+                        gathering different perspectives, listening in – and then help people come up with win-win
+                        solutions. Mark really made a difference for me and my team.
                     </blockquote>
                     <p class="ref-author">Maria Å Lindvall</p>
                     <p class="ref-title">Head of Product at Avanza (Worked with Mark at Schibsted)</p>
                 </div>
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
-                        “I worked closely with Mark during our time at Schibsted. Mark is a strong visionary and communicator that can convince and inspire the toughest and most skeptical people and teams. He has the right amount of tech savviness to earn the trust and respect of the most senior of engineers. All this makes Mark not only a great manager but a leader that engineers follow.”
+                        <p>I worked closely with Mark during our time at Schibsted as he was one of my key stakeholders.
+                            Mark is a strong visionary and communicator that can convince and inspire the toughest and
+                            most skeptical people and teams. He is very passionate as a person and has an energetic
+                            persona which is contagious among the people he work with. He is curious and eager to learn
+                            and is always up to speed on the latest leadership trends, which he happily implement in his
+                            manager toolbox. He also has the right amount of tech savviness to earn the trust and
+                            respect of the most senior of engineers.</p>
+
+                        <p>It was a joy working with him, not only is he a great guy, but also has great core values
+                            when it comes to hiring the right people and building strong teams. All this make Mark not
+                            only a great manager, but a leader that engineers follow. </p>
                     </blockquote>
                     <p class="ref-author">Mikael Wikström</p>
-                    <p class="ref-title">Global Talent Acquisition Manager at Warner Bros. Discovery (Worked closely with Mark at Schibsted)</p>
+                    <p class="ref-title">Global Talent Acquisition Manager at Warner Bros. Discovery (Worked closely
+                        with Mark at Schibsted)</p>
                 </div>
-            </section> </div> </div> </body>
-</ht
+                <div class="recommendation-item">
+                    <blockquote>
+                        <p>Enthusiastic, energetic, inspiring and highly knowledgeable, Mark is a force for positive
+                            change in any software engineering organization. </p>
+
+                        <p> I've had the good fortune of working with Mark for about a year during which he managed a
+                            number of teams in the engineering org I was responsible for. Despite fairly challenging
+                            circumstances, Mark had a tremendously positive impact on both his teams and larger
+                            organization. </p>
+
+                        <p> Mark has a long list of great leadership traits (just read the rest of the recommendations),
+                            but one thing that I find particularly inspiring is his ability to identify great ideas and
+                            initiatives from people around him, elevating and empowering those individuals and teams to
+                            achieve more than they thought possible. This is an immensely powerful skill, creating a
+                            positive spiral of confidence and motivation through achievements in teams Mark leads. </p>
+
+                        <p>Mark would be a true asset in an engineering leadership position for any company lucky enough
+                            to have him!</p>
+                    </blockquote>
+                    <p class="ref-author">Joakim Sarnelid</p>
+                    <p class="ref-title">VP of Engineering at Epidemic Sound (Worked closely with Mark at Epidemic Sound
+                        and managed him at Ooyala)</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>
