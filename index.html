@@ -6,38 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mark Pasternak - CTO / Engineering & Product Leadership</title>
     <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23fdf6f4'/><text x='50' y='50' text-anchor='middle' dy='.35em' font-size='60' font-family='sans-serif' font-weight='bold' fill='%232c3e50'>MP</text></svg>"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23edf2f7'/><text x='50' y='50' text-anchor='middle' dy='.35em' font-size='60' font-family='sans-serif' font-weight='bold' fill='%232b6cb0'>MP</text></svg>"
         type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /*------------------------------------*\
-            :ROOT - Custom Properties (Variables) - REFINED
+            :ROOT - Custom Properties (Variables) - FINAL STYLES
         \*------------------------------------*/
         :root {
-            /* Colors */
-            --bg-page: #f8f9fa;
-            --bg-left-col: #fdf6f4;
+            /* Colors - Updated Blue/Grey Theme */
+            --bg-page: #f7fafc; /* Subtle grey-blue */
+            --bg-left-col: #edf2f7; /* Slightly darker grey-blue */
             --bg-right-col: #ffffff;
-            --text-dark: #212529;
-            --text-medium: #495057;
-            --text-light: #6c757d;
-            --accent-color: #2c3e50;
-            --accent-color-light: #34495e;
-            --border-color: #dee2e6;
+            --text-dark: #1a202c; /* Very dark grey */
+            --text-medium: #4a5568; /* Medium grey */
+            --text-light: #718096; /* Lighter grey */
+            --accent-color: #2b6cb0; /* Professional blue */
+            --accent-color-light: #4299e1; /* Lighter blue */
+            --border-color: #e2e8f0; /* Light grey */
             --link-color: var(--accent-color);
             --link-hover-color: var(--accent-color-light);
             --focus-outline-color: var(--accent-color-light);
-            --placeholder-bg: #e9ecef;
-            --placeholder-icon: #adb5bd;
-            --placeholder-text: #ced4da;
+            --placeholder-bg: #e2e8f0;
+            --placeholder-icon: #a0aec0;
+            --placeholder-text: #cbd5e0;
+            --recommendation-bg: var(--bg-page); /* Background for recommendations */
+            --quote-icon-color: var(--border-color); /* Color for quote icon */
 
-            /* Typography */
-            --font-primary: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            /* Typography - Updated Fonts */
+            --font-heading: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-body: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             --base-font-size: 16px;
-            --line-height-base: 1.65;
+            --line-height-base: 1.6; /* Slightly adjusted for Source Sans Pro */
             --line-height-heading: 1.3;
 
             /* Spacing */
@@ -53,13 +56,14 @@
             --container-max-width: 960px;
             --left-col-width: 33%;
             --right-col-width: 67%;
-            --header-sep-bold-width: 130px; /* Increased width for bold part */
-            --header-sep-bold-height: 2px;
+            /* Updated Separator Dimensions */
+            --header-sep-bold-width: 80px;
+            --header-sep-bold-height: 3px;
             --header-sep-thin-height: 1px;
             --logo-size: 45px;
             --profile-img-size: 140px;
             --border-radius: 6px;
-            --box-shadow-main: 0 6px 20px rgba(44, 62, 80, 0.08);
+            --box-shadow-main: 0 6px 20px rgba(43, 108, 176, 0.1); /* Adjusted shadow color */
 
             /* Transitions */
             --transition-duration: 0.25s;
@@ -67,7 +71,7 @@
         }
 
         /*------------------------------------*\
-            :GLOBAL STYLES & RESETS - REFINED
+            :GLOBAL STYLES & RESETS - FINAL
         \*------------------------------------*/
         *,
         *::before,
@@ -81,7 +85,7 @@
         }
 
         body {
-            font-family: var(--font-primary);
+            font-family: var(--font-body); /* Use body font */
             background-color: var(--bg-page);
             color: var(--text-dark);
             margin: 0;
@@ -90,16 +94,17 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             text-rendering: optimizeLegibility;
-            font-size: 0.9rem;
+            font-size: 0.9rem; /* Base size for body */
             overflow-wrap: break-word;
         }
 
         /* Basic Typography */
         h2, h3, h4 {
             margin: 0 0 var(--spacing-sm) 0;
-            font-weight: 600;
+            font-family: var(--font-heading); /* Use heading font */
+            font-weight: 700; /* Default bold for headings */
             line-height: var(--line-height-heading);
-            color: var(--accent-color);
+            color: var(--accent-color); /* Use accent for headings */
         }
 
         p {
@@ -126,7 +131,7 @@
         a {
             color: var(--link-color);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600; /* Slightly bolder links */
             transition: color var(--transition-duration) var(--transition-timing),
                         text-decoration var(--transition-duration) var(--transition-timing);
         }
@@ -143,7 +148,7 @@
         }
 
         strong {
-            font-weight: 600;
+            font-weight: 600; /* Standard bold for body text */
         }
 
         blockquote {
@@ -153,13 +158,13 @@
         }
 
         /*------------------------------------*\
-            :LAYOUT - Main Container & Columns (Screen) - REFINED
+            :LAYOUT - Main Container & Columns (Screen) - FINAL
         \*------------------------------------*/
         .cv-container {
             max-width: var(--container-max-width);
             margin: var(--spacing-xl) auto;
             box-shadow: var(--box-shadow-main);
-            overflow: hidden; /* Keep overflow hidden */
+            overflow: hidden;
             display: flex;
             background-color: var(--bg-right-col);
             border-radius: var(--border-radius);
@@ -171,8 +176,8 @@
             padding: var(--spacing-xl);
             width: var(--left-col-width);
             border-right: 1px solid var(--border-color);
-            position: relative; /* Needed for 100% width pseudo-elements */
-            overflow: hidden; /* Prevent pseudo-elements from spilling out */
+            position: relative;
+            overflow: hidden;
         }
 
         .right-column {
@@ -180,12 +185,12 @@
             color: var(--text-dark);
             padding: var(--spacing-xl);
             width: var(--right-col-width);
-            position: relative; /* Needed for 100% width pseudo-elements */
-            overflow: hidden; /* Prevent pseudo-elements from spilling out */
+            position: relative;
+            overflow: hidden;
         }
 
         /*------------------------------------*\
-            :SHARED COMPONENTS (Headers, Lists, Sections) - REFINED
+            :SHARED COMPONENTS (Headers, Lists, Sections) - FINAL
         \*------------------------------------*/
         /* Section Vertical Spacing */
         .left-column section+section,
@@ -214,7 +219,7 @@
             font-size: 1.05rem;
         }
 
-        /* Separator line below section headers - UPDATED Two-Part Style */
+        /* Separator line below section headers - FINAL Two-Part Style */
         .left-column h3::before, /* Thin line */
         .right-column h3::before {
             content: '';
@@ -233,14 +238,15 @@
         .right-column h3::after {
             content: '';
             display: block;
-            width: var(--header-sep-bold-width); /* UPDATED Width of the bold part */
+            /* Updated Dimensions */
+            width: var(--header-sep-bold-width);
             height: var(--header-sep-bold-height);
             background-color: var(--accent-color);
             position: absolute;
             left: 0;
-            bottom: 0;
+            bottom: 0; /* Aligns with the thin line */
             z-index: 1;
-            border-radius: 1px;
+            border-radius: 1.5px; /* Match height */
         }
 
 
@@ -257,14 +263,14 @@
             content: '\2022';
             position: absolute;
             left: var(--spacing-xs);
-            color: var(--accent-color);
+            color: var(--accent-color); /* Use accent color */
             font-size: 1.1em;
             line-height: inherit;
             top: 0;
         }
 
         /*------------------------------------*\
-            :LEFT COLUMN SPECIFIC STYLES - REFINED
+            :LEFT COLUMN SPECIFIC STYLES - FINAL
         \*------------------------------------*/
         .profile-image {
             border-radius: 50%;
@@ -273,7 +279,7 @@
             object-fit: cover;
             margin: 0 auto var(--spacing-xl) auto;
             display: block;
-            border: 4px solid var(--bg-right-col);
+            border: 4px solid var(--bg-right-col); /* Border using right col background */
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
@@ -293,13 +299,13 @@
             margin-right: var(--spacing-md);
             width: 20px;
             text-align: center;
-            color: var(--accent-color);
+            color: var(--accent-color); /* Use accent color */
             margin-top: 0.1em;
             flex-shrink: 0;
             font-size: 1.1em;
         }
          .left-column #contact li a {
-             font-weight: 400;
+             font-weight: 400; /* Normal weight for contact links */
              word-break: break-all;
          }
 
@@ -315,10 +321,10 @@
 
         .education-item h4,
         .volunteering-item h4 {
-            font-weight: 600;
+            font-weight: 700; /* Heading font weight */
             font-size: 0.9rem;
             margin-bottom: var(--spacing-xs);
-            color: var(--text-dark);
+            color: var(--text-dark); /* Dark text for these subheads */
         }
 
         .education-item p,
@@ -338,35 +344,8 @@
             border-left: 2px solid var(--border-color);
         }
 
-        /* Language List */
-         .language-list ul {
-             margin-top: calc(-1 * var(--spacing-sm));
-         }
-        .language-list li {
-            margin-bottom: var(--spacing-sm);
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .language-list li i {
-            margin-right: var(--spacing-md);
-            width: 20px;
-            text-align: center;
-            color: var(--accent-color);
-            flex-shrink: 0;
-             font-size: 1.1em;
-        }
-
-        .language-list span.proficiency {
-            color: var(--text-light);
-            margin-left: auto;
-            font-size: 0.75rem;
-            font-style: italic;
-        }
-
         /*------------------------------------*\
-            :RIGHT COLUMN SPECIFIC STYLES - REFINED
+            :RIGHT COLUMN SPECIFIC STYLES - FINAL
         \*------------------------------------*/
         .right-column header {
             margin-bottom: var(--spacing-xl);
@@ -374,16 +353,17 @@
             padding-bottom: var(--spacing-lg);
         }
 
-        .right-column h2 {
-            font-size: 2.6rem;
-            font-weight: 700;
+        .right-column h2 { /* Main Name */
+            font-size: 2.4rem; /* Slightly smaller */
+            font-weight: 900; /* Bolder */
             margin-bottom: var(--spacing-xs);
             letter-spacing: -0.02em;
+            color: var(--text-dark); /* Dark text for name */
         }
 
-        .right-column .title {
-            font-size: 1.1rem;
-            font-weight: 400;
+        .right-column .title { /* Job Title */
+            font-size: 1rem; /* Slightly smaller */
+            font-weight: 700; /* Bold */
             color: var(--text-medium);
             margin-bottom: 0;
             text-transform: uppercase;
@@ -444,26 +424,26 @@
             flex-grow: 1;
         }
 
-        .experience-entry h4 {
+        .experience-entry h4 { /* Job Title in Experience */
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 700; /* Bold */
             margin-top: 0;
             margin-bottom: 2px;
-            color: var(--text-dark);
+            color: var(--text-dark); /* Dark text */
         }
 
         .experience-entry .company-location {
             color: var(--text-medium);
             margin-bottom: var(--spacing-xs);
             font-size: 0.9rem;
-            font-weight: 500;
+            font-weight: 600; /* Semi-bold */
         }
 
         .experience-entry .dates {
             color: var(--text-light);
-            font-size: 0.75rem;
+            font-size: 0.8rem; /* Slightly larger */
             margin-bottom: var(--spacing-md);
-            font-weight: 500;
+            font-weight: 600; /* Semi-bold */
         }
 
         .experience-entry p,
@@ -493,14 +473,14 @@
             content: '\2022';
             position: absolute;
             left: var(--spacing-xs);
-            color: var(--accent-color);
+            color: var(--accent-color); /* Use accent color */
             font-size: 1.1em;
             line-height: inherit;
             top: 0.05em;
         }
 
         .experience-entry ul li strong {
-            font-weight: 600;
+            font-weight: 600; /* Standard bold */
         }
 
         .previous-experience-link {
@@ -516,7 +496,7 @@
             opacity: 0.7;
         }
 
-        /* Recommendations Section */
+        /* Recommendations Section - Enhanced Styles */
         .linkedin-recommendations-link {
             margin-top: calc(-1 * var(--spacing-sm));
             margin-bottom: var(--spacing-lg);
@@ -539,34 +519,43 @@
         }
 
         .recommendation-item {
-            margin-bottom: var(--spacing-lg);
-            padding-bottom: var(--spacing-lg);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .recommendation-item:last-child {
+            /* Remove bottom border, use padding for separation */
             margin-bottom: 0;
-            padding-bottom: 0;
+            padding-bottom: var(--spacing-xl); /* Add padding below each item */
             border-bottom: none;
         }
 
+        .recommendation-item:last-child {
+            padding-bottom: 0; /* No padding needed after the last item */
+        }
+
+        /* Enhanced Recommendation Blockquote Styling */
         .recommendation-item blockquote {
             font-style: normal;
             color: var(--text-dark);
             line-height: var(--line-height-base);
             font-size: 0.9rem;
             margin: 0 0 var(--spacing-md) 0;
-            padding-left: var(--spacing-lg);
             position: relative;
+            background-color: var(--recommendation-bg);
+            border-left: 3px solid var(--accent-color);
+            /* Adjusted padding to make space for quote icon */
+            padding: var(--spacing-md) var(--spacing-sm) var(--spacing-md) calc(var(--spacing-lg) + 20px);
+            border-radius: var(--border-radius);
         }
+
+        /* Add Quote Icon using Font Awesome */
         .recommendation-item blockquote::before {
-            content: '\201C';
-            position: absolute;
-            left: 0;
-            top: -0.1em;
-            font-size: 2em;
-            color: var(--border-color);
-            line-height: 1;
+             content: '\f10d'; /* Font Awesome quote-left icon */
+             font-family: 'Font Awesome 6 Free';
+             font-weight: 900; /* Use solid style */
+             position: absolute;
+             left: var(--spacing-sm);
+             top: var(--spacing-sm);
+             font-size: 1.5em; /* Adjust size as needed */
+             color: var(--quote-icon-color); /* Use light color */
+             opacity: 0.8;
+             line-height: 1;
         }
 
          .recommendation-item blockquote p {
@@ -577,26 +566,35 @@
              margin-bottom: 0;
          }
 
+        /* Style Author Name */
         .recommendation-item .ref-author {
             text-align: left;
             font-size: 0.9rem;
-            font-weight: 600;
+            font-weight: 700; /* Bold */
             color: var(--text-dark);
-            margin-top: var(--spacing-sm);
-            padding-left: var(--spacing-lg);
+            margin-top: var(--spacing-md); /* Increased space above author */
+            padding-left: 0;
+            position: relative;
+        }
+        /* Add Em Dash before author name */
+        .recommendation-item .ref-author::before {
+            content: '— ';
+            display: inline;
+            margin-right: 0.2em;
         }
 
+        /* Style Author Title */
         .recommendation-item .ref-title {
             text-align: left;
-            font-size: 0.8rem;
-            color: var(--text-medium);
+            font-size: 0.75rem; /* Slightly smaller */
+            color: var(--text-light); /* Lighter color */
             margin-top: 0;
-            padding-left: var(--spacing-lg);
+            padding-left: 1.1em; /* Indent slightly to align with name after dash */
         }
 
 
         /*------------------------------------*\
-            :RESPONSIVE STYLES (for smaller screens) - REFINED
+            :RESPONSIVE STYLES (for smaller screens) - FINAL
         \*------------------------------------*/
         @media (max-width: 768px) {
             body {
@@ -683,20 +681,32 @@
                 font-size: 0.9rem;
             }
             .bullet-list li,
-             .left-column #contact li,
-             .language-list li {
+             .left-column #contact li {
                  font-size: 0.85rem;
              }
              .experience-entry h4 { font-size: 0.95rem; }
              .experience-entry .company-location { font-size: 0.85rem; }
              .recommendation-item .ref-author { font-size: 0.85rem; }
-             .recommendation-item .ref-title { font-size: 0.8rem; }
+             .recommendation-item .ref-title { font-size: 0.75rem; } /* Consistent size */
              .education-item h4, .volunteering-item h4 { font-size: 0.9rem; }
              .education-item p, .volunteering-item p { font-size: 0.8rem; }
+
+             /* Responsive Recommendation Adjustments */
+             .recommendation-item blockquote {
+                 padding-left: calc(var(--spacing-md) + 15px); /* Adjust padding for smaller icon space */
+             }
+             .recommendation-item blockquote::before {
+                 font-size: 1.2em; /* Slightly smaller icon */
+                 left: var(--spacing-xs);
+                 top: var(--spacing-xs);
+             }
+             .recommendation-item .ref-title {
+                 padding-left: 1em; /* Adjust indent */
+             }
         }
 
         /*------------------------------------*\
-            :PRINT STYLES - REFINED with Page Break Rules
+            :PRINT STYLES - FINAL with Page Break Rules & COLOR
         \*------------------------------------*/
         @media print {
             @page {
@@ -704,28 +714,25 @@
                 margin: 12mm;
             }
 
+            /* Encourage printing background colors and images */
             body, .cv-container, .left-column, .right-column {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }
 
             body {
-                background-color: #ffffff !important;
-                color: #000000 !important;
+                /* Keep screen background */
+                background-color: var(--bg-page) !important;
+                /* Keep screen text color */
+                color: var(--text-dark) !important;
                 font-size: 9pt !important;
-                font-family: 'Inter', Calibri, Arial, Helvetica, sans-serif !important;
+                /* Use standard print fonts */
+                font-family: Calibri, Arial, Helvetica, sans-serif !important;
                 margin: 0 !important;
                 padding: 0 !important;
                 line-height: 1.35 !important;
             }
-            :root {
-                --text-dark: #000000;
-                --text-medium: #333333;
-                --text-light: #555555;
-                --accent-color: #000000;
-                --link-color: #000000;
-                --border-color: #cccccc;
-            }
+            /* NO color overrides needed in :root for print if keeping screen colors */
 
 
             .cv-container {
@@ -738,6 +745,8 @@
                 border: none !important;
                 overflow: visible !important;
                 border-radius: 0 !important;
+                /* Keep screen background */
+                background-color: var(--bg-right-col) !important;
             }
 
             .left-column, .right-column {
@@ -746,26 +755,32 @@
                 box-sizing: border-box;
                 overflow: visible !important;
                 position: static !important;
+                /* Keep screen background */
+                color: var(--text-dark) !important; /* Ensure text color isn't overridden */
             }
 
             .left-column {
                  width: var(--left-col-width) !important;
                  padding-right: 6mm !important;
+                 /* Keep screen background */
                  background-color: var(--bg-left-col) !important;
             }
             .right-column {
                  width: var(--right-col-width) !important;
                  padding-left: 6mm !important;
+                 /* Keep screen background */
                  background-color: var(--bg-right-col) !important;
             }
 
             .logo-placeholder { display: none !important; }
 
              a {
-                 color: #000000 !important;
+                 /* Keep screen link color */
+                 color: var(--link-color) !important;
                  text-decoration: none !important;
                  font-weight: normal !important;
              }
+             /* Hide external link icons in print */
              .previous-experience-link i,
              .linkedin-recommendations-link i { display: none !important; }
 
@@ -773,11 +788,12 @@
              .previous-experience-link {
                  font-size: 8pt !important;
                  margin-bottom: 3mm !important;
-                 color: #333333 !important;
+                 /* Keep screen text color */
+                 color: var(--text-medium) !important;
              }
               #experience .experience-entry:has(.previous-experience-link) {
                   margin-top: 0 !important;
-                  page-break-before: auto !important; /* Don't force page break just for this link */
+                  page-break-before: auto !important;
               }
 
             .profile-image {
@@ -791,51 +807,149 @@
             }
 
             /* Adjust typography */
-            h2 { font-size: 18pt !important; margin-bottom: 1mm !important; font-weight: 600 !important; }
-            .title { font-size: 10pt !important; color: #333333 !important; margin-bottom: 4mm !important; font-weight: normal !important; }
+            h2 {
+                font-size: 18pt !important;
+                margin-bottom: 1mm !important;
+                font-weight: 600 !important;
+                /* Keep screen text color */
+                color: var(--text-dark) !important;
+            }
+            .title {
+                font-size: 10pt !important;
+                /* Keep screen text color */
+                color: var(--text-medium) !important;
+                margin-bottom: 4mm !important;
+                font-weight: normal !important;
+            }
             h3 {
                 font-size: 11pt !important;
                 margin-bottom: 2.5mm !important;
                 padding-bottom: 1.5mm !important;
                 font-weight: 600 !important;
                 position: relative !important;
+                /* Keep screen accent color */
+                color: var(--accent-color) !important;
              }
 
-            /* Print Separator Styles */
+            /* Print Separator Styles - Use screen colors */
             h3::before {
                  content: '' !important; display: block !important; position: absolute !important;
                  left: 0 !important; bottom: 0 !important; width: 100% !important;
-                 height: 0.5pt !important; background-color: #cccccc !important; z-index: 0 !important;
-            }
+                 height: 0.5pt !important;
+                 /* Keep screen border color */
+                 background-color: var(--border-color) !important;
+                 z-index: 0 !important;
+             }
             h3::after {
                  content: '' !important; display: block !important; position: absolute !important;
-                 left: 0 !important; bottom: 0 !important; width: 40mm !important;
-                 height: 1.5pt !important; background-color: #000000 !important; z-index: 1 !important;
+                 left: 0 !important; bottom: 0 !important; width: 30mm !important; /* Shorter bold line for print */
+                 height: 1.5pt !important;
+                 /* Keep screen accent color */
+                 background-color: var(--accent-color) !important;
+                 z-index: 1 !important;
+             }
+
+            h4 {
+                font-size: 9.5pt !important;
+                margin-bottom: 0.5mm !important;
+                font-weight: 600 !important;
+                /* Keep screen text color */
+                color: var(--text-dark) !important; /* Ensure h4 in edu/vol stay dark */
+             }
+             /* Ensure specific h4 in experience keep screen color */
+             .experience-entry h4 {
+                 color: var(--text-dark) !important;
+             }
+
+
+            p, ul, li, blockquote {
+                font-size: 8.5pt !important;
+                line-height: 1.35 !important;
+                /* Keep screen text color */
+                color: var(--text-dark) !important;
+            }
+            .bullet-list li, #contact li { font-size: 8pt !important; }
+            #contact li i {
+                 width: 12px !important;
+                 margin-right: 2mm !important;
+                 /* Keep screen accent color */
+                 color: var(--accent-color) !important;
+                 font-size: 1em !important;
+                 margin-top: 0.05em !important;
+             }
+            .company-location {
+                font-size: 8.5pt !important;
+                font-weight: 500 !important;
+                /* Keep screen text color */
+                color: var(--text-medium) !important;
+            }
+            .dates, .proficiency, .ref-title, .education-item p, .volunteering-item p, .volunteering-item p.quote {
+                font-size: 7.5pt !important;
+                /* Keep screen text color */
+                color: var(--text-light) !important;
+             }
+             .volunteering-item p.quote {
+                 border-left-color: var(--border-color) !important; /* Keep border color */
+             }
+
+            .ref-author {
+                font-size: 9pt !important;
+                font-weight: 600 !important; /* Slightly less bold for print */
+                /* Keep screen text color */
+                color: var(--text-dark) !important;
+                margin-top: 2mm !important; /* Adjusted margin */
+             }
+             .ref-author::before {
+                 content: '— ' !important; /* Ensure dash prints */
+             }
+            /* Recommendation blockquote print style - Use screen colors */
+            .recommendation-item blockquote {
+                font-size: 8.5pt !important;
+                padding: 1.5mm 1.5mm 1.5mm 5mm !important; /* Adjusted padding for icon */
+                border-left: 1.5pt solid var(--accent-color) !important; /* Keep accent border */
+                background-color: var(--recommendation-bg) !important; /* Keep screen background */
+                border-radius: 3px !important;
+                color: var(--text-dark) !important; /* Ensure text color */
+            }
+            .recommendation-item blockquote::before {
+                /* Adjust icon for print */
+                content: '\f10d' !important;
+                font-family: 'Font Awesome 6 Free' !important; /* Ensure font loads */
+                font-weight: 900 !important;
+                position: absolute !important;
+                left: 1mm !important;
+                top: 1mm !important;
+                font-size: 1.2em !important;
+                color: var(--quote-icon-color) !important;
+                opacity: 0.7 !important;
+                line-height: 1 !important;
             }
 
-            h4 { font-size: 9.5pt !important; margin-bottom: 0.5mm !important; font-weight: 600 !important; }
-
-            p, ul, li, blockquote { font-size: 8.5pt !important; line-height: 1.35 !important; }
-            .bullet-list li, #contact li, .language-list li { font-size: 8pt !important; }
-            #contact li i, .language-list li i { width: 12px !important; margin-right: 2mm !important; color: #000000 !important; font-size: 1em !important; margin-top: 0.05em !important;}
-            .company-location { font-size: 8.5pt !important; font-weight: 500 !important; color: #333333 !important; }
-            .dates, .proficiency, .ref-title, .education-item p, .volunteering-item p, .volunteering-item p.quote { font-size: 7.5pt !important; color: #555555 !important; }
-            .ref-author { font-size: 9pt !important; font-weight: 600 !important; color: #000000 !important; }
-            .recommendation-item blockquote { font-size: 8.5pt !important; padding-left: 0mm !important; }
-            .recommendation-item blockquote::before { display: none !important; }
+            .ref-title {
+                font-size: 7.5pt !important;
+                padding-left: 3mm !important; /* Adjust indent */
+            }
 
             /* Adjust spacing */
             ul { margin-left: 0 !important; margin-bottom: 1.5mm !important; }
             li { margin-bottom: 1mm !important; }
+            .bullet-list li::before {
+                left: 0 !important; /* Align bullets left */
+                color: var(--accent-color) !important; /* Keep bullet color */
+            }
             .bullet-list { padding-left: 4mm !important; }
-            #contact li, .language-list li { margin-bottom: 1.5mm !important; }
+            #contact li {
+                 /* Increased spacing for contact items */
+                 margin-bottom: 3mm !important;
+             }
 
             .recommendation-item {
-                padding-bottom: 3mm !important;
-                margin-bottom: 3mm !important;
-                border-bottom: 0.5pt solid #cccccc !important;
+                padding-bottom: 5mm !important; /* Increased padding */
+                margin-bottom: 0 !important; /* Remove margin */
+                border-bottom: none !important; /* Ensure no border */
             }
-             .experience-entry:last-child, /* Selects last entry overall */
+             /* Ensure last items don't have bottom border/margin */
+             .experience-entry:last-child,
              .recommendation-item:last-child {
                  border-bottom: none !important;
                  margin-bottom: 0 !important;
@@ -849,16 +963,16 @@
              }
 
             .recommendation-item .ref-author { margin-top: 1.5mm !important; padding-left: 0 !important; }
-             .recommendation-item .ref-title { margin-top: 0 !important; padding-left: 0 !important;}
+             .recommendation-item .ref-title { margin-top: 0 !important; padding-left: 3mm !important;} /* Keep indent */
 
 
             .left-column section+section, .right-column section+section { margin-top: 5mm !important; }
-            .right-column header { border-bottom: 0.5pt solid #cccccc !important; margin-bottom: 4mm !important; padding-bottom: 3mm !important;}
+            .right-column header { border-bottom: 0.5pt solid var(--border-color) !important; margin-bottom: 4mm !important; padding-bottom: 3mm !important;}
 
 
             /* --- PAGE BREAK CONTROL --- */
             /* General avoidance rules */
-            section, .education-item, .volunteering-item, #contact ul li, .language-list li, blockquote, p {
+            section, .education-item, .volunteering-item, #contact ul li, blockquote, p {
                 page-break-inside: avoid !important;
             }
             h2, h3, h4 {
@@ -872,13 +986,13 @@
 
             /* Specific page break rules */
             #experience {
-                page-break-before: always !important; /* Start Experience section on new page */
-            }
+                 page-break-before: always !important; /* Start Experience section on new page */
+             }
 
              /* Start subsequent roles on new page */
-            #experience .experience-entry + .experience-entry {
+             #experience .experience-entry + .experience-entry:not(:has(.previous-experience-link)) { /* Avoid breaking before the link-only entry */
                  page-break-before: always !important;
-            }
+             }
 
             /* General styling and avoidance for all experience entries */
             .experience-entry {
@@ -887,8 +1001,8 @@
                  padding-top: 0 !important;
                  padding-bottom: 3mm !important;
                  margin-bottom: 3mm !important;
-                 border-bottom: 0.5pt solid #cccccc !important;
-            }
+                 border-bottom: 0.5pt solid var(--border-color) !important; /* Keep border color */
+             }
 
              /* Prevent the "previous experience" link entry from forcing a page break */
              #experience .experience-entry:has(.previous-experience-link) {
@@ -898,20 +1012,20 @@
 
             #recommendations {
                  page-break-before: always !important; /* Start Recommendations section on new page */
-            }
+             }
+
         }
 
     </style>
 </head>
 
 <body>
-
     <div class="cv-container">
 
         <div class="left-column">
             <img src="img/profile.jpeg" alt="Mark Pasternak Profile Picture" class="profile-image"
                  title="Mark Pasternak Profile Picture"
-                 onerror="this.onerror=null; this.src='https://placehold.co/140x140/fdf6f4/2c3e50?text=MP'; this.alt='Placeholder Profile Picture';">
+                 onerror="this.onerror=null; this.src='https://placehold.co/140x140/edf2f7/2b6cb0?text=MP'; this.alt='Placeholder Profile Picture';">
 
             <section id="contact">
                 <h3>Contact</h3>
@@ -984,16 +1098,7 @@
                 </div>
             </section>
 
-            <section id="languages" class="language-list">
-                <h3>Languages</h3>
-                <ul>
-                    <li><i class="fas fa-language" aria-hidden="true"></i>English <span class="proficiency">(Native or
-                            Bilingual)</span></li>
-                    <li><i class="fas fa-language" aria-hidden="true"></i>Swedish <span class="proficiency">(Native or
-                            Bilingual)</span></li>
-                </ul>
-            </section>
-        </div>
+            </div>
 
         <div class="right-column">
             <header>
@@ -1021,7 +1126,7 @@
                 <div class="experience-entry">
                     <span class="logo-placeholder" title="Storytel">
                         <img src="img/2storytel_logo.png" alt="Storytel Logo"
-                             onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/adb5bd?text=S'; this.alt='Storytel Logo Placeholder';">
+                             onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/a0aec0?text=S'; this.alt='Storytel Logo Placeholder';">
                     </span>
                     <div class="experience-details">
                         <h4>CTO</h4>
@@ -1067,7 +1172,7 @@
                 <div class="experience-entry">
                     <span class="logo-placeholder" title="Discovery Inc">
                          <img src="img/discoveryinc_logo.jpeg" alt="Discovery Inc Logo"
-                              onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/adb5bd?text=D'; this.alt='Discovery Inc Logo Placeholder';">
+                              onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/a0aec0?text=D'; this.alt='Discovery Inc Logo Placeholder';">
                     </span>
                     <div class="experience-details">
                         <h4>Director of Engineering</h4>
@@ -1096,7 +1201,7 @@
                 <div class="experience-entry">
                     <span class="logo-placeholder" title="Epidemic Sound">
                          <img src="img/epidemic_sound_logo.jpeg" alt="Epidemic Sound Logo"
-                               onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/adb5bd?text=E'; this.alt='Epidemic Sound Logo Placeholder';">
+                               onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/a0aec0?text=E'; this.alt='Epidemic Sound Logo Placeholder';">
                     </span>
                     <div class="experience-details">
                         <h4>Director of Engineering, Interim Director of Product</h4>
@@ -1127,7 +1232,7 @@
                 <div class="experience-entry">
                     <span class="logo-placeholder" title="Schibsted">
                          <img src="img/schibsted_asa_logo.jpeg" alt="Schibsted Logo"
-                               onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/adb5bd?text=S'; this.alt='Schibsted Logo Placeholder';">
+                               onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/a0aec0?text=S'; this.alt='Schibsted Logo Placeholder';">
                     </span>
                     <div class="experience-details">
                         <h4>Director of Engineering</h4>
@@ -1156,7 +1261,7 @@
                 <div class="experience-entry">
                     <span class="logo-placeholder" title="Klarna">
                          <img src="img/klarna_logo.jpeg" alt="Klarna Logo"
-                               onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/adb5bd?text=K'; this.alt='Klarna Logo Placeholder';">
+                               onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/a0aec0?text=K'; this.alt='Klarna Logo Placeholder';">
                     </span>
                     <div class="experience-details">
                         <h4>Engineering Manager</h4>
@@ -1182,7 +1287,7 @@
                 <div class="experience-entry">
                     <span class="logo-placeholder" title="Ooyala">
                          <img src="img/ooyala_logo.jpeg" alt="Ooyala Logo"
-                               onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/adb5bd?text=O'; this.alt='Ooyala Logo Placeholder';">
+                               onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/a0aec0?text=O'; this.alt='Ooyala Logo Placeholder';">
                     </span>
                     <div class="experience-details">
                         <h4>Senior Engineering Manager</h4>
@@ -1361,20 +1466,20 @@
                  <div class="recommendation-item">
                     <blockquote>
                         <p>Mark is one of those people that make a difference in the lives of those he meet and those he
-                            work with.</p>
+                        work with.</p>
                         <p> I had the pleasure of managing a group of 70+ PMs, engineers, and UXers with Mark and as a
-                            product manager myself.</p>
+                        product manager myself.</p>
                         <p> I appreciated his keen insistence on making the balance between the different fields of
-                            expertise work to the favor of both the end products and the people crafting the products.
-                            Mark is a believer in people and in making people work together across hurdles and
-                            boundaries. One thing I learned from him is to never name people as resources. People are
-                            individuals that can cooperate - resources can not. And that is a view that is both rare and
-                            extremely valuable in tech. Healthy and productive teams are what drives great products,
-                            creativity, and employee wellbeing. </p>
+                        expertise work to the favor of both the end products and the people crafting the products.
+                        Mark is a believer in people and in making people work together across hurdles and
+                        boundaries. One thing I learned from him is to never name people as resources. People are
+                        individuals that can cooperate - resources can not. And that is a view that is both rare and
+                        extremely valuable in tech. Healthy and productive teams are what drives great products,
+                        creativity, and employee wellbeing. </p>
                         <p>Mark is passionate and full of energy. He goes all in when needed and knows when to give his
-                            people space to make their own decisions. He takes responsibilities beyond his position and
-                            holds himself accountable for what he commits to. He is a natural leader with a mission and
-                            yet, at his core, he is hands down a great guy to hang around with.</p>
+                        people space to make their own decisions. He takes responsibilities beyond his position and
+                        holds himself accountable for what he commits to. He is a natural leader with a mission and
+                        yet, at his core, he is hands down a great guy to hang around with.</p>
                     </blockquote>
                     <p class="ref-author">Hans Martin Cramer</p>
                     <p class="ref-title">AI & Product Leader at Oschlo (Managed teams together with Mark at Schibsted)
