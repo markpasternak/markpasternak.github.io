@@ -15,46 +15,46 @@
         \*------------------------------------*/
         :root {
           /* Colors */
-          --bg-page: #e0e0e0;
-          --bg-left-col: #FFF1EE;
-          --bg-right-col: #ffffff;
-          --text-dark: #222222;
-          --text-medium: #4A4A4A;
-          --text-light: #555555;
-          --accent-color: #000000;
-          --border-color: #e0e0e0;
-          --link-color: var(--text-dark);
-          --link-hover-color: var(--accent-color);
-          --focus-outline-color: var(--text-medium);
-          --placeholder-bg: #f8f8f8;
+          --bg-page: #e0e0e0; /* Grey background for screen */
+          --bg-left-col: #FFF1EE; /* Light peach for left column */
+          --bg-right-col: #ffffff; /* White for right column */
+          --text-dark: #222222; /* Very dark grey for main text */
+          --text-medium: #4A4A4A; /* Medium grey for secondary text */
+          --text-light: #555555; /* Lighter grey for tertiary text */
+          --accent-color: #000000; /* Black for headings and accents */
+          --border-color: #e0e0e0; /* Light grey for borders */
+          --link-color: var(--text-dark); /* Link color */
+          --link-hover-color: var(--accent-color); /* Link hover color */
+          --focus-outline-color: var(--text-medium); /* Focus outline */
+          --placeholder-bg: #f8f8f8; /* Background for logo placeholders */
           --placeholder-icon: #cccccc;
           --placeholder-text: #aaaaaa;
 
           /* Typography */
           --font-primary: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-          --base-font-size: 16px; /* Base size for browser rendering */
+          --base-font-size: 16px; /* Base size for browser rendering (screen) */
           --line-height-base: 1.6;
           --line-height-heading: 1.2;
 
           /* Spacing */
           --spacing-unit: 1rem;
-          --spacing-xs: calc(var(--spacing-unit) * 0.25); /* 4px */
-          --spacing-sm: calc(var(--spacing-unit) * 0.5);  /* 8px */
-          --spacing-md: var(--spacing-unit);             /* 16px */
-          --spacing-lg: calc(var(--spacing-unit) * 1.5); /* 24px */
-          --spacing-xl: calc(var(--spacing-unit) * 2);   /* 32px */
-          --spacing-xxl: calc(var(--spacing-unit) * 2.5);/* 40px */
+          --spacing-xs: calc(var(--spacing-unit) * 0.25); /* ~4px */
+          --spacing-sm: calc(var(--spacing-unit) * 0.5);  /* ~8px */
+          --spacing-md: var(--spacing-unit);             /* ~16px */
+          --spacing-lg: calc(var(--spacing-unit) * 1.5); /* ~24px */
+          --spacing-xl: calc(var(--spacing-unit) * 2);   /* ~32px */
+          --spacing-xxl: calc(var(--spacing-unit) * 2.5);/* ~40px */
 
           /* Layout & Borders */
-          --container-max-width: 900px; /* Approx A4 width allows comfortable reading */
-          --left-col-width: 35%;
-          --right-col-width: 65%;
-          --header-sep-width: 100px;
-          --header-sep-height: 3px;
-          --logo-size: 50px;
-          --profile-img-size: 130px;
-          --border-radius-sm: 4px;
-          --box-shadow-main: 0 5px 15px rgba(0, 0, 0, 0.1);
+          --container-max-width: 900px; /* Max width on screen */
+          --left-col-width: 35%; /* Width of left column */
+          --right-col-width: 65%; /* Width of right column */
+          --header-sep-width: 100px; /* Width of separator under headings */
+          --header-sep-height: 3px; /* Height of separator */
+          --logo-size: 50px; /* Size of company logos */
+          --profile-img-size: 130px; /* Size of profile image */
+          --border-radius-sm: 4px; /* Small border radius */
+          --box-shadow-main: 0 5px 15px rgba(0, 0, 0, 0.1); /* Shadow for container */
 
           /* Transitions */
           --transition-duration: 0.2s;
@@ -65,25 +65,25 @@
           :GLOBAL STYLES & RESETS
         \*------------------------------------*/
         *, *::before, *::after {
-            box-sizing: border-box;
+            box-sizing: border-box; /* Use border-box sizing */
         }
 
         html {
-            font-size: var(--base-font-size);
-            scroll-behavior: smooth;
+            font-size: var(--base-font-size); /* Set base font size */
+            scroll-behavior: smooth; /* Smooth scrolling */
         }
 
         body {
             font-family: var(--font-primary);
-            background-color: var(--bg-page);
+            background-color: var(--bg-page); /* Page background for screen */
             color: var(--text-dark);
             margin: 0;
             padding: 0;
             line-height: var(--line-height-base);
-            -webkit-font-smoothing: antialiased;
+            -webkit-font-smoothing: antialiased; /* Improve font rendering */
             -moz-osx-font-smoothing: grayscale;
             text-rendering: optimizeLegibility;
-            font-size: 0.9rem; /* Default body text size ~14.4px for screen */
+            font-size: 0.9rem; /* Default body text size (~14.4px) for screen */
             overflow-wrap: break-word; /* Prevent long words from breaking layout */
         }
 
@@ -115,7 +115,7 @@
             color: var(--link-hover-color);
             text-decoration: underline;
         }
-        a:focus-visible {
+        a:focus-visible { /* Accessibility outline */
              outline: 2px solid var(--focus-outline-color);
              outline-offset: 2px;
              border-radius: 2px;
@@ -130,7 +130,7 @@
         }
 
         /*------------------------------------*\
-          :LAYOUT - Main Container & Columns
+          :LAYOUT - Main Container & Columns (Screen)
         \*------------------------------------*/
         .cv-container {
             max-width: var(--container-max-width);
@@ -202,7 +202,7 @@
             transition: color var(--transition-duration) var(--transition-timing);
         }
         .bullet-list li::before {
-            content: '•'; /* Bullet character */
+            content: '\2022'; /* Bullet character */
             position: absolute;
             left: 0;
             color: var(--accent-color);
@@ -383,7 +383,7 @@
              font-size: 0.875rem; /* 14px */
          }
          .experience-entry ul li::before { /* Achievement bullet */
-             content: '•';
+             content: '\2022';
              position: absolute;
              left: 0;
              color: var(--accent-color);
@@ -458,9 +458,6 @@
           :RESPONSIVE STYLES (for smaller screens)
         \*------------------------------------*/
         @media (max-width: 768px) {
-            :root {
-                 /* Adjust base font size slightly for mobile if needed, but 16px is often fine */
-            }
              body {
                  font-size: 0.875rem; /* Base mobile body text size ~14px */
              }
@@ -470,7 +467,7 @@
                 max-width: 100%; /* Use full width */
                 box-shadow: none; /* Remove shadow */
                 border-radius: 0;
-                display: flex; /* Keep flex context for column direction */
+                /* display: flex; already set */
             }
             .left-column, .right-column {
                 width: 100%; /* Full width columns */
@@ -505,7 +502,7 @@
 
             /* Stack experience logo and details vertically */
             .experience-entry {
-                flex-direction: column;
+                flex-direction: column; /* Ensure it stacks on mobile */
                 align-items: flex-start;
                 gap: var(--spacing-md);
             }
@@ -537,168 +534,166 @@
         }
 
         /*------------------------------------*\
-          :PRINT STYLES (Optimized for A4 - Single Column)
+          :PRINT STYLES (NEW - Two Column, Color, Full Page)
         \*------------------------------------*/
         @media print {
-            :root {
-                /* Override colors for print */
-                --bg-page: #ffffff;
-                --text-dark: #000000;
-                --text-medium: #333333;
-                --text-light: #444444;
-                --accent-color: #000000;
-                --border-color: #cccccc;
-                /* Set base font size in points for print */
-                --base-font-size: 10pt;
+            /* Define page size and margins */
+            @page {
+                size: A4; /* Standard A4 size */
+                margin: 10mm; /* Adjust margins as needed */
             }
 
+            /* Force printing of background colors and images */
+            body, .cv-container, .left-column, .right-column {
+                -webkit-print-color-adjust: exact !important; /* Chrome, Safari, Edge */
+                print-color-adjust: exact !important; /* Firefox */
+            }
+
+            /* Reset body for print */
             body {
-                background-color: var(--bg-page) !important; /* Ensure white background */
-                color: var(--text-dark) !important; /* Ensure black text */
-                font-size: var(--base-font-size); /* Use pt size */
-                /* Add standard print font fallbacks */
-                font-family: Calibri, Arial, Helvetica, sans-serif;
-                overflow-wrap: break-word; /* Ensure wrapping works */
-                margin: 0; /* Remove default body margin */
-                padding: 0; /* Remove default body padding */
+                background-color: #ffffff !important; /* Ensure white page background */
+                color: var(--text-dark); /* Use default dark text */
+                font-size: 9pt; /* Slightly smaller base font size for print */
+                font-family: 'Inter', Calibri, Arial, Helvetica, sans-serif; /* Keep Inter, add fallbacks */
+                margin: 0;
+                padding: 0;
+                line-height: 1.4; /* Adjust line height for print */
             }
 
+            /* Container setup */
             .cv-container {
-                max-width: 100%; /* Use full page width */
+                max-width: 100%; /* Use full printable width */
                 width: 100%;
-                margin: 0 auto;
+                margin: 0; /* Remove screen margins */
                 box-shadow: none; /* Remove screen shadow */
-                display: flex; /* Keep flex context */
-                flex-direction: column; /* Stack columns vertically */
-                border: 1px solid var(--border-color); /* Optional: add border around page */
-                background-color: #ffffff !important; /* Ensure container background is white */
+                display: flex !important; /* Ensure flex layout */
+                flex-direction: row !important; /* Ensure row layout (two columns) */
+                border: none; /* Remove any potential borders */
+                overflow: visible; /* Allow content to flow naturally */
             }
 
+            /* Column setup */
             .left-column,
             .right-column {
-                background-color: #ffffff !important; /* Override screen background */
-                color: var(--text-dark) !important; /* Ensure text color */
-                width: 100%; /* Make columns full width */
-                padding: 12mm; /* Use physical units for padding */
-                border-right: none; /* Remove side border */
+                width: var(--left-col-width) !important; /* Restore original width */
+                padding: 5mm !important; /* Reduced padding for print */
+                border: none !important; /* Remove borders between/around columns */
+                /* Background colors are inherited via print-color-adjust */
+                /* Text colors are inherited */
             }
-
-            .left-column {
-                border-bottom: 1px solid var(--border-color); /* Add border below left column */
-                padding-bottom: 12mm; /* Ensure padding below content before border */
-            }
-
             .right-column {
-                 padding-top: 12mm; /* Ensure padding above right column content */
+                 width: var(--right-col-width) !important; /* Restore original width */
             }
 
+            /* --- Hide Logos in Print --- */
+            .logo-placeholder {
+                display: none !important; /* Hide company logos */
+            }
 
-            /* Hide interactive elements and screen styles */
-            a { text-decoration: none; color: inherit !important; } /* Make links look like text */
-            .logo-placeholder { display: none; } /* Hide company logos */
-            .linkedin-recommendations-link { display: none; } /* Hide link to online recommendations */
-            .previous-experience-link i { display: none; } /* Hide external link icon */
-
-            /* Adjust image size and add border */
-            .profile-image {
-                 width: 30mm; /* Physical unit size */
-                 height: 30mm;
-                 margin: 0 auto 8mm auto; /* Center image */
-                 display: block; /* Needed for auto margin centering */
-                 border: 1px solid var(--border-color);
+            /* Keep other elements visible */
+             .linkedin-recommendations-link {
+                 display: block !important; /* Keep link visible */
+                 margin-bottom: 3mm;
+                 font-size: 8pt;
+             }
+             .previous-experience-link i,
+             .linkedin-recommendations-link i {
+                 display: inline-block !important; /* Keep icons visible */
+                 font-size: 0.8em;
              }
 
-            /* Adjust typography sizes using points */
-            h2 { font-size: 20pt; margin-bottom: 2pt; }
-            .title { font-size: 11pt; color: var(--text-medium) !important; margin-bottom: 8mm; }
-            h3 { font-size: 10pt; margin-bottom: 4mm; padding-bottom: 1.5mm; }
-            h3::after { height: 1.5pt; width: 30mm; background-color: var(--accent-color) !important; }
-            .experience-entry h4 { margin-top: 0; font-size: 10.5pt; margin-bottom: 1pt; }
+            /* Adjust image size */
+            .profile-image {
+                 width: 25mm; /* Physical unit size for print */
+                 height: 25mm;
+                 margin: 0 auto 5mm auto; /* Center image, reduced margin */
+                 display: block;
+                 border: none; /* No border */
+                 border-radius: 50%; /* Keep circular */
+             }
 
-            /* Consistent body text size */
+            /* Adjust typography sizes using relative units or smaller points */
+            h2 { font-size: 18pt; margin-bottom: 1mm; }
+            .title { font-size: 10pt; color: var(--text-medium); margin-bottom: 5mm; }
+            h3 { font-size: 10pt; margin-bottom: 3mm; padding-bottom: 1mm; }
+            h3::after { height: 1.5pt; width: 25mm; background-color: var(--accent-color); } /* Slightly smaller separator */
+            h4 { font-size: 9.5pt; margin-bottom: 1mm; }
+
+            /* Adjust text sizes */
             p, ul, li, blockquote {
-                font-size: 9.5pt;
-                line-height: 1.4; /* Adjust line height slightly for print density */
-                color: var(--text-dark) !important;
+                font-size: 8.5pt; /* Slightly smaller body text */
+                line-height: 1.4;
             }
-            /* Apply to specific text elements */
-            .about-section p, .experience-entry p, .experience-entry ul li,
-            .bullet-list li, .left-column #contact li, .language-list li,
-            .recommendation-item blockquote {
-                font-size: 9.5pt;
+            .bullet-list li, .left-column #contact li, .language-list li {
+                font-size: 8pt;
             }
+            .company-location { font-size: 8pt; }
+            .dates, .proficiency, .ref-title, .education-item p, .volunteering-item p, .volunteering-item p.quote {
+                font-size: 7.5pt; color: var(--text-light);
+            }
+            .ref-author { font-size: 8.5pt; }
+            .recommendation-item blockquote { font-style: italic; font-size: 8.5pt; } /* Keep italics */
 
-            /* Slightly smaller text for less critical info */
-            .company-location, .ref-author, .education-item h4, .volunteering-item h4 { font-size: 9pt; }
-            .dates, .proficiency, .ref-title, .education-item p, .volunteering-item p, .volunteering-item p.quote { font-size: 8.5pt; color: var(--text-medium) !important; }
-
-            /* List and item spacing */
-            ul { margin-left: 5mm; margin-bottom: 2mm; } /* Indent lists slightly */
-            li { margin-bottom: 1.5mm; } /* Reduce space between list items */
-            .bullet-list { padding-left: 5mm; } /* Consistent list padding */
+            /* Adjust spacing */
+            ul { margin-left: 4mm; margin-bottom: 1.5mm; }
+            li { margin-bottom: 1.5mm; }
+            .bullet-list { padding-left: 4mm; }
             .left-column #contact li, .language-list li { margin-bottom: 2mm; }
+            .left-column #contact li i, .language-list li i { width: 14px; margin-right: 2mm; } /* Adjust icon spacing */
 
-            /* Ensure icons are visible (if Font Awesome renders) */
-            .left-column li i { color: var(--text-medium) !important; }
-
-            /* Borders for structure (within right column mostly) */
-            .experience-entry, .recommendation-item {
-                border-bottom: 1px solid var(--border-color) !important;
+            /* --- Experience Entry Layout (Print - No Logo) --- */
+            .experience-entry {
+                gap: 0; /* Remove gap as logo is hidden */
                 padding-bottom: 4mm;
                 margin-bottom: 4mm;
+                border-bottom: 1px solid var(--border-color); /* Keep border for structure */
+                /* align-items: baseline !important; Removed as logo is hidden */
+                display: block; /* Change from flex to block as logo is gone */
             }
-            /* Remove border from last item within experience/recommendations */
-            #experience .experience-entry:last-of-type,
-            #recommendations .recommendation-item:last-of-type {
-                border-bottom: none !important;
-                margin-bottom: 0;
-                padding-bottom: 0;
-            }
-            /* Special handling for the 'previous experience' link entry */
+             .experience-details {
+                 width: 100%; /* Ensure details take full width */
+             }
+
+
+            .recommendation-item { padding-bottom: 4mm; margin-bottom: 4mm; border-bottom: 1px solid var(--border-color); } /* Keep border */
+            .experience-entry:last-child, .recommendation-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+             /* Special handling for the 'previous experience' link entry */
              #experience .experience-entry:has(.previous-experience-link) {
-                 border-bottom: none !important; /* No border if it's just the link */
+                 border-bottom: none !important;
                  padding-bottom: 0;
                  margin-bottom: 0;
              }
+             .recommendation-item .ref-author { margin-top: 2mm; }
+             .recommendation-item .ref-title { margin-top: 0.5mm; }
+             .left-column section + section, .right-column section + section {
+                 margin-top: 6mm; /* Reduced section spacing */
+             }
 
-
-            /* Recommendation specific style adjustments */
-            .recommendation-item blockquote { font-style: normal; font-size: 9pt; } /* Remove italics if preferred */
-            .recommendation-item .ref-author { margin-top: 2mm; }
-            .recommendation-item .ref-title { margin-top: 1mm; }
+            /* Links - Keep them styled */
+            a {
+                color: var(--link-color); /* Use original link color */
+                text-decoration: none; /* Remove underline for print cleanliness */
+            }
+            a:hover { text-decoration: none; } /* No hover effect needed */
 
             /* --- PAGE BREAK CONTROL --- */
-            /* Try to prevent breaks within these elements */
-            section, /* Try to keep whole sections together if short */
-            .experience-entry,
-            .recommendation-item,
-            .education-item,
-            .volunteering-item,
-            #contact ul li,
-            .language-list li,
-            blockquote,
-            p {
-                page-break-inside: avoid;
+            section, .experience-entry, .recommendation-item, .education-item,
+            .volunteering-item, #contact ul li, .language-list li, blockquote, p {
+                page-break-inside: avoid; /* Try to keep these elements intact */
             }
-
-            /* Prevent breaks right after headings */
             h2, h3, h4 {
-                page-break-after: avoid;
+                page-break-after: avoid; /* Avoid breaking right after headings */
+                page-break-before: avoid; /* Avoid orphan headings */
             }
-
-            /* Prevent headings appearing alone at the bottom of a page */
-            h2, h3, h4 {
-                 page-break-before: avoid; /* Less critical, but can help */
-            }
-
-             /* Suggest breaking before major sections if needed, but avoid forcing too much */
-             #experience, #recommendations {
-                 page-break-before: auto; /* Allows break but doesn't force */
+             #experience {
+                 page-break-before: auto; /* Allow break before experience if needed */
              }
-             /* Ensure header doesn't get orphaned */
+             #recommendations {
+                 page-break-before: always; /* FORCE break before recommendations */
+             }
              .right-column header {
                  page-break-inside: avoid;
-                 page-break-after: auto; /* Allow break after header */
+                 page-break-after: auto;
              }
         }
     </style>
@@ -709,10 +704,10 @@
 
         <div class="left-column">
             <img src="img/profile.jpeg"
-                 alt="Mark Pasternak Profile Picture"
+                 alt="Mark Pasternak Profile Picture Placeholder"
                  class="profile-image"
                  title="Mark Pasternak Profile Picture"
-                 onerror="this.style.display='none'"> <section id="contact">
+                 onerror="this.src='https://placehold.co/130x130/FFF1EE/4A4A4A?text=MP'; this.alt='Placeholder Profile Picture';"> <section id="contact">
                 <h3>Contact</h3>
                 <ul>
                     <li><i class="fas fa-phone" aria-hidden="true"></i>+46 (0) 70 695 79 15</li>
@@ -722,7 +717,7 @@
                 </ul>
             </section>
 
-             <section id="summary">
+            <section id="summary">
                 <h3>Summary</h3>
                 <ul class="bullet-list">
                     <li>Experienced CTO with 20+ years in the tech industry, encompassing startups, scaleups and larger listed companies.</li>
@@ -748,7 +743,7 @@
                 </ul>
             </section>
 
-             <section id="personal">
+            <section id="personal">
                  <h3>Personal</h3>
                  <ul class="bullet-list">
                      <li>Stockholm based with international experience, 4-year professional stint in New York.</li>
@@ -766,7 +761,7 @@
                 </div>
             </section>
 
-             <section id="volunteering">
+            <section id="volunteering">
                  <h3>Volunteering</h3>
                  <div class="volunteering-item">
                      <h4>Founder, Stockholm Engineering Leadership Meetup</h4>
@@ -799,7 +794,7 @@
                 <h3>Experience</h3>
                  <div class="experience-entry">
                     <span class="logo-placeholder" title="Storytel">
-                        <img src="/img/2storytel_logo.png" alt="Storytel Logo" onerror="this.parentElement.style.display='none'">
+                        <img src="img/2storytel_logo.png" alt="Storytel Logo Placeholder" onerror="this.parentElement.style.backgroundColor='var(--placeholder-bg)'; this.alt='Storytel Logo Placeholder';">
                     </span>
                     <div class="experience-details">
                         <h4>CTO</h4>
@@ -820,7 +815,7 @@
 
                 <div class="experience-entry">
                      <span class="logo-placeholder" title="Discovery Inc">
-                          <img src="img/discoveryinc_logo.jpeg" alt="Discovery Inc Logo" onerror="this.parentElement.style.display='none'">
+                          <img src="img/discoveryinc_logo.jpeg" alt="Discovery Inc Logo Placeholder" onerror="this.parentElement.style.backgroundColor='var(--placeholder-bg)'; this.alt='Discovery Inc Logo Placeholder';">
                      </span>
                      <div class="experience-details">
                         <h4>Director of Engineering</h4>
@@ -836,7 +831,7 @@
 
                 <div class="experience-entry">
                      <span class="logo-placeholder" title="Epidemic Sound">
-                           <img src="img/epidemic_sound_logo.jpeg" alt="Epidemic Sound Logo" onerror="this.parentElement.style.display='none'">
+                           <img src="img/epidemic_sound_logo.jpeg" alt="Epidemic Sound Logo Placeholder" onerror="this.parentElement.style.backgroundColor='var(--placeholder-bg)'; this.alt='Epidemic Sound Logo Placeholder';">
                      </span>
                      <div class="experience-details">
                         <h4>Director of Engineering, Interim Director of Product</h4>
@@ -852,9 +847,9 @@
                     </div>
                 </div>
 
-                 <div class="experience-entry">
+                <div class="experience-entry">
                      <span class="logo-placeholder" title="Schibsted">
-                          <img src="/img/schibsted_asa_logo.jpeg" alt="Schibsted Logo" onerror="this.parentElement.style.display='none'">
+                          <img src="img/schibsted_asa_logo.jpeg" alt="Schibsted Logo Placeholder" onerror="this.parentElement.style.backgroundColor='var(--placeholder-bg)'; this.alt='Schibsted Logo Placeholder';">
                      </span>
                      <div class="experience-details">
                         <h4>Director of Engineering</h4>
@@ -869,9 +864,9 @@
                     </div>
                 </div>
 
-                 <div class="experience-entry">
+                <div class="experience-entry">
                      <span class="logo-placeholder" title="Klarna">
-                          <img src="img/klarna_logo.jpeg" alt="Klarna Logo" onerror="this.parentElement.style.display='none'">
+                          <img src="img/klarna_logo.jpeg" alt="Klarna Logo Placeholder" onerror="this.parentElement.style.backgroundColor='var(--placeholder-bg)'; this.alt='Klarna Logo Placeholder';">
                      </span>
                      <div class="experience-details">
                         <h4>Engineering Manager</h4>
@@ -886,9 +881,9 @@
                     </div>
                 </div>
 
-                 <div class="experience-entry">
+                <div class="experience-entry">
                      <span class="logo-placeholder" title="Ooyala">
-                          <img src="img/ooyala_logo.jpeg" alt="Ooyala Logo" onerror="this.parentElement.style.display='none'">
+                          <img src="img/ooyala_logo.jpeg" alt="Ooyala Logo Placeholder" onerror="this.parentElement.style.backgroundColor='var(--placeholder-bg)'; this.alt='Ooyala Logo Placeholder';">
                      </span>
                      <div class="experience-details">
                         <h4>Senior Engineering Manager</h4>
@@ -899,8 +894,7 @@
                  </div>
 
                  <div class="experience-entry">
-                    <div class="experience-details">
-                      <p class="previous-experience-link">
+                    <div class="experience-details" style="width: 100%;"> <p class="previous-experience-link">
                           For details on earlier roles and experience prior to 2015, please refer to my <a href="https://www.linkedin.com/in/markpasternak/" target="_blank" rel="noopener noreferrer">LinkedIn profile</a>.
                       </p>
                   </div>
@@ -1018,4 +1012,4 @@
                     <p class="ref-title">Global Talent Acquisition Manager at Warner Bros. Discovery (Worked closely with Mark at Schibsted)</p>
                 </div>
             </section> </div> </div> </body>
-</html>
+</ht
