@@ -711,7 +711,8 @@
         @media print {
             @page {
                 size: A4;
-                margin: 12mm;
+                /* Increased page margin */
+                margin: 15mm;
             }
 
             /* Encourage printing background colors and images */
@@ -726,8 +727,7 @@
                 /* Keep screen text color */
                 color: var(--text-dark) !important;
                 font-size: 9pt !important;
-                /* Use standard print fonts */
-                font-family: Calibri, Arial, Helvetica, sans-serif !important;
+                /* REMOVED font override - should inherit from screen styles */
                 margin: 0 !important;
                 padding: 0 !important;
                 line-height: 1.35 !important;
@@ -943,6 +943,11 @@
                 color: var(--accent-color) !important; /* Keep bullet color */
             }
             .bullet-list { padding-left: 4mm !important; }
+
+            /* Add top margin to contact list */
+            #contact ul {
+                margin-top: 3mm !important;
+            }
             #contact li {
                  /* Further Increased spacing for contact items */
                  margin-bottom: 4mm !important;
