@@ -750,6 +750,7 @@
             }
 
             .left-column, .right-column {
+                /* Remove default padding */
                 padding: 0 !important;
                 border: none !important;
                 box-sizing: border-box;
@@ -761,13 +762,17 @@
 
             .left-column {
                  width: var(--left-col-width) !important;
+                 /* Add balanced padding */
+                 padding-left: 6mm !important;
                  padding-right: 6mm !important;
                  /* Keep screen background */
                  background-color: var(--bg-left-col) !important;
             }
             .right-column {
                  width: var(--right-col-width) !important;
+                 /* Add balanced padding */
                  padding-left: 6mm !important;
+                 padding-right: 6mm !important; /* Added for consistency */
                  /* Keep screen background */
                  background-color: var(--bg-right-col) !important;
             }
@@ -939,8 +944,8 @@
             }
             .bullet-list { padding-left: 4mm !important; }
             #contact li {
-                 /* Increased spacing for contact items */
-                 margin-bottom: 3mm !important;
+                 /* Further Increased spacing for contact items */
+                 margin-bottom: 4mm !important;
              }
 
             .recommendation-item {
