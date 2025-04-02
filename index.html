@@ -291,16 +291,15 @@
         .left-column #contact li {
             margin-bottom: var(--spacing-md);
             display: flex;
-            align-items: flex-start;
+            align-items: center; /* MODIFIED: Changed alignment */
             font-size: 0.85rem;
         }
 
         .left-column #contact li i {
-            margin-right: var(--spacing-md);
+            margin-right: var(--spacing-sm); /* MODIFIED: Adjusted spacing */
             width: 20px;
             text-align: center;
             color: var(--accent-color); /* Use accent color */
-            margin-top: 0.1em;
             flex-shrink: 0;
             font-size: 1.1em;
         }
@@ -535,7 +534,7 @@
             color: var(--text-dark);
             line-height: var(--line-height-base);
             font-size: 0.9rem;
-            margin: 0 0 var(--spacing-md) 0;
+            margin: 0 0 var(--spacing-sm) 0; /* MODIFIED: Adjusted spacing */
             position: relative;
             background-color: var(--recommendation-bg);
             border-left: 3px solid var(--accent-color);
@@ -572,7 +571,8 @@
             font-size: 0.9rem;
             font-weight: 700; /* Bold */
             color: var(--text-dark);
-            margin-top: var(--spacing-md); /* Increased space above author */
+            margin-top: var(--spacing-sm); /* MODIFIED: Adjusted spacing */
+            margin-bottom: 0; /* MODIFIED: Set margin-bottom to 0 */
             padding-left: 0;
             position: relative;
         }
@@ -588,7 +588,7 @@
             text-align: left;
             font-size: 0.75rem; /* Slightly smaller */
             color: var(--text-light); /* Lighter color */
-            margin-top: 0;
+            margin-top: 0; /* MODIFIED: Kept margin-top 0 */
             padding-left: 1.1em; /* Indent slightly to align with name after dash */
         }
 
@@ -674,35 +674,35 @@
             }
 
              /* Adjust text sizes for readability */
-            .about-section p,
-            .experience-entry p,
-            .experience-entry ul li,
-            .recommendation-item blockquote {
-                font-size: 0.9rem;
-            }
-            .bullet-list li,
-             .left-column #contact li {
+             .about-section p,
+             .experience-entry p,
+             .experience-entry ul li,
+             .recommendation-item blockquote {
+                 font-size: 0.9rem;
+             }
+             .bullet-list li,
+              .left-column #contact li {
                  font-size: 0.85rem;
              }
-             .experience-entry h4 { font-size: 0.95rem; }
-             .experience-entry .company-location { font-size: 0.85rem; }
-             .recommendation-item .ref-author { font-size: 0.85rem; }
-             .recommendation-item .ref-title { font-size: 0.75rem; } /* Consistent size */
-             .education-item h4, .volunteering-item h4 { font-size: 0.9rem; }
-             .education-item p, .volunteering-item p { font-size: 0.8rem; }
+              .experience-entry h4 { font-size: 0.95rem; }
+              .experience-entry .company-location { font-size: 0.85rem; }
+              .recommendation-item .ref-author { font-size: 0.85rem; margin-bottom: 0; } /* MODIFIED: Added margin-bottom 0 */
+              .recommendation-item .ref-title { font-size: 0.75rem; } /* Consistent size */
+              .education-item h4, .volunteering-item h4 { font-size: 0.9rem; }
+              .education-item p, .volunteering-item p { font-size: 0.8rem; }
 
-             /* Responsive Recommendation Adjustments */
-             .recommendation-item blockquote {
-                 padding-left: calc(var(--spacing-md) + 15px); /* Adjust padding for smaller icon space */
-             }
-             .recommendation-item blockquote::before {
-                 font-size: 1.2em; /* Slightly smaller icon */
-                 left: var(--spacing-xs);
-                 top: var(--spacing-xs);
-             }
-             .recommendation-item .ref-title {
-                 padding-left: 1em; /* Adjust indent */
-             }
+               /* Responsive Recommendation Adjustments */
+               .recommendation-item blockquote {
+                   padding-left: calc(var(--spacing-md) + 15px); /* Adjust padding for smaller icon space */
+               }
+               .recommendation-item blockquote::before {
+                   font-size: 1.2em; /* Slightly smaller icon */
+                   left: var(--spacing-xs);
+                   top: var(--spacing-xs);
+               }
+               .recommendation-item .ref-title {
+                   padding-left: 1em; /* Adjust indent */
+               }
         }
 
         /*------------------------------------*\
@@ -761,20 +761,20 @@
             }
 
             .left-column {
-                 width: var(--left-col-width) !important;
-                 /* Add balanced padding */
-                 padding-left: 6mm !important;
-                 padding-right: 6mm !important;
-                 /* Keep screen background */
-                 background-color: var(--bg-left-col) !important;
+                width: var(--left-col-width) !important;
+                /* Add balanced padding */
+                padding-left: 6mm !important;
+                padding-right: 6mm !important;
+                /* Keep screen background */
+                background-color: var(--bg-left-col) !important;
             }
             .right-column {
-                 width: var(--right-col-width) !important;
-                 /* Add balanced padding */
-                 padding-left: 6mm !important;
-                 padding-right: 6mm !important; /* Added for consistency */
-                 /* Keep screen background */
-                 background-color: var(--bg-right-col) !important;
+                width: var(--right-col-width) !important;
+                /* Add balanced padding */
+                padding-left: 6mm !important;
+                padding-right: 6mm !important; /* Added for consistency */
+                /* Keep screen background */
+                background-color: var(--bg-right-col) !important;
             }
 
             .logo-placeholder { display: none !important; }
@@ -797,9 +797,9 @@
                  color: var(--text-medium) !important;
              }
               #experience .experience-entry:has(.previous-experience-link) {
-                  margin-top: 0 !important;
-                  page-break-before: auto !important;
-              }
+                 margin-top: 0 !important;
+                 page-break-before: auto !important;
+             }
 
             .profile-image {
                 width: 28mm !important;
@@ -893,7 +893,7 @@
                 /* Keep screen text color */
                 color: var(--text-light) !important;
              }
-             .volunteering-item p.quote {
+              .volunteering-item p.quote {
                  border-left-color: var(--border-color) !important; /* Keep border color */
              }
 
@@ -903,8 +903,9 @@
                 /* Keep screen text color */
                 color: var(--text-dark) !important;
                 margin-top: 2mm !important; /* Adjusted margin */
+                margin-bottom: 0 !important; /* MODIFIED: Ensure margin-bottom is 0 for print */
              }
-             .ref-author::before {
+              .ref-author::before {
                  content: '— ' !important; /* Ensure dash prints */
              }
             /* Recommendation blockquote print style - Use screen colors */
@@ -915,6 +916,7 @@
                 background-color: var(--recommendation-bg) !important; /* Keep screen background */
                 border-radius: 3px !important;
                 color: var(--text-dark) !important; /* Ensure text color */
+                margin-bottom: 1.5mm !important; /* MODIFIED: Reduced bottom margin */
             }
             .recommendation-item blockquote::before {
                 /* Adjust icon for print */
@@ -933,6 +935,7 @@
             .ref-title {
                 font-size: 7.5pt !important;
                 padding-left: 3mm !important; /* Adjust indent */
+                margin-top: 0 !important; /* Ensure no top margin */
             }
 
             /* Adjust spacing */
@@ -995,6 +998,10 @@
             }
 
             /* Specific page break rules */
+            #skills { /* MODIFIED: Added page break and padding */
+                page-break-before: always !important; /* Start Skills section on new page */
+                padding-top: 5mm !important; /* Add top margin on page 2+ */
+            }
             #experience {
                  page-break-before: always !important; /* Start Experience section on new page */
              }
@@ -1182,7 +1189,7 @@
                 <div class="experience-entry">
                     <span class="logo-placeholder" title="Discovery Inc">
                          <img src="img/discoveryinc_logo.jpeg" alt="Discovery Inc Logo"
-                              onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/a0aec0?text=D'; this.alt='Discovery Inc Logo Placeholder';">
+                               onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/a0aec0?text=D'; this.alt='Discovery Inc Logo Placeholder';">
                     </span>
                     <div class="experience-details">
                         <h4>Director of Engineering</h4>
@@ -1211,7 +1218,7 @@
                 <div class="experience-entry">
                     <span class="logo-placeholder" title="Epidemic Sound">
                          <img src="img/epidemic_sound_logo.jpeg" alt="Epidemic Sound Logo"
-                               onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/a0aec0?text=E'; this.alt='Epidemic Sound Logo Placeholder';">
+                                 onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/a0aec0?text=E'; this.alt='Epidemic Sound Logo Placeholder';">
                     </span>
                     <div class="experience-details">
                         <h4>Director of Engineering, Interim Director of Product</h4>
@@ -1242,7 +1249,7 @@
                 <div class="experience-entry">
                     <span class="logo-placeholder" title="Schibsted">
                          <img src="img/schibsted_asa_logo.jpeg" alt="Schibsted Logo"
-                               onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/a0aec0?text=S'; this.alt='Schibsted Logo Placeholder';">
+                                 onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/a0aec0?text=S'; this.alt='Schibsted Logo Placeholder';">
                     </span>
                     <div class="experience-details">
                         <h4>Director of Engineering</h4>
@@ -1271,7 +1278,7 @@
                 <div class="experience-entry">
                     <span class="logo-placeholder" title="Klarna">
                          <img src="img/klarna_logo.jpeg" alt="Klarna Logo"
-                               onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/a0aec0?text=K'; this.alt='Klarna Logo Placeholder';">
+                                 onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/a0aec0?text=K'; this.alt='Klarna Logo Placeholder';">
                     </span>
                     <div class="experience-details">
                         <h4>Engineering Manager</h4>
@@ -1297,7 +1304,7 @@
                 <div class="experience-entry">
                     <span class="logo-placeholder" title="Ooyala">
                          <img src="img/ooyala_logo.jpeg" alt="Ooyala Logo"
-                               onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/a0aec0?text=O'; this.alt='Ooyala Logo Placeholder';">
+                                 onerror="this.onerror=null; this.src='https://placehold.co/45x45/e9ecef/a0aec0?text=O'; this.alt='Ooyala Logo Placeholder';">
                     </span>
                     <div class="experience-details">
                         <h4>Senior Engineering Manager</h4>
@@ -1368,7 +1375,7 @@
                     <p class="ref-title">Data, AI & Tech Leadership (Reported directly to Mark at Storytel)</p>
                 </div>
 
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
                         <p>Mark's possessed a strong vision of excellence and cultivated a high-trust environment,
                         empowering engineers to take full ownership of their work. During the years under Mark,
@@ -1382,7 +1389,7 @@
                     <p class="ref-title">Engineering Manager at Storytel (Reported directly to Mark)</p>
                 </div>
 
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
                         <p>From my first interactions with Mark in the hiring loop I knew who he was and what he stood for
                         as Mark is open, honest, and clear in his communication and intentions. He has a well defined
@@ -1395,7 +1402,7 @@
                     <p class="ref-title">Principal Software Engineer at Storytel (Reported directly to Mark)</p>
                 </div>
 
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
                         <p>I highly recommend Mark as CTO based on our work together at Storytel. What impressed me most
                         was how he's always on the ground with every team member - a true hands-on leader who
@@ -1411,7 +1418,7 @@
                     <p class="ref-title">Staff Engineer iOS at Storytel (Reported directly to Mark)</p>
                 </div>
 
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
                         <p>Mark is hands down one of the most inspiring and energizing leaders I’ve ever had the
                         opportunity to work with. His passion, enthusiasm and get-shit-done attitude really makes all
@@ -1423,7 +1430,7 @@
                         Storytel)</p>
                 </div>
 
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
                         <p>I’ve had the privilege of knowing Mark as both a mentor and a source of inspiration. He’s a
                         unique leader who brings creativity, strategic thinking, and an execution-first mindset to
@@ -1439,7 +1446,7 @@
                         reported to him at Universum)</p>
                 </div>
 
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
                         <p>Mark is one of the most charismatic leaders I’ve had the pleasure of working with. He leads
                             by example, and gives a constant spark of innovative thinking and contagious enthusiasm to
@@ -1458,7 +1465,7 @@
                     <p class="ref-title">Senior Product Designer at Timescale (Worked alongside Mark at Ooyala)</p>
                 </div>
 
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
                         <p>Mark really impressed me as a visionary leader who understood the challenges facing an
                         engineering organisation. He has both depth and breadth in software development, which combined
@@ -1473,7 +1480,7 @@
                     <p class="ref-title">Product Director at Klarna (Former client of Mark’s)</p>
                 </div>
 
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
                         <p>Mark is one of those people that make a difference in the lives of those he meet and those he
                         work with.</p>
@@ -1496,7 +1503,7 @@
                     </p>
                 </div>
 
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
                         <p>Mark is a truly user-centric and strategic CTO.
                         He deeply understands the importance of delivering exceptional user experiences, grounded in
@@ -1518,7 +1525,7 @@
                     <p class="ref-title">Staff Engineer, Android (Reported directly to Mark at Storytel)</p>
                 </div>
 
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
                         <p>"Hire him!", is what I would say if you asked me to say 2 words about Mark. </p>
                         <p>We worked together at Schibsted and I saw him in action both as a colleague and as his
@@ -1535,7 +1542,7 @@
                     <p class="ref-title">CTO at Doublefin (Managed Mark directly at Schibsted)</p>
                 </div>
 
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
                         <p>Mark was an absolute joy to work for. He knows what good looks like when it comes to tech orgs,
                         and we made strides of progress under his leadership.</p>
@@ -1544,7 +1551,7 @@
                     <p class="ref-title">Head of Security at Storytel (Reported directly to Mark)</p>
                 </div>
 
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
                         <p>Mark is a diplomat, but never compromises on his beliefs: that teams need to be cross-functional
                         and set up for flow to continuously ship. Working with Mark, I was amazed by his way of
@@ -1555,7 +1562,7 @@
                     <p class="ref-title">Head of Product at Avanza (Worked with Mark at Schibsted)</p>
                 </div>
 
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
                         <p>I worked closely with Mark during our time at Schibsted as he was one of my key stakeholders.
                             Mark is a strong visionary and communicator that can convince and inspire the toughest and
@@ -1573,7 +1580,7 @@
                         with Mark at Schibsted)</p>
                 </div>
 
-                 <div class="recommendation-item">
+                <div class="recommendation-item">
                     <blockquote>
                         <p>Enthusiastic, energetic, inspiring and highly knowledgeable, Mark is a force for positive
                             change in any software engineering organization. </p>
