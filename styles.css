@@ -1,0 +1,1040 @@
+/* ==========================================================================
+   1. Variables & Theming
+   ========================================================================== */
+   :root {
+    /* Colors - Blue/Grey Theme */
+    --bg-page: #f7fafc;              /* Subtle grey-blue */
+    --bg-left-col: #edf2f7;          /* Slightly darker grey-blue */
+    --bg-right-col: #ffffff;
+    --text-dark: #1a202c;             /* Very dark grey */
+    --text-medium: #4a5568;           /* Medium grey */
+    --text-light: #718096;            /* Lighter grey */
+    --accent-color: #2b6cb0;           /* Professional blue */
+    --accent-color-light: #4299e1;     /* Lighter blue */
+    --border-color: #e2e8f0;           /* Light grey */
+    --link-color: var(--accent-color);
+    --link-hover-color: var(--accent-color-light);
+    --focus-outline-color: var(--accent-color-light);
+    --placeholder-bg: #e2e8f0;
+    --placeholder-icon: #a0aec0;
+    --placeholder-text: #cbd5e0;
+    --recommendation-bg: var(--bg-page);
+    --quote-icon-color: var(--border-color);
+  
+    /* Typography */
+    --font-heading: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-body: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --base-font-size: 16px;
+    --line-height-base: 1.6;
+    --line-height-heading: 1.3;
+  
+    /* Spacing */
+    --spacing-unit: 1rem;
+    --spacing-xs: calc(var(--spacing-unit) * 0.3);
+    --spacing-sm: calc(var(--spacing-unit) * 0.6);
+    --spacing-md: calc(var(--spacing-unit) * 1.1);
+    --spacing-lg: calc(var(--spacing-unit) * 1.6);
+    --spacing-xl: calc(var(--spacing-unit) * 2.2);
+    --spacing-xxl: calc(var(--spacing-unit) * 2.8);
+  
+    /* Layout & Borders */
+    --container-max-width: 960px;
+    --left-col-width: 33%;
+    --right-col-width: 67%;
+    --header-sep-bold-width: 80px;
+    --header-sep-bold-height: 3px;
+    --header-sep-thin-height: 1px;
+    --logo-size: 45px;
+    --profile-img-size: 140px;
+    --border-radius: 6px;
+    --box-shadow-main: 0 6px 20px rgba(43, 108, 176, 0.1); /* Adjusted shadow color */
+  
+    /* Transitions */
+    --transition-duration: 0.25s;
+    --transition-timing: ease-in-out;
+  }
+  
+  /* ==========================================================================
+     2. Global Styles & Resets
+     ========================================================================== */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-size: var(--base-font-size);
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: var(--font-body);
+    background-color: var(--bg-page);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+    line-height: var(--line-height-base);
+    font-size: 0.9rem; /* Base size for body text */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-wrap: break-word;
+  }
+  
+  /* ==========================================================================
+     3. Base Typography
+     ========================================================================== */
+  h2,
+  h3,
+  h4 {
+    margin: 0 0 var(--spacing-sm) 0;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: var(--line-height-heading);
+    color: var(--accent-color); /* Default color for headings */
+  }
+  
+  p {
+    margin: 0 0 var(--spacing-md) 0;
+  }
+  
+  p:last-child {
+    margin-bottom: 0;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--spacing-md) 0;
+  }
+  
+  li {
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  li:last-child {
+    margin-bottom: 0;
+  }
+  
+  a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--transition-duration) var(--transition-timing),
+                text-decoration var(--transition-duration) var(--transition-timing);
+  }
+  
+  a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+  }
+  
+  a:focus-visible {
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  
+  strong {
+    font-weight: 600;
+  }
+  
+  blockquote {
+    margin: 0 0 var(--spacing-md) 0;
+    padding: 0;
+    border: none;
+  }
+  
+  /* ==========================================================================
+     4. Layout: Main Container & Columns
+     ========================================================================== */
+  .cv-container {
+    max-width: var(--container-max-width);
+    margin: var(--spacing-xl) auto;
+    box-shadow: var(--box-shadow-main);
+    overflow: hidden;
+    display: flex;
+    background-color: var(--bg-right-col);
+    border-radius: var(--border-radius);
+  }
+  
+  .left-column {
+    background-color: var(--bg-left-col);
+    color: var(--text-dark);
+    padding: var(--spacing-xl);
+    width: var(--left-col-width);
+    border-right: 1px solid var(--border-color);
+    position: relative; /* For absolute positioning of pseudo-elements */
+    overflow: hidden; /* Prevents pseudo-elements from spilling out */
+  }
+  
+  .right-column {
+    background-color: var(--bg-right-col);
+    color: var(--text-dark);
+    padding: var(--spacing-xl);
+    width: var(--right-col-width);
+    position: relative; /* For absolute positioning of pseudo-elements */
+    overflow: hidden; /* Prevents pseudo-elements from spilling out */
+  }
+  
+  /* ==========================================================================
+     5. Shared Components (Section Headers, Lists, Spacing)
+     ========================================================================== */
+  
+  /* Vertical Spacing Between Sections */
+  .left-column section + section,
+  .right-column section + section {
+    margin-top: var(--spacing-xl);
+  }
+  
+  /* Section Headers (h3) */
+  .left-column h3,
+  .right-column h3 {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+    position: relative; /* Context for pseudo-elements */
+    padding-bottom: var(--spacing-md);
+    text-align: left;
+    z-index: 2; /* Ensure text is above lines */
+  }
+  
+  .left-column h3 {
+    font-size: 0.95rem;
+  }
+  
+  .right-column h3 {
+    font-size: 1.05rem;
+  }
+  
+  /* Section Header Separator Lines */
+  .left-column h3::before, /* Thin line */
+  .right-column h3::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: var(--header-sep-thin-height);
+    background-color: var(--border-color);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 0;
+    border-radius: 0.5px;
+  }
+  
+  .left-column h3::after, /* Bold line */
+  .right-column h3::after {
+    content: '';
+    display: block;
+    width: var(--header-sep-bold-width);
+    height: var(--header-sep-bold-height);
+    background-color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    border-radius: 1.5px; /* Match height */
+  }
+  
+  /* Bullet List Style (Used in Summary, Skills, Personal) */
+  .bullet-list li {
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+    padding-left: var(--spacing-lg);
+    font-size: 0.85rem;
+    transition: color var(--transition-duration) var(--transition-timing);
+  }
+  
+  .bullet-list li::before {
+    content: '\2022'; /* Bullet character */
+    position: absolute;
+    left: var(--spacing-xs);
+    top: 0;
+    color: var(--accent-color);
+    font-size: 1.1em;
+    line-height: inherit;
+  }
+  
+  /* ==========================================================================
+     6. Left Column Specific Styles
+     ========================================================================== */
+  .profile-image {
+    border-radius: 50%;
+    width: var(--profile-img-size);
+    height: var(--profile-img-size);
+    object-fit: cover;
+    margin: 0 auto var(--spacing-xl) auto;
+    display: block;
+    border: 4px solid var(--bg-right-col);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* --- Contact Section --- */
+  #contact ul {
+    margin-top: calc(-1 * var(--spacing-sm)); /* Pull list up slightly */
+  }
+  
+  #contact li {
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center; /* Vertically align icon and text */
+    font-size: 0.85rem;
+  }
+  
+  #contact li i {
+    margin-right: var(--spacing-sm);
+    width: 20px; /* Consistent icon width */
+    text-align: center;
+    color: var(--accent-color);
+    flex-shrink: 0; /* Prevent icon shrinking */
+    font-size: 1.1em;
+  }
+  
+  #contact li a {
+    font-weight: 400; /* Normal weight for contact links */
+    word-break: break-all; /* Prevent long links from overflowing */
+  }
+  
+  /* --- Education & Volunteering Sections --- */
+  .education-item,
+  .volunteering-item {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .education-item:last-child,
+  .volunteering-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .education-item h4,
+  .volunteering-item h4 {
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-dark); /* Use dark text for subheads */
+  }
+  
+  .education-item p,
+  .volunteering-item p {
+    font-size: 0.8rem;
+    color: var(--text-medium);
+    line-height: 1.5;
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .volunteering-item p.quote {
+    font-style: italic;
+    margin-top: var(--spacing-sm);
+    color: var(--text-medium);
+    font-size: 0.8rem;
+    padding-left: var(--spacing-md);
+    border-left: 2px solid var(--border-color);
+  }
+  
+  /* ==========================================================================
+     7. Right Column Specific Styles
+     ========================================================================== */
+  
+  /* --- Header (Name & Title) --- */
+  .right-column header {
+    margin-bottom: var(--spacing-xl);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: var(--spacing-lg);
+  }
+  
+  .right-column h2 { /* Main Name */
+    font-size: 2.4rem;
+    font-weight: 900; /* Bolder */
+    margin-bottom: var(--spacing-xs);
+    letter-spacing: -0.02em;
+    color: var(--text-dark); /* Dark text for name */
+  }
+  
+  .right-column .title { /* Job Title */
+    font-size: 1rem;
+    font-weight: 700; /* Bold */
+    color: var(--text-medium);
+    margin-bottom: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  
+  /* --- About Section --- */
+  .about-section p {
+    font-size: 0.95rem;
+    line-height: var(--line-height-base);
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  /* --- Experience Section --- */
+  .experience-entry {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+  }
+  
+  .experience-entry:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  
+  /* Special case for the entry containing only the LinkedIn link */
+  #experience .experience-entry:has(.previous-experience-link) {
+    border-bottom: none !important; /* Override default border */
+    padding-bottom: 0;
+    margin-bottom: 0;
+    margin-top: calc(-1 * var(--spacing-sm)); /* Pull up slightly */
+  }
+  
+  .logo-placeholder {
+    flex-shrink: 0;
+    width: var(--logo-size);
+    height: var(--logo-size);
+    border-radius: var(--border-radius);
+    display: inline-flex; /* Use flex for centering */
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: var(--placeholder-bg);
+    border: 1px solid var(--border-color);
+  }
+  
+  .logo-placeholder img {
+    width: 75%;
+    height: 75%;
+    object-fit: contain;
+  }
+  
+  .experience-details {
+    flex-grow: 1; /* Allow details to take remaining space */
+  }
+  
+  .experience-entry h4 { /* Job Title in Experience */
+    font-size: 1rem;
+    font-weight: 700; /* Bold */
+    margin-top: 0;
+    margin-bottom: 2px;
+    color: var(--text-dark);
+  }
+  
+  .experience-entry .company-location {
+    color: var(--text-medium);
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.9rem;
+    font-weight: 600; /* Semi-bold */
+  }
+  
+  .experience-entry .dates {
+    color: var(--text-light);
+    font-size: 0.8rem;
+    margin-bottom: var(--spacing-md);
+    font-weight: 600; /* Semi-bold */
+  }
+  
+  .experience-entry p,
+  .experience-entry ul {
+    font-size: 0.9rem;
+    line-height: var(--line-height-base);
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .experience-entry p:last-of-type {
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .experience-entry ul {
+    margin-top: 0;
+    padding-left: 0; /* Reset default padding */
+  }
+  
+  .experience-entry ul li {
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+    padding-left: var(--spacing-lg);
+    font-size: 0.9rem;
+  }
+  
+  .experience-entry ul li::before {
+    content: '\2022';
+    position: absolute;
+    left: var(--spacing-xs);
+    top: 0.05em; /* Fine-tune vertical alignment */
+    color: var(--accent-color);
+    font-size: 1.1em;
+    line-height: inherit;
+  }
+  
+  .experience-entry ul li strong {
+    font-weight: 600;
+  }
+  
+  .previous-experience-link {
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    margin-top: var(--spacing-md);
+    font-style: italic;
+  }
+  
+  .previous-experience-link i,
+  .linkedin-recommendations-link i { /* Shared style for external link icons */
+    font-size: 0.8em;
+    margin-left: 4px;
+    opacity: 0.7;
+  }
+  
+  /* --- Recommendations Section --- */
+  .linkedin-recommendations-link {
+    margin-top: calc(-1 * var(--spacing-sm)); /* Pull up */
+    margin-bottom: var(--spacing-lg);
+    font-size: 0.85rem;
+  }
+  
+  .linkedin-recommendations-link a {
+    color: var(--text-medium);
+    font-weight: 600;
+  }
+  
+  .linkedin-recommendations-link a:hover {
+    color: var(--accent-color);
+  }
+  
+  .recommendation-item {
+    padding-bottom: var(--spacing-xl); /* Use padding for separation */
+    margin-bottom: 0; /* Remove margin as padding handles space */
+    border-bottom: none; /* Ensure no border */
+  }
+  
+  .recommendation-item:last-child {
+    padding-bottom: 0; /* No padding after the last item */
+  }
+  
+  .recommendation-item blockquote {
+    font-style: normal; /* Override default blockquote italic */
+    color: var(--text-dark);
+    line-height: var(--line-height-base);
+    font-size: 0.9rem;
+    margin: 0 0 var(--spacing-sm) 0;
+    position: relative; /* Context for pseudo-element */
+    background-color: var(--recommendation-bg);
+    border-left: 3px solid var(--accent-color-light);
+    padding: var(--spacing-md) var(--spacing-sm) var(--spacing-md) calc(var(--spacing-lg) + 20px); /* Space for icon */
+    border-radius: var(--border-radius);
+  }
+  
+  .recommendation-item blockquote::before { /* Font Awesome quote icon */
+    content: '\f10d'; /* fa-quote-left */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900; /* Solid style */
+    position: absolute;
+    left: var(--spacing-sm);
+    top: var(--spacing-sm);
+    font-size: 1.5em;
+    color: var(--quote-icon-color);
+    opacity: 0.8;
+    line-height: 1;
+  }
+  
+  .recommendation-item blockquote p {
+    margin-bottom: var(--spacing-sm);
+    font-size: inherit; /* Inherit size from blockquote */
+  }
+  
+  .recommendation-item blockquote p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .recommendation-item .ref-author {
+    text-align: left;
+    font-size: 0.9rem;
+    font-weight: 700; /* Bold */
+    color: var(--text-dark);
+    margin-top: var(--spacing-sm);
+    margin-bottom: 0; /* Adjusted */
+    padding-left: 0;
+    position: relative;
+  }
+  
+  .recommendation-item .ref-author::before { /* Em dash */
+    content: '— ';
+    display: inline;
+    margin-right: 0.2em;
+  }
+  
+  .recommendation-item .ref-title {
+    text-align: left;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin-top: 0; /* Adjusted */
+    padding-left: 1.1em; /* Indent to align with name after dash */
+  }
+  
+  /* ==========================================================================
+     8. Responsive Styles (Mobile First Approach - max-width)
+     ========================================================================== */
+  @media (max-width: 768px) {
+    body {
+      font-size: 0.95rem; /* Slightly larger base font on mobile */
+      -webkit-text-size-adjust: 100%; /* Prevent iOS font scaling */
+    }
+  
+    .cv-container {
+      flex-direction: column; /* Stack columns */
+      margin: 0; /* Remove auto margins */
+      max-width: 100%; /* Full width */
+      box-shadow: none; /* Remove shadow */
+      border-radius: 0; /* Remove rounding */
+    }
+  
+    .left-column,
+    .right-column {
+      width: 100% !important; /* Override inline/variable width */
+      padding: var(--spacing-lg); /* Consistent padding */
+      border-right: none; /* Remove side border */
+      overflow: visible; /* Allow content overflow if needed */
+    }
+  
+    .left-column {
+      border-bottom: 1px solid var(--border-color); /* Add border between stacked columns */
+      padding-bottom: var(--spacing-xl); /* Extra space before right column */
+    }
+  
+    .right-column {
+      padding-top: var(--spacing-xl); /* Space after left column */
+    }
+  
+    .profile-image {
+      width: calc(var(--profile-img-size) * 0.8); /* Smaller image */
+      height: calc(var(--profile-img-size) * 0.8);
+      margin-bottom: var(--spacing-lg); /* Adjust spacing */
+    }
+  
+    /* --- Right Column Header Adjustments --- */
+    .right-column header {
+      padding-bottom: var(--spacing-md);
+      margin-bottom: var(--spacing-lg);
+    }
+  
+    .right-column h2 {
+      font-size: 2rem; /* Slightly smaller name */
+    }
+  
+    .right-column .title {
+      font-size: 1rem; /* Keep title size */
+    }
+  
+    /* --- Section Header Adjustments --- */
+    .left-column h3 {
+      font-size: 0.9rem;
+    }
+  
+    .right-column h3 {
+      font-size: 1rem;
+    }
+  
+    /* Keep header separator lines consistent */
+    .left-column h3::before,
+    .right-column h3::before {
+      width: 100%;
+    }
+    .left-column h3::after,
+    .right-column h3::after {
+      width: var(--header-sep-bold-width);
+    }
+  
+    /* --- Experience Entry Layout --- */
+    .experience-entry {
+      flex-direction: column; /* Stack logo and details */
+      align-items: flex-start; /* Align items to the start */
+      gap: var(--spacing-md); /* Adjust gap */
+    }
+  
+    .logo-placeholder {
+      /* Keep size, add margin */
+      margin-bottom: var(--spacing-sm);
+    }
+  
+    /* --- Font Size Adjustments for Readability --- */
+    .about-section p,
+    .experience-entry p,
+    .experience-entry ul li,
+    .recommendation-item blockquote {
+      font-size: 0.9rem;
+    }
+  
+    .bullet-list li,
+    #contact li {
+      font-size: 0.85rem;
+    }
+  
+    .experience-entry h4 {
+      font-size: 0.95rem;
+    }
+  
+    .experience-entry .company-location {
+      font-size: 0.85rem;
+    }
+  
+    .recommendation-item .ref-author {
+      font-size: 0.85rem;
+      margin-bottom: 0; /* Ensure no bottom margin */
+    }
+  
+    .recommendation-item .ref-title {
+      font-size: 0.75rem; /* Consistent size */
+    }
+  
+    .education-item h4,
+    .volunteering-item h4 {
+      font-size: 0.9rem; /* Consistent size */
+    }
+  
+    .education-item p,
+    .volunteering-item p {
+      font-size: 0.8rem; /* Consistent size */
+    }
+  
+    /* --- Responsive Recommendation Adjustments --- */
+    .recommendation-item blockquote {
+      padding-left: calc(var(--spacing-md) + 15px); /* Adjust padding for smaller icon space */
+    }
+  
+    .recommendation-item blockquote::before {
+      font-size: 1.2em; /* Slightly smaller icon */
+      left: var(--spacing-xs);
+      top: var(--spacing-xs);
+    }
+  
+    .recommendation-item .ref-title {
+      padding-left: 1em; /* Adjust indent */
+    }
+  }
+  
+  /* ==========================================================================
+     9. Print Styles
+     ========================================================================== */
+  @media print {
+    @page {
+      size: A4;
+      margin: 15mm; /* Standard A4 print margin */
+    }
+  
+    /* --- General Print Resets & Color Adjust --- */
+    body,
+    .cv-container,
+    .left-column,
+    .right-column {
+      -webkit-print-color-adjust: exact !important; /* Force background colors/images printing in WebKit */
+      print-color-adjust: exact !important; /* Standard property */
+    }
+  
+    body {
+      background-color: var(--bg-page) !important; /* Keep screen bg */
+      color: var(--text-dark) !important; /* Keep screen text color */
+      font-size: 9pt !important; /* Base print font size */
+      margin: 0 !important;
+      padding: 0 !important;
+      line-height: 1.35 !important; /* Tighter line height for print */
+      font-family: var(--font-body) !important; /* Ensure body font */
+    }
+  
+    .cv-container {
+      max-width: 100% !important;
+      width: 100% !important;
+      margin: 0 !important;
+      box-shadow: none !important;
+      display: flex !important;
+      flex-direction: row !important; /* Ensure side-by-side layout */
+      border: none !important;
+      overflow: visible !important; /* Show all content */
+      border-radius: 0 !important;
+      background-color: var(--bg-right-col) !important; /* Keep screen bg */
+    }
+  
+    .left-column,
+    .right-column {
+      padding: 0 !important; /* Reset padding, will be added specifically */
+      border: none !important;
+      box-sizing: border-box !important;
+      overflow: visible !important;
+      position: static !important; /* Reset positioning */
+      color: var(--text-dark) !important; /* Ensure text color */
+      page-break-inside: avoid !important; /* Try to keep columns on the same page */
+    }
+  
+    .left-column {
+      width: var(--left-col-width) !important;
+      padding: 6mm !important; /* Add print padding */
+      background-color: var(--bg-left-col) !important; /* Keep screen bg */
+      border-right: 0.5pt solid var(--border-color) !important; /* Thinner border for print */
+    }
+  
+    .right-column {
+      width: var(--right-col-width) !important;
+      padding: 6mm !important; /* Add print padding */
+      background-color: var(--bg-right-col) !important; /* Keep screen bg */
+    }
+  
+    /* --- Hide/Adjust Specific Elements --- */
+    .logo-placeholder {
+      display: none !important; /* Hide company logos */
+    }
+  
+    .previous-experience-link i,
+    .linkedin-recommendations-link i {
+      display: none !important; /* Hide external link icons */
+    }
+  
+    .profile-image {
+      width: 28mm !important;
+      height: 28mm !important;
+      margin: 0 auto 5mm auto !important;
+      display: block !important;
+      border: none !important;
+      box-shadow: none !important;
+      border-radius: 50% !important;
+    }
+  
+    /* --- Typography Adjustments --- */
+    a {
+      color: var(--link-color) !important; /* Keep screen link color */
+      text-decoration: none !important;
+      font-weight: normal !important; /* Lighter links for print */
+      word-break: break-word !important; /* Ensure links break */
+    }
+  
+    h2 { /* Name */
+      font-size: 18pt !important;
+      margin-bottom: 1mm !important;
+      font-weight: 600 !important; /* Slightly less heavy */
+      color: var(--text-dark) !important;
+    }
+  
+    .title { /* Job Title */
+      font-size: 10pt !important;
+      color: var(--text-medium) !important;
+      margin-bottom: 4mm !important;
+      font-weight: normal !important; /* Lighter weight */
+    }
+  
+    h3 { /* Section Headers */
+      font-size: 11pt !important;
+      margin-bottom: 2.5mm !important;
+      padding-bottom: 1.5mm !important;
+      font-weight: 600 !important; /* Slightly less heavy */
+      position: relative !important;
+      color: var(--accent-color) !important;
+      page-break-after: avoid !important; /* Keep content with header */
+      page-break-inside: avoid !important;
+    }
+  
+    h3::before { /* Thin Separator */
+      content: '' !important; display: block !important; position: absolute !important;
+      left: 0 !important; bottom: 0 !important; width: 100% !important;
+      height: 0.5pt !important;
+      background-color: var(--border-color) !important;
+      z-index: 0 !important;
+    }
+  
+    h3::after { /* Bold Separator */
+      content: '' !important; display: block !important; position: absolute !important;
+      left: 0 !important; bottom: 0 !important;
+      width: 30mm !important; /* Shorter bold line */
+      height: 1.5pt !important;
+      background-color: var(--accent-color) !important;
+      z-index: 1 !important;
+    }
+  
+    h4 { /* Sub-headers */
+      font-size: 9.5pt !important;
+      margin-bottom: 0.5mm !important;
+      font-weight: 600 !important;
+      color: var(--text-dark) !important; /* Ensure dark text */
+      page-break-after: avoid !important; /* Keep content with header */
+      page-break-inside: avoid !important;
+    }
+    /* Ensure Experience H4s remain dark */
+    .experience-entry h4 {
+      color: var(--text-dark) !important;
+    }
+  
+    p, ul, li, blockquote {
+      font-size: 8.5pt !important;
+      line-height: 1.35 !important;
+      color: var(--text-dark) !important;
+      page-break-inside: avoid !important; /* Avoid breaking basic elements */
+    }
+  
+    /* Smaller text for less critical info */
+    .bullet-list li,
+    #contact li {
+      font-size: 8pt !important;
+    }
+  
+    .company-location {
+      font-size: 8.5pt !important;
+      font-weight: 500 !important; /* Medium weight */
+      color: var(--text-medium) !important;
+    }
+  
+    .dates,
+    .ref-title,
+    .education-item p,
+    .volunteering-item p,
+    .volunteering-item p.quote {
+      font-size: 7.5pt !important;
+      color: var(--text-light) !important;
+    }
+    .linkedin-recommendations-link,
+    .previous-experience-link {
+      font-size: 8pt !important;
+      color: var(--text-medium) !important;
+      margin-bottom: 3mm !important;
+    }
+  
+    /* --- Specific Component Adjustments --- */
+    #contact li i {
+      width: 12px !important; /* Smaller icon width */
+      margin-right: 2mm !important;
+      color: var(--accent-color) !important;
+      font-size: 1em !important;
+      vertical-align: middle; /* Align icon better */
+    }
+    #contact ul {
+      margin-top: 3mm !important; /* Add space above contact list */
+    }
+    #contact li {
+      margin-bottom: 4mm !important; /* More space between contact items */
+      page-break-inside: avoid !important;
+    }
+  
+    .bullet-list {
+      padding-left: 4mm !important; /* Indent bullet list */
+      margin-bottom: 1.5mm !important;
+    }
+    .bullet-list li::before {
+      left: 0 !important; /* Align bullet left within padding */
+      color: var(--accent-color) !important;
+    }
+  
+    .volunteering-item p.quote {
+      border-left-color: var(--border-color) !important; /* Keep border color */
+      padding-left: 3mm !important;
+      margin-top: 1mm !important;
+    }
+  
+    .right-column header { /* Header under Name/Title */
+      border-bottom: 0.5pt solid var(--border-color) !important;
+      margin-bottom: 4mm !important;
+      padding-bottom: 3mm !important;
+      page-break-after: avoid !important; /* Don't break right after header */
+      page-break-inside: avoid !important;
+    }
+  
+    .experience-entry {
+      padding-bottom: 3mm !important;
+      margin-bottom: 3mm !important;
+      border-bottom: 0.5pt solid var(--border-color) !important; /* Keep border */
+      page-break-inside: avoid !important;
+    }
+    /* Ensure last items don't have bottom border/margin */
+    .experience-entry:last-child,
+    .recommendation-item:last-child {
+      border-bottom: none !important;
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+    /* Explicitly remove border from the entry containing only the linkedin link */
+    #experience .experience-entry:has(.previous-experience-link) {
+      border-bottom: none !important;
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+      margin-top: 0 !important;
+    }
+  
+    .recommendation-item {
+      padding-bottom: 5mm !important; /* Increased spacing */
+      margin-bottom: 0 !important;
+      border-bottom: none !important;
+      page-break-inside: avoid !important;
+    }
+    .recommendation-item blockquote {
+      font-size: 8.5pt !important;
+      padding: 1.5mm 1.5mm 1.5mm 5mm !important; /* Adjusted padding */
+      border-left: 1.5pt solid var(--accent-color) !important; /* Keep accent border */
+      background-color: var(--recommendation-bg) !important; /* Keep bg */
+      border-radius: 3px !important;
+      color: var(--text-dark) !important;
+      margin-bottom: 1.5mm !important; /* Reduced margin */
+      page-break-inside: avoid !important;
+    }
+    .recommendation-item blockquote::before { /* Quote icon */
+      content: '\f10d' !important; font-family: 'Font Awesome 6 Free' !important;
+      font-weight: 900 !important; position: absolute !important;
+      left: 1mm !important; top: 1mm !important; font-size: 1.2em !important;
+      color: var(--quote-icon-color) !important; opacity: 0.7 !important; line-height: 1 !important;
+    }
+    .ref-author {
+      font-size: 9pt !important;
+      font-weight: 600 !important; /* Slightly less bold */
+      color: var(--text-dark) !important;
+      margin-top: 2mm !important;
+      margin-bottom: 0 !important;
+      padding-left: 0 !important;
+    }
+    .ref-author::before {
+      content: '— ' !important; /* Ensure dash */
+    }
+    .ref-title {
+      font-size: 7.5pt !important;
+      padding-left: 3mm !important; /* Adjust indent */
+      margin-top: 0 !important;
+    }
+  
+    /* --- Spacing & Page Break Control --- */
+    ul { margin-left: 0 !important; }
+    li { margin-bottom: 1mm !important; }
+  
+    .left-column section + section,
+    .right-column section + section {
+      margin-top: 5mm !important;
+    }
+  
+    /* General Avoidance Rules */
+    section,
+    .education-item,
+    .volunteering-item {
+      page-break-inside: avoid !important;
+    }
+  
+    /* Specific Page Break Rules */
+    #skills {
+      page-break-before: always !important; /* Start Skills on new page */
+      padding-top: 5mm !important; /* Add margin if on page 2+ */
+    }
+  
+    #experience {
+      page-break-before: always !important; /* Start Experience on new page */
+    }
+  
+    /* Start subsequent *main* roles on new page, but not the final link entry */
+    #experience .experience-entry + .experience-entry:not(:has(.previous-experience-link)) {
+      page-break-before: always !important;
+    }
+  
+    /* Ensure the link-only entry doesn't force a break before itself */
+     #experience .experience-entry:has(.previous-experience-link) {
+      page-break-before: auto !important;
+    }
+  
+    #recommendations {
+      page-break-before: always !important; /* Start Recommendations on new page */
+    }
+  }
