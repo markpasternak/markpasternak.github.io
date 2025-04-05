@@ -1013,11 +1013,11 @@ body, .cv-navbar, .cv-container, .cv-container__left-column, .cv-container__righ
     }
   
     .experience-entry h4 {
-      font-size: 0.95rem;
+      font-size: 1.3rem;
     }
   
     .experience-entry .company-location {
-      font-size: 0.85rem;
+      font-size: 1rem;
     }
   
     .recommendation-item .ref-author {
