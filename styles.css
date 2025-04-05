@@ -752,7 +752,7 @@ body, .cv-navbar, .cv-container, .cv-container__left-column, .cv-container__righ
   }
   
   .experience-entry h4 { /* Job Title in Experience */
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 700; /* Bold */
     margin-top: 0;
     margin-bottom: 2px;
@@ -762,8 +762,8 @@ body, .cv-navbar, .cv-container, .cv-container__left-column, .cv-container__righ
   .experience-entry .company-location {
     color: var(--text-medium);
     margin-bottom: var(--spacing-xs);
-    font-size: 0.9rem;
-    font-weight: 600; /* Semi-bold */
+    font-size: 0.95rem;
+    font-weight: 500; /* Medium */
   }
   
   .experience-entry .dates {
