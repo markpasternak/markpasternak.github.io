@@ -357,8 +357,8 @@ body, .cv-navbar, .cv-container, .cv-container__left-column, .cv-container__righ
     --quote-icon-color: var(--border-color);
   
     /* Typography */
-    --font-heading: 'Playfair Display', serif;
-    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Lora', serif;
     --base-font-size: 16px;
     --line-height-base: 1.6;
     --line-height-heading: 1.3;
