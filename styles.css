@@ -229,14 +229,14 @@ button:hover, #theme-toggle:hover {
    Animations on Scroll
    ========================================================================== */
 .fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
 
 .fade-in.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 html {
   scroll-behavior: smooth;
@@ -357,8 +357,8 @@ body, .cv-navbar, .cv-container, .cv-container__left-column, .cv-container__righ
     --quote-icon-color: var(--border-color);
   
     /* Typography */
-    --font-heading: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    --font-body: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
     --base-font-size: 16px;
     --line-height-base: 1.6;
     --line-height-heading: 1.3;
@@ -970,11 +970,11 @@ body, .cv-navbar, .cv-container, .cv-container__left-column, .cv-container__righ
   
     /* --- Section Header Adjustments --- */
     .left-column h3 {
-      font-size: 0.9rem;
+      font-size: 1.2rem;
     }
   
     .right-column h3 {
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
   
     /* Keep header separator lines consistent */
@@ -1031,7 +1031,7 @@ body, .cv-navbar, .cv-container, .cv-container__left-column, .cv-container__righ
   
     .education-item h4,
     .volunteering-item h4 {
-      font-size: 0.9rem; /* Consistent size */
+      font-size: 1rem; /* Slightly larger */
     }
   
     .education-item p,
