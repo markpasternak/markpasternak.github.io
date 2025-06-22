@@ -114,7 +114,7 @@ textarea:focus {
 }
 
 .profile-image:hover {
-  transform: scale(1.05);
+  transform: scale(1.35); /* Slightly larger than the base LinkedIn zoom */
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
@@ -595,16 +595,19 @@ body, .cv-navbar, .cv-container, .cv-container__left-column, .cv-container__righ
   /* ==========================================================================
      6. Left Column Specific Styles
      ========================================================================== */
-  .profile-image {
-    border-radius: 50%;
-    width: var(--profile-img-size);
-    height: var(--profile-img-size);
-    object-fit: cover;
-    margin: 0 auto var(--spacing-xl) auto;
-    display: block;
-    border: 4px solid var(--bg-right-col);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
+.profile-image {
+  border-radius: 50%;
+  width: var(--profile-img-size);
+  height: var(--profile-img-size);
+  object-fit: cover;
+  object-position: center 25%; /* Focus on upper portion like LinkedIn */
+  transform: scale(1.3); /* Zoom in like LinkedIn */
+  transform-origin: center;
+  margin: 0 auto var(--spacing-xl) auto;
+  display: block;
+  border: 4px solid var(--bg-right-col);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
   
   /* --- Contact Section --- */
   #contact ul {
