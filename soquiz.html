@@ -1,0 +1,1283 @@
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sveriges Geografi - Interaktiv Studieguide</title>
+    <style>
+        /* --- Base & Typography --- */
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --text-color-muted: #94a3b8;
+            --border-color: #334155;
+            --card-bg: #1e293b;
+            --card-bg-expanded: #334155;
+            --accent-color: #22d3ee;
+            --accent-color-hover: #67e8f9;
+            --chip-bg: #374151;
+            --chip-text: #e5e7eb;
+            --scrollbar-bg: #1e293b;
+            --scrollbar-thumb: #475569;
+            --shadow-color: rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.1), transparent 30%),
+                radial-gradient(circle at 85% 75%, rgba(34, 211, 238, 0.1), transparent 40%);
+        }
+
+        /* --- Main Layout --- */
+        .container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* --- Sidebar --- */
+        .sidebar {
+            position: sticky;
+            top: 2rem;
+            align-self: start;
+            max-height: calc(100vh - 4rem);
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+
+        .sidebar h2 {
+            font-size: 1.25rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+        }
+
+        .sidebar nav a {
+            display: block;
+            text-decoration: none;
+            color: var(--text-color-muted);
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 0.25rem;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .sidebar nav a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 0;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+            transition: height 0.2s ease;
+        }
+
+        .sidebar nav a:hover {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        .sidebar nav a.active {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .sidebar nav a.active::before {
+            height: 100%;
+        }
+
+        /* --- Main Content --- */
+        .main-content {
+            min-width: 0;
+            /* Prevents overflow issues with grid */
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+            color: #f8fafc;
+        }
+
+        .page-header p {
+            font-size: 1.125rem;
+            color: var(--text-color-muted);
+            max-width: 70ch;
+            margin-bottom: 2rem;
+        }
+
+        /* --- Filter & Toolbar --- */
+        .controls-header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 10;
+            padding: 1.5rem 0;
+        }
+
+        .search-bar {
+            margin-bottom: 1rem;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.3);
+        }
+
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .filter-tags button {
+            background-color: var(--card-bg);
+            color: var(--text-color-muted);
+            border: 1px solid var(--border-color);
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+
+        .filter-tags button:hover {
+            background-color: var(--border-color);
+            color: var(--text-color);
+        }
+
+        .filter-tags button.active {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border-color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .toolbar button {
+            background-color: transparent;
+            color: var(--text-color-muted);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toolbar button:hover {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border-color: var(--accent-color-hover);
+        }
+
+        .toolbar button svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* --- Content Sections --- */
+        .content-section {
+            margin-top: 3rem;
+        }
+
+        .content-section.hidden {
+            display: none;
+        }
+
+        .section-header {
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-header h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-header h2 .icon-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+        }
+
+        .section-header p {
+            font-size: 1rem;
+            color: var(--text-color-muted);
+        }
+
+        /* --- Q&A Cards --- */
+        .qa-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .qa-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .qa-card.hidden {
+            display: none;
+        }
+
+        .qa-card.expanded {
+            background-color: var(--card-bg-expanded);
+            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 4px 10px var(--shadow-color);
+        }
+
+        .qa-card:not(.expanded) {
+            border-left: 4px solid transparent;
+        }
+
+        .qa-question {
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .qa-question:hover {
+            color: var(--accent-color-hover);
+        }
+
+        .qa-question .arrow {
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 1rem;
+            color: var(--text-color-muted);
+        }
+
+        .qa-card.expanded .arrow {
+            transform: rotate(90deg);
+        }
+
+        .qa-answer-wrapper {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .qa-card.expanded .qa-answer-wrapper {
+            max-height: 500px;
+            /* Adjust if needed */
+        }
+
+        .qa-answer {
+            padding: 0 1.25rem 1.25rem 1.25rem;
+            color: var(--text-color-muted);
+            border-top: 1px solid var(--border-color);
+            margin-top: 0.5rem;
+            padding-top: 1rem;
+        }
+
+        .qa-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .qa-chip {
+            background-color: var(--chip-bg);
+            color: var(--chip-text);
+            padding: 0.25rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+
+        /* --- Scrollbar --- */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--scrollbar-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--scrollbar-thumb);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* --- Mobile Menu Toggle --- */
+        .mobile-menu-toggle {
+            display: none;
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 56px;
+            height: 56px;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(34, 211, 238, 0.4);
+            z-index: 100;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-toggle:hover {
+            background-color: var(--accent-color-hover);
+            transform: scale(1.1);
+        }
+
+        .mobile-menu-toggle:active {
+            transform: scale(0.95);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 920px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+                gap: 0;
+            }
+
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 280px;
+                height: 100vh;
+                background-color: var(--bg-color);
+                border-right: 1px solid var(--border-color);
+                z-index: 200;
+                transition: left 0.3s ease;
+                padding: 2rem 1rem;
+                overflow-y: auto;
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+            }
+
+            .sidebar.open {
+                left: 0;
+            }
+
+            .sidebar-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 150;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .sidebar-overlay.active {
+                display: block;
+                opacity: 1;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .page-header {
+                margin-top: 0;
+            }
+
+            .page-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+            }
+
+            .controls-header {
+                padding: 1rem 0 1.5rem 0;
+                margin-bottom: 1rem;
+            }
+
+            .filter-tags {
+                margin-bottom: 0.75rem;
+            }
+
+            .content-section {
+                margin-top: 2rem;
+            }
+
+            .qa-question {
+                padding: 0.875rem 1rem;
+                font-size: 0.95rem;
+            }
+
+            .qa-answer {
+                padding: 0 1rem 1rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.75rem;
+            }
+
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .filter-tags button {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.7rem;
+            }
+
+            .toolbar button {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Öppna meny">
+        ☰
+    </button>
+
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <h2>Innehållsförteckning</h2>
+            <nav id="table-of-contents"></nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="page-header">
+                <h1>Studieguide: Sveriges Geografi</h1>
+                <p>En interaktiv guide för årskurs 7-8. Använd sök, filter och de interaktiva korten för att testa dina
+                    kunskaper om Sveriges geografi, klimat, befolkning och naturresurser.</p>
+            </header>
+
+            <div class="controls-header">
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Sök bland frågor, svar och begrepp...">
+                </div>
+
+                <div class="filter-tags" id="filter-tags-container">
+                    <!-- Filter buttons will be inserted here by JS -->
+                </div>
+
+                <div class="toolbar">
+                    <button id="expand-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <polyline points="9 21 3 21 3 15"></polyline>
+                            <line x1="21" y1="3" x2="14" y2="10"></line>
+                            <line x1="3" y1="21" x2="10" y2="14"></line>
+                        </svg>
+                        Expandera alla
+                    </button>
+                    <button id="collapse-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="4 14 10 14 10 20"></polyline>
+                            <polyline points="20 10 14 10 14 4"></polyline>
+                            <line x1="14" y1="10" x2="21" y2="3"></line>
+                            <line x1="3" y1="21" x2="10" y2="14"></line>
+                        </svg>
+                        Minimera alla
+                    </button>
+                    <button id="shuffle-questions">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 3 21 3 21 8"></polyline>
+                            <line x1="4" y1="20" x2="21" y2="3"></line>
+                            <polyline points="21 16 21 21 16 21"></polyline>
+                            <line x1="15" y1="15" x2="21" y2="21"></line>
+                            <line x1="4" y1="4" x2="9" y2="9"></line>
+                        </svg>
+                        Blanda frågor
+                    </button>
+                    <button id="reset-order">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 2v6h6"></path>
+                            <path d="M21 12A9 9 0 0 0 6 5.3L3 8"></path>
+                            <path d="M21 22v-6h-6"></path>
+                            <path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"></path>
+                        </svg>
+                        Återställ
+                    </button>
+                </div>
+            </div>
+
+            <div id="qa-content-container">
+                <!-- Content will be inserted here by JS -->
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // --- Data Structure ---
+        // This array holds all the content for the study guide.
+        const studyData = [
+            {
+                id: "sveriges-geografi",
+                title: "Sveriges Geografiska Läge och Natur",
+                meta: "Grundläggande fakta om Sveriges yta, gränser, landskap och naturtyper.",
+                key: ["Skandinaviska halvön", "Landsdelar", "Kust", "Skärgård", "Fjällkedjan"],
+                qa: [
+                    { q: "Var i världen ligger Sverige?", a: "Sverige ligger i norra Europa på den Skandinaviska halvön. Landet gränsar till Norge i väst, Finland i nordost och har en lång kust mot Östersjön och Bottniska viken i öst samt Skagerrak och Kattegatt i sydväst. Dess geografiska läge ger ett varierat klimat, från tempererat i söder till subarktiskt i norr.", chips: ["instuderingsfrågor", "geografi"] },
+                    { q: "Vilka är Sveriges tre landsdelar?", a: "Sverige är indelat i tre huvudsakliga landsdelar: Götaland i söder, Svealand i mitten och Norrland i norr. Götaland är den mest tätbefolkade delen med stora jordbruksområden. Svealand inkluderar huvudstaden Stockholm och har en blandning av städer och natur. Norrland är den största men mest glesbefolkade delen, känd för sina stora skogar, älvar och fjäll.", chips: ["begrepp", "geografi"] },
+                    { q: "Vad kännetecknar den svenska kusten?", a: "Sveriges kust är över 3 200 km lång och mycket varierad. Ostkusten, mot Östersjön, har tusentals öar som bildar berömda skärgårdar, som Stockholms och Bohusläns. Västkusten är klippigare och har djupare fjordar. Kusten har historiskt varit viktig för fiske, sjöfart och handel.", chips: ["instuderingsfrågor", "natur"] },
+                    { q: "Vad är Skanderna och var finns den?", a: "Skanderna, även känd som den Skandinaviska fjällkedjan, är en bergskedja som sträcker sig längs gränsen mellan Sverige och Norge. Sveriges högsta punkt, Kebnekaise (cirka 2 097 m ö.h.), ligger i denna kedja. Fjällkedjan är viktig för turism, vattenkraft och den samiska renskötseln.", chips: ["begrepp", "geografi"] },
+                    { q: "Nämn Sveriges fyra största sjöar.", a: "Sveriges fyra största sjöar är Vänern, Vättern, Mälaren och Hjälmaren. Vänern är den största sjön i EU och den tredje största i Europa. Dessa sjöar är viktiga för dricksvattenförsörjning, rekreation, fiske och inlandssjöfart.", chips: ["instuderingsfrågor", "natur"] },
+                    { q: "Vad betyder begreppet 'Allemansrätten'?", a: "Allemansrätten är en unik rättighet i Sverige som ger alla människor tillgång till naturen, även privatägd mark, så länge man inte stör eller förstör. Det innebär att man får tälta, plocka bär och svamp, och vandra nästan överallt. Rättigheten kommer med skyldigheter, som att visa hänsyn mot natur, djurliv och markägare.", chips: ["begrepp", "samhälle"] },
+                    { q: "Vilka länder gränsar Sverige till?", a: "Sverige har landgräns mot Norge i väster och Finland i nordost. Dessutom har Sverige en maritim gräns mot Danmark via Öresundsbron och färjeförbindelser. Det finns även maritima gränser mot Tyskland, Polen, Ryssland, Litauen, Lettland och Estland via Östersjön.", chips: ["instuderingsfrågor", "geografi"] },
+                    { q: "Vad är en skärgård?", a: "En skärgård är ett landskapsområde som består av en samling öar, holmar och skär. Sveriges mest kända skärgårdar är Stockholms skärgård vid ostkusten och Bohusläns skärgård på västkusten. Skärgårdarna är populära för båtliv, fiske och sommarboende.", chips: ["begrepp", "natur"] },
+                    { q: "Vilken är Sveriges längsta älv?", a: "Sveriges längsta älv är antingen Torne älv, om man räknar hela dess längd inklusive biflöden, eller Klarälven-Göta älv om man räknar sammanhängande vattendrag. Älvarna i norra Sverige är extremt viktiga för produktionen av vattenkraft, som är en av landets främsta energikällor.", chips: ["instuderingsfrågor", "geografi"] },
+                    { q: "Hur stor är Sveriges totala yta?", a: "Sveriges totala yta är cirka 450 295 kvadratkilometer, vilket gör det till det femte största landet i Europa. Ungefär 9% av ytan består av sjöar och vattendrag. Stora delar av landet, särskilt i Norrland, är täckta av skog.", chips: ["fakta", "geografi"] },
+                    { q: "Vad är unikt med ön Gotland?", a: "Gotland är Sveriges största ö och ligger i Östersjön. Ön är känd för sitt milda klimat, sin unika natur med kalkstensformationer kallade 'raukar', och sin rika historia från medeltiden. Visby, den största staden, är ett UNESCO världsarv med sin välbevarade ringmur.", chips: ["instuderingsfrågor", "geografi"] },
+                    { q: "Vad är ett landskap i Sverige?", a: "Sverige är indelat i 25 landskap. Dessa är historiska indelningar och har ingen politisk eller administrativ funktion idag, men de har stor kulturell och geografisk betydelse. Många svenskar identifierar sig starkt med sitt landskap, som till exempel Skåne, Dalarna eller Lappland.", chips: ["begrepp", "samhälle"] },
+                    { q: "Vilken typ av skog dominerar i Sverige?", a: "Sverige är ett av världens skogrikaste länder. Den dominerande skogstypen är barrskog, främst bestående av tall och gran, vilket utgör grunden för den svenska skogsindustrin. I södra Sverige finns även mer lövskog, med träd som ek, bok och björk.", chips: ["natur", "näringsliv"] },
+                    { q: "Vad är skillnaden mellan en tätort och glesbygd?", a: "En tätort definieras i Sverige som ett sammanhängande bebyggt område med minst 200 invånare där avståndet mellan husen är mindre än 200 meter. Glesbygd är allt annat, alltså områden med få invånare och långa avstånd mellan bostäder. Majoriteten av Sveriges yta är glesbygd, men de flesta bor i tätorter.", chips: ["begrepp", "samhälle"] },
+                    { q: "Varför är Östersjön ett speciellt hav?", a: "Östersjön är ett unikt innanhav med bräckt vatten, en blandning av sött vatten från älvar och salt vatten från Atlanten. Detta skapar en känslig miljö för djur och växter. Havet lider av miljöproblem som övergödning, vilket är en stor utmaning för länderna runt omkring.", chips: ["natur", "miljö"] },
+                ]
+            },
+            {
+                id: "klimat-och-vader",
+                title: "Klimat och Väder i Sverige",
+                meta: "Sveriges klimatvariationer, årstider, väderfenomen och klimatförändringarnas påverkan.",
+                key: ["Tempererat klimat", "Subarktiskt klimat", "Årstider", "Golfströmmen", "Klimatförändringar"],
+                qa: [
+                    { q: "Vilka olika klimatzoner finns i Sverige?", a: "Sverige sträcker sig över två huvudsakliga klimatzoner. Södra Sverige har ett tempererat klimat med fyra tydliga årstider och milda vintrar. Norra Sverige har ett subarktiskt klimat med långa, kalla och snörika vintrar samt korta, svala somrar. Gränsen mellan dessa zoner går ungefär i höjd med Dalälven.", chips: ["instuderingsfrågor", "klimat"] },
+                    { q: "Hur påverkar Golfströmmen Sveriges klimat?", a: "Golfströmmen är en varm havsström i Atlanten som för med sig varmt vatten norrut. Detta gör att klimatet i Sverige och övriga Skandinavien blir betydligt mildare än det borde vara på dessa breddgrader. Utan Golfströmmen skulle vintrarna i Sverige vara mycket kallare.", chips: ["begrepp", "klimat"] },
+                    { q: "Vad kännetecknar de fyra svenska årstiderna?", a: "Våren (mars-maj) kännetecknas av smältande snö och stigande temperaturer. Sommaren (juni-augusti) är den varmaste perioden med långa, ljusa dagar, särskilt i norr där midnattssol förekommer. Hösten (september-november) bjuder på färgsprakande löv och svalare, fuktigare väder. Vintern (december-februari) är kall och mörk, med snö i stora delar av landet.", chips: ["instuderingsfrågor", "årstider"] },
+                    { q: "Vad är midnattssol och polarnatt?", a: "Norr om polcirkeln i norra Sverige upplever man midnattssol på sommaren, vilket innebär att solen aldrig går ner under horisonten. Under vintern råder istället polarnatt, då solen aldrig stiger över horisonten. Dessa fenomen beror på jordaxelns lutning i förhållande till solen.", chips: ["begrepp", "natur"] },
+                    { q: "Hur har klimatförändringarna påverkat Sverige?", a: "Klimatförändringarna har lett till att medeltemperaturen i Sverige har ökat mer än det globala genomsnittet. Detta märks genom mildare vintrar, mindre snö i söder, och en ökad risk för extremväder som värmeböljor, torka och kraftiga skyfall. Detta påverkar allt från jordbruk till ekosystem.", chips: ["klimatförändringar", "miljö"] },
+                    { q: "Vilken del av Sverige får mest nederbörd?", a: "De västra delarna av Götaland och fjällkedjan i nordväst får generellt mest nederbörd. Detta beror på att fuktig luft från Atlanten tvingas stiga över högre terräng, kyls ner och släpper ifrån sig regn eller snö. Östra Sverige, särskilt runt Östersjön, är torrare.", chips: ["fakta", "klimat"] },
+                    { q: "Vad är SMHI och vad gör de?", a: "SMHI står för Sveriges meteorologiska och hydrologiska institut. Det är en statlig myndighet som ansvarar för att göra väderprognoser, utfärda varningar för farligt väder och forska om klimat, vatten och miljö. Deras arbete är viktigt för samhällets säkerhet och planering.", chips: ["begrepp", "samhälle"] },
+                    { q: "Vad menas med 'kustklimat' och 'inlandsklimat'?", a: "Kustklimat, som finns längs Sveriges kuster, kännetecknas av mindre temperaturskillnader mellan sommar och vinter eftersom havet värmer på vintern och kyler på sommaren. Inlandsklimat, som finns längre in i landet, har större skillnader med kallare vintrar och varmare somrar.", chips: ["begrepp", "klimat"] },
+                    { q: "Varför är dagarna så långa på sommaren i Sverige?", a: "Sveriges nordliga läge gör att den norra hemisfären lutar mot solen under sommarmånaderna. Detta resulterar i mycket långa dagar och korta nätter. Ju längre norrut man kommer, desto längre blir dagarna, vilket kulminerar i midnattssolen norr om polcirkeln.", chips: ["instuderingsfrågor", "natur"] },
+                    { q: "Vad är 'växtzoner'?", a: "Växtzoner, eller odlingszoner, är områden där klimatet är lämpligt för vissa typer av växter. Sverige är indelat i åtta zoner, från zon 1 i det mildaste söder till zon 8 i de kargaste fjällområdena. Zonen avgör vilka träd, buskar och perenner som kan överleva och trivas på en viss plats.", chips: ["begrepp", "natur"] },
+                    { q: "Vilka typer av extremväder kan förekomma i Sverige?", a: "Även om Sverige är relativt förskonat från extremväder kan det förekomma. På sommaren kan värmeböljor och torka leda till skogsbränder. Kraftiga skyfall kan orsaka översvämningar. På vintern kan snöstormar och extrem kyla leda till problem i trafiken och elförsörjningen.", chips: ["instuderingsfrågor", "klimat"] },
+                    { q: "Vad är norrsken (aurora borealis)?", a: "Norrsken är ett ljusfenomen som syns på natthimlen, oftast i polarregionerna. Det uppstår när laddade partiklar från solen kolliderar med atomer och molekyler i jordens atmosfär. I Sverige är chansen att se norrsken störst i den norra delen under vinterhalvåret.", chips: ["begrepp", "natur"] },
+                    { q: "Hur mäts temperaturen officiellt i Sverige?", a: "Temperaturen mäts på väderstationer runt om i landet enligt internationella standarder. Mätningen sker i skuggan, 2 meter över marken i en speciell bur för att skydda mot direkt solstrålning och regn. Detta säkerställer att man mäter lufttemperaturen på ett jämförbart sätt.", chips: ["fakta", "klimat"] },
+                    { q: "Vilken är den kallaste respektive varmaste temperaturen som uppmätts i Sverige?", a: "Den kallaste temperaturen som uppmätts är -52,6 °C i Vuoggatjålme, Lappland, 1966. Den varmaste temperaturen är +38,0 °C, uppmätt i Målilla, Småland, 1947 och i Ultuna, Uppland, 1933. Detta visar på den enorma temperaturvariationen i landet.", chips: ["fakta", "klimat"] },
+                    { q: "Vad innebär växthuseffekten?", a: "Växthuseffekten är en naturlig process där växthusgaser i atmosfären, som koldioxid, fångar upp en del av solens värme och hindrar den från att stråla ut i rymden. Detta håller jorden varm nog för liv. Mänskliga utsläpp har dock förstärkt denna effekt, vilket leder till global uppvärmning och klimatförändringar.", chips: ["begrepp", "klimatförändringar"] },
+                ]
+            },
+            {
+                id: "befolkning-och-urbanisering",
+                title: "Befolkning och Urbanisering",
+                meta: "Sveriges befolkningsfördelning, urbanisering, migration och demografiska utveckling.",
+                key: ["Befolkningstäthet", "Urbanisering", "Migration", "Demografi", "Storstäder"],
+                qa: [
+                    { q: "Hur många människor bor i Sverige och hur är de fördelade?", a: "Sverige har en befolkning på över 10 miljoner människor. Befolkningen är mycket ojämnt fördelad. Ungefär 85% av invånarna bor i den södra tredjedelen av landet, främst i städer och tätorter. Norra Sverige är mycket glesbefolkat.", chips: ["instuderingsfrågor", "samhälle"] },
+                    { q: "Vad betyder urbanisering och hur har det påverkat Sverige?", a: "Urbanisering är processen där människor flyttar från landsbygden till städer. Under 1900-talet genomgick Sverige en kraftig urbanisering, då industrier och jobb koncentrerades till städerna. Idag bor en stor majoritet av svenskarna i tätorter, vilket har lett till både tillväxt i städer och utmaningar för glesbygden.", chips: ["begrepp", "urbanisering"] },
+                    { q: "Vilka är Sveriges tre största städer?", a: "Sveriges tre största städer är Stockholm, Göteborg och Malmö. Stockholm är huvudstad och landets finansiella och kulturella centrum. Göteborg på västkusten är en viktig hamn- och industristad. Malmö i söder är en mångkulturell stad och en knutpunkt till Danmark och resten av Europa via Öresundsbron.", chips: ["instuderingsfrågor", "storstäder"] },
+                    { q: "Vad menas med migration och vilken roll har den spelat i Sverige?", a: "Migration betyder att människor flyttar mellan länder. Sverige har en lång historia av både utvandring (emigration), särskilt till Amerika under sent 1800-tal, och invandring (immigration). Efter andra världskriget har invandring, både som arbetskraft och flyktingmottagande, varit avgörande för Sveriges befolkningsutveckling och har gjort landet mer mångkulturellt.", chips: ["begrepp", "migration"] },
+                    { q: "Vad är demografi?", a: "Demografi är vetenskapen om befolkningens storlek, sammansättning och utveckling. Man studerar faktorer som födelsetal, dödstal, medellivslängd och migration. Demografiska studier är viktiga för samhällsplanering, till exempel för att veta hur många skolor eller äldreboenden som behövs i framtiden.", chips: ["begrepp", "demografi"] },
+                    { q: "Varför har Sverige en åldrande befolkning?", a: "Sverige har, likt många andra rika länder, en åldrande befolkning. Det beror på två saker: dels att medellivslängden har ökat kraftigt tack vare bättre sjukvård och levnadsvillkor, och dels att födelsetalen har varit relativt låga. Detta innebär att andelen äldre i befolkningen ökar, vilket ställer krav på sjukvård och pensionssystem.", chips: ["instuderingsfrågor", "samhälle"] },
+                    { q: "Vad är skillnaden på en kommun och ett län?", a: "Sverige är indelat i 290 kommuner, som har ett stort lokalt självstyre och ansvarar för t.ex. skola, äldreomsorg och renhållning. Landet är också indelat i 21 län (regioner), som har ansvar för frågor som spänner över flera kommuner, främst hälso- och sjukvård samt regional utveckling och kollektivtrafik.", chips: ["begrepp", "samhälle"] },
+                    { q: "Vad menas med befolkningstäthet?", a: "Befolkningstäthet är ett mått på hur många människor som bor på en viss yta, oftast uttryckt som invånare per kvadratkilometer (inv/km²). Sverige har en låg genomsnittlig befolkningstäthet på cirka 25 inv/km². Detta är dock missvisande, då tätheten är mycket hög i storstadsregionerna och extremt låg i stora delar av Norrland.", chips: ["begrepp", "demografi"] },
+                    { q: "Vad är Sveriges officiella minoritetsspråk?", a: "Sverige har fem officiella nationella minoritetsspråk: finska, samiska, meänkieli (tornedalsfinska), romani chib och jiddisch. Talare av dessa språk har särskilda rättigheter att använda sitt språk i kontakt med myndigheter i vissa geografiska områden.", chips: ["fakta", "samhälle"] },
+                    { q: "Vilka utmaningar finns med urbaniseringen?", a: "Urbaniseringen skapar utmaningar både i städer och på landsbygden. I städerna kan det leda till bostadsbrist, trängsel i trafiken och segregation. På landsbygden kan det leda till minskat serviceutbud, som stängda skolor och affärer, och svårigheter att upprätthålla en levande bygd när befolkningen minskar.", chips: ["instuderingsfrågor", "urbanisering"] },
+                    { q: "Vad är en 'regionförstoring'?", a: "Regionförstoring är en process där städer och deras omland växer samman funktionellt. Människor kan bo i en kommun, arbeta i en annan och ha sin fritid i en tredje. Detta möjliggörs av bättre kommunikationer som snabbtåg och motorvägar, vilket gör att städernas 'influensområden' blir allt större.", chips: ["begrepp", "urbanisering"] },
+                    { q: "Vad är samer och var bor de?", a: "Samer är Sveriges urfolk med en egen historia, kultur, språk och traditionella bosättningsområden. Det samiska området, Sápmi, sträcker sig över norra delarna av Sverige, Norge, Finland och Ryssland. I Sverige bor de flesta samer i Norrbottens och Västerbottens län, där renskötseln fortfarande är en central del av kulturen.", chips: ["instuderingsfrågor", "samhälle"] },
+                    { q: "Hur har befolkningspyramiden i Sverige förändrats?", a: "Förr i tiden hade Sverige en klassisk pyramidformad befolkningspyramid med många unga och få äldre. Idag liknar den mer en rektangel eller en urna, med ungefär lika många i varje åldersgrupp upp till en hög ålder. Detta visar tydligt att befolkningen har åldrats.", chips: ["demografi", "samhälle"] },
+                    { q: "Vad är 'infrastruktur' och varför är det viktigt?", a: "Infrastruktur är de system som krävs för att ett samhälle ska fungera, som vägar, järnvägar, hamnar, flygplatser, elnät och internetuppkoppling. En väl utbyggd infrastruktur är avgörande för att binda samman olika delar av landet, möjliggöra transporter av varor och människor och skapa förutsättningar för ekonomisk tillväxt.", chips: ["begrepp", "samhälle"] },
+                    { q: "Varför bor så få människor i Norrlands inland?", a: "Norrlands inland är glesbefolkat på grund av flera faktorer. Det kalla klimatet och de långa vintrarna gör jordbruk svårt. Historiskt har näringslivet varit baserat på skogsbruk och gruvdrift, vilket inte kräver lika många människor som den diversifierade ekonomin i söder. Dessutom har urbaniseringen gjort att många unga flyttat till större städer för utbildning och jobb.", chips: ["instuderingsfrågor", "geografi"] },
+                ]
+            },
+            {
+                id: "naturresurser-och-naringsliv",
+                title: "Naturresurser och Näringsliv",
+                meta: "Sveriges viktigaste naturresurser, industrier och näringslivets struktur.",
+                key: ["Skogsindustri", "Vattenkraft", "Järnmalm", "Näringsliv", "Export"],
+                qa: [
+                    { q: "Vilka är Sveriges tre viktigaste naturtillgångar?", a: "Sveriges tre traditionellt viktigaste naturtillgångar är skog, järnmalm och vattenkraft. Skogen utgör grunden för en stor skogsindustri som producerar papper, massa och trävaror. Järnmalmen från gruvorna i norr är av mycket hög kvalitet. Vattenkraften från de stora älvarna i Norrland förser landet med en stor del av dess el.", chips: ["instuderingsfrågor", "näringsliv"] },
+                    { q: "Vad menas med näringslivets tre sektorer?", a: "Näringslivet brukar delas in i tre sektorer. Den primära sektorn utvinner råvaror från naturen (jordbruk, skogsbruk, fiske, gruvdrift). Den sekundära sektorn förädlar dessa råvaror (industri). Den tertiära sektorn producerar tjänster (handel, transport, sjukvård, utbildning). I Sverige är tjänstesektorn den absolut största idag.", chips: ["begrepp", "näringsliv"] },
+                    { q: "Varför är export viktig för Sverige?", a: "Sverige är ett relativt litet land med en högt specialiserad industri. För att ekonomin ska växa behöver svenska företag sälja sina varor och tjänster till andra länder, vilket kallas export. Viktiga exportvaror inkluderar fordon, maskiner, läkemedel, elektronik, papper och stål. Exporten skapar jobb och välstånd i Sverige.", chips: ["instuderingsfrågor", "export"] },
+                    { q: "Vad producerar den svenska skogsindustrin?", a: "Den svenska skogsindustrin är en av världens ledande. Den producerar främst pappersmassa (används för att göra papper), papper och kartong, samt sågade trävaror för byggindustrin. På senare tid har man även börjat utveckla nya produkter från skogen, som biobränslen och textilfibrer, för att ersätta fossila material.", chips: ["skogsindustri", "näringsliv"] },
+                    { q: "Var finns de stora järnmalmsgruvorna i Sverige?", a: "De största och viktigaste järnmalmsgruvorna finns i norra Sverige, i Lappland. De mest kända är Kirunagruvan och Malmberget, som båda drivs av företaget LKAB. Malmen transporteras med tåg på Malmbanan till hamnarna i Narvik (Norge) och Luleå för att skeppas ut i världen.", chips: ["järnmalm", "geografi"] },
+                    { q: "Hur fungerar vattenkraft?", a: "Vattenkraft utnyttjar energin i strömmande vatten. Man bygger en damm i en älv för att samla upp vatten i en reservoar. När man släpper vattnet genom turbiner i dammen, börjar de snurra och driver en generator som alstrar elektricitet. Vattenkraft är en förnybar och koldioxidfri energikälla som står för en stor del av Sveriges elproduktion.", chips: ["begrepp", "vattenkraft"] },
+                    { q: "Vilka är några kända svenska storföretag?", a: "Sverige är känt för flera stora, multinationella företag. Några exempel är Volvo (fordon), IKEA (möbler), H&M (kläder), Ericsson (telekomutrustning), Spotify (musiktjänst) och AstraZeneca (läkemedel). Dessa företag är viktiga för svensk ekonomi och export.", chips: ["instuderingsfrågor", "näringsliv"] },
+                    { q: "Vad är skillnaden mellan import och export?", a: "Export är när ett land säljer varor och tjänster till andra länder. Import är när ett land köper varor och tjänster från andra länder. För att ett land ska ha en stark ekonomi är det oftast bra om värdet på exporten är större än värdet på importen, vilket kallas för ett handelsöverskott.", chips: ["begrepp", "export"] },
+                    { q: "Vilken roll spelar jordbruket i Sverige idag?", a: "Även om jordbruket sysselsätter en liten del av befolkningen idag, är det fortfarande mycket viktigt. Det svenska jordbruket producerar en stor del av den mat vi äter, som spannmål, mjölkprodukter, kött och potatis. Det bidrar också till att hålla landskapet öppet och levande.", chips: ["instuderingsfrågor", "näringsliv"] },
+                    { q: "Vad menas med 'kunskapsekonomi'?", a: "En kunskapsekonomi är ett samhälle där tillväxt och välstånd bygger mer på kunskap, information och innovation än på traditionell industriproduktion. Sverige har i hög grad gått mot en kunskapsekonomi, med en stor tjänstesektor och många framgångsrika företag inom IT, teknik och forskning.", chips: ["begrepp", "näringsliv"] },
+                    { q: "Varför kallas Bergslagen för 'Sveriges historiska industricentrum'?", a: "Bergslagen är ett område i Svealand som under flera hundra år var centrum för svensk gruvdrift och järnproduktion. Här fanns gott om malm, skog (för träkol) och vattenkraft. Denna tidiga industrialisering lade grunden för Sveriges välstånd och tekniska utveckling.", chips: ["geografi", "historia"] },
+                    { q: "Vad är Sveriges viktigaste handelspartners?", a: "Sveriges viktigaste handelspartners är främst andra länder i Europa. Tyskland, Norge, Finland och Danmark är några av de största exportmarknaderna. Vi handlar också mycket med länder som Nederländerna, Storbritannien, USA och Kina.", chips: ["fakta", "export"] },
+                    { q: "Vilka andra förnybara energikällor används i Sverige förutom vattenkraft?", a: "Förutom vattenkraft har Sverige satsat stort på vindkraft, som har byggts ut kraftigt de senaste åren, särskilt längs kusterna och i norr. Biobränslen, främst från skogsrester, används för att producera värme och el. Solenergi är också på frammarsch, även om den fortfarande utgör en mindre del.", chips: ["instuderingsfrågor", "miljö"] },
+                    { q: "Vad innebär 'förädling' av en råvara?", a: "Förädling innebär att man bearbetar en råvara för att göra den mer värdefull. Till exempel är papper en förädlad produkt av råvaran trä, och stål är en förädlad produkt av råvaran järnmalm. Länder som är bra på att förädla sina råvaror kan tjäna mer pengar än de som bara exporterar obearbetade råvaror.", chips: ["begrepp", "näringsliv"] },
+                    { q: "Vad är turismens betydelse för svensk ekonomi?", a: "Turismen är en viktig och växande del av Sveriges tjänstesektor. Både svenska och utländska turister lockas av svensk natur (som fjällen och skärgårdarna), kultur och städer som Stockholm. Turismen skapar många jobb inom hotell, restaurang och upplevelseindustrin över hela landet.", chips: ["instuderingsfrågor", "näringsliv"] },
+                ]
+            },
+            {
+                id: "miljo-och-hallbar-utveckling",
+                title: "Miljö och Hållbar Utveckling",
+                meta: "Sveriges miljöutmaningar, miljömål och arbetet för en hållbar framtid.",
+                key: ["Hållbar utveckling", "Miljömål", "Förnybar energi", "Återvinning", "Övergödning"],
+                qa: [
+                    { q: "Vad innebär begreppet hållbar utveckling?", a: "Hållbar utveckling är en utveckling som tillfredsställer dagens behov utan att äventyra kommande generationers möjligheter att tillfredsställa sina. Begreppet vilar på tre pelare: ekologisk hållbarhet (att värna om planetens resurser och ekosystem), social hållbarhet (att bygga ett rättvist och jämställt samhälle) och ekonomisk hållbarhet (att skapa ekonomisk tillväxt som inte skadar miljön eller människor).", chips: ["begrepp", "hållbar utveckling"] },
+                    { q: "Vilka är några av Sveriges största miljöutmaningar?", a: "Några av de största miljöutmaningarna för Sverige är klimatförändringarna, som kräver en omställning till ett fossilfritt samhälle. Andra utmaningar är övergödningen av Östersjön, förlusten av biologisk mångfald på grund av intensivt skogs- och jordbruk, samt spridningen av miljögifter i naturen.", chips: ["instuderingsfrågor", "miljö"] },
+                    { q: "Vad gör Sverige för att minska sina klimatutsläpp?", a: "Sverige har som mål att vara klimatneutralt senast år 2045. För att nå dit satsar man på att öka andelen förnybar energi från vind, sol och biobränslen. Man arbetar också med att göra transporter mer hållbara genom att främja elbilar och kollektivtrafik, samt att energieffektivisera industrier och bostäder.", chips: ["klimatförändringar", "miljö"] },
+                    { q: "Vad är övergödning och varför är det ett problem i Östersjön?", a: "Övergödning uppstår när för mycket näringsämnen, främst kväve och fosfor från jordbruk och avlopp, rinner ut i havet. Detta leder till kraftig algblomning. När algerna dör och bryts ner förbrukas syret i vattnet, vilket skapar syrefattiga och döda bottnar där fiskar och andra djur inte kan leva.", chips: ["begrepp", "övergödning"] },
+                    { q: "Varför är återvinning viktigt?", a: "Återvinning är viktigt eftersom det minskar behovet av att utvinna nya råvaror från naturen, vilket sparar energi och minskar utsläpp. När vi återvinner material som papper, plast, glas och metall kan de användas för att tillverka nya produkter. Sverige är ett av de länder i världen som är bäst på att panta och återvinna hushållsavfall.", chips: ["instuderingsfrågor", "återvinning"] },
+                    { q: "Vad menas med biologisk mångfald?", a: "Biologisk mångfald handlar om variationen av liv på jorden. Det inkluderar variationen av arter (djur, växter, svampar), den genetiska variationen inom arter, och variationen av ekosystem (som skogar, sjöar, ängar). En rik biologisk mångfald är viktig för att naturen ska fungera och kunna förse oss med livsviktiga tjänster som ren luft och rent vatten.", chips: ["begrepp", "natur"] },
+                    { q: "Vad är ett nationalpark?", a: "En nationalpark är det starkaste skyddet ett naturområde kan få. Det är ett större, representativt område av svensk natur som skyddas av staten för att bevara dess natur- och kulturvärden för framtiden. Sverige har 30 nationalparker, från Sarek i norr till Stenshuvud i söder.", chips: ["begrepp", "natur"] },
+                    { q: "Hur hänger konsumtion och miljö ihop?", a: "Allt vi konsumerar, från mat och kläder till elektronik, kräver resurser och energi att producera och transportera, vilket påverkar miljön. Genom att göra medvetna val, som att köpa färre men bättre saker, välja miljömärkta produkter och minska matsvinnet, kan vi minska vår personliga miljöpåverkan.", chips: ["instuderingsfrågor", "hållbar utveckling"] },
+                    { q: "Vad är Sveriges miljömål?", a: "Sveriges riksdag har beslutat om 16 nationella miljökvalitetsmål. Dessa mål beskriver det tillstånd i den svenska miljön som miljöarbetet ska leda till. Exempel på mål är 'Begränsad klimatpåverkan', 'Hav i balans samt levande kust och skärgård', 'Levande skogar' och 'Giftfri miljö'.", chips: ["miljömål", "samhälle"] },
+                    { q: "Vad menas med förnybar energi?", a: "Förnybar energi kommer från källor som ständigt förnyas av naturen och därför inte tar slut, till skillnad från fossila bränslen som kol och olja. Exempel på förnybara energikällor är solenergi, vindkraft, vattenkraft och bioenergi (från t.ex. skog och grödor). En stor del av Sveriges elproduktion kommer från förnybara källor.", chips: ["begrepp", "förnybar energi"] },
+                    { q: "Vilka utmaningar finns med att bevara biologisk mångfald i skogen?", a: "Det moderna skogsbruket, med stora kalhyggen och plantering av enbart ett eller två trädslag, har lett till att många arter som är beroende av gamla, varierade skogar har minskat. En stor utmaning är att hitta en balans mellan att producera virke för industrin och att bevara skogens biologiska mångfald genom att t.ex. spara gamla träd och skapa skyddade områden.", chips: ["miljö", "skogsindustri"] },
+                    { q: "Vad är Agenda 2030?", a: "Agenda 2030 är en handlingsplan med 17 globala mål för hållbar utveckling som alla FN:s medlemsländer har antagit. Målen handlar om att avskaffa extrem fattigdom, minska ojämlikheter, lösa klimatkrisen och främja fred och rättvisa. Sverige är engagerat i att arbeta för att uppnå dessa mål både nationellt och internationellt.", chips: ["hållbar utveckling", "samhälle"] },
+                    { q: "Vad kan man som enskild person göra för miljön?", a: "Det finns mycket man kan göra. Några exempel är att minska sina flygresor och bilåkande, äta mer växtbaserad mat och mindre kött, minska sitt matsvinn, konsumera färre prylar, och sortera sitt avfall för återvinning. Att engagera sig politiskt och sprida kunskap till andra är också viktigt.", chips: ["instuderingsfrågor", "hållbar utveckling"] },
+                    { q: "Vad är ett ekosystem?", a: "Ett ekosystem är ett avgränsat område i naturen där allt levande (växter, djur, mikroorganismer) och den icke-levande miljön (sol, vatten, jord) samspelar och är beroende av varandra. En skog, en sjö eller en äng är exempel på ekosystem. Om en del av ekosystemet skadas kan det påverka hela systemet.", chips: ["begrepp", "natur"] },
+                    { q: "Vad är källsortering?", a: "Källsortering innebär att man sorterar sitt avfall hemma baserat på material, till exempel papper, plast, metall och glas. Detta gör det möjligt att återvinna materialen effektivt. I Sverige är de flesta hushåll anslutna till system för källsortering, vilket är en viktig del av landets avfallshantering.", chips: ["begrepp", "återvinning"] }
+                ]
+            },
+            {
+                id: "overgripande-instuderingsfragor",
+                title: "Övergripande Instuderingsfrågor",
+                meta: "Sammanfattande frågor som täcker flera områden inom Sveriges geografi.",
+                key: ["Sammanfattning", "Jämförelser", "Orsak och verkan"],
+                qa: [
+                    {
+                        "q": "01. Hur lång tid tar det för jorden att snurra ett varv runt sin egen axel?",
+                        "a": "Det tar 24 timmar för jorden att snurra ett varv runt sin egen axel, vilket vi kallar för ett dygn. Denna rotation är anledningen till att vi har dag och natt. När en sida av jorden är vänd mot solen är det dag, och när den är vänd bort från solen är det natt.",
+                        "chips": ["jordklotet", "grundläggande geografi"]
+                    },
+                    {
+                        "q": "02. Hur lång tid tar det för jorden att röra sig ett varv runt solen?",
+                        "a": "Det tar 365 och 1/4 dygn för jorden att röra sig ett varv runt solen, vilket motsvarar ett år. Denna fjärdedels dag är anledningen till att vi har skottår vart fjärde år. Jordens bana runt solen är inte en perfekt cirkel, utan en ellips.",
+                        "chips": ["jordklotet", "solsystemet"]
+                    },
+                    {
+                        "q": "03. Vad kallas den tänkta linjen som går mellan nordpolen och sydpolen?",
+                        "a": "Den tänkta linjen som går mellan nordpolen och sydpolen kallas för jordaxeln. Det är runt denna axel som jorden roterar. Föreställ dig en osynlig pinne som går rakt igenom jordens mitt från toppen till botten.",
+                        "chips": ["jordklotet", "begrepp"]
+                    },
+                    {
+                        "q": "04. Hur mycket lutar jordaxeln?",
+                        "a": "Jordaxeln lutar ungefär 23,5 grader. Denna lutning är anledningen till att vi har olika årstider. När norra halvklotet lutar mot solen har vi sommar, och när det lutar bort från solen har vi vinter.",
+                        "chips": ["jordklotet", "årstider", "orsak och verkan"]
+                    },
+                    {
+                        "q": "05. Vad markerar ekvatorn?",
+                        "a": "Ekvatorn är en tänkt linje som går runt jordens mitt, precis mitt emellan nordpolen och sydpolen. Den delar in jorden i norra och södra halvklotet. Vid ekvatorn är dag och natt ungefär lika långa året runt.",
+                        "chips": ["jordklotet", "gradnätet", "begrepp"]
+                    },
+                    {
+                        "q": "06. Hur långt är det från ekvatorn till polerna?",
+                        "a": "Avståndet från ekvatorn till antingen nordpolen eller sydpolen är cirka 10 000 kilometer. Detta avstånd är en fjärdedel av hela jordens omkrets. Det är lika långt till nordpolen som till sydpolen från ekvatorn.",
+                        "chips": ["jordklotet", "avstånd"]
+                    },
+                    {
+                        "q": "07. Vad kallas de cirklar som går på bredden runt jordklotet?",
+                        "a": "De cirklar som går på bredden runt jordklotet, parallellt med ekvatorn, kallas för breddgrader eller latituder. De hjälper oss att bestämma hur långt norrut eller söderut en plats ligger. Ekvatorn är den längsta breddgraden och har värdet 0 grader.",
+                        "chips": ["gradnätet", "breddgrader", "begrepp"]
+                    },
+                    {
+                        "q": "08. Vad kallas de linjer som går från nordpolen till sydpolen?",
+                        "a": "De linjer som går från nordpolen till sydpolen kallas för längdgrader, longituder eller meridianer. Dessa hjälper oss att bestämma hur långt österut eller västerut en plats är. Alla längdgrader är lika långa.",
+                        "chips": ["gradnätet", "längdgrader", "begrepp"]
+                    },
+                    {
+                        "q": "09. Vad är nollmeridianen och genom vilken stad går den?",
+                        "a": "Nollmeridianen är den längdgrad som har värdet 0 grader och den delar jorden i en östlig och en västlig halva. På 1800-talet bestämde man att den skulle gå igenom observatoriet i Greenwich, som är en stadsdel i London, England. Alla andra längdgrader räknas utifrån nollmeridianen.",
+                        "chips": ["gradnätet", "längdgrader", "historia"]
+                    },
+                    {
+                        "q": "10. Hur många breddgrader finns det från ekvatorn till en pol?",
+                        "a": "Det finns 90 breddgrader från ekvatorn (0°) till nordpolen (90° N) och 90 breddgrader från ekvatorn till sydpolen (90° S). Det beror på att jordaxeln korsar ekvatorn i en rät vinkel, alltså 90 grader. Totalt finns det alltså 180 breddgrader.",
+                        "chips": ["gradnätet", "breddgrader"]
+                    },
+                    {
+                        "q": "11. Vilket tecken används för att visa grader?",
+                        "a": "För att visa grader används tecknet °, en liten upphöjd cirkel. För att ange en ännu mer exakt position delas varje grad in i 60 minuter ('), och varje minut delas i sin tur in i 60 sekunder (\"). Sveriges riksdag ligger till exempel på 59° 19' 39.2\" N.",
+                        "chips": ["gradnätet", "begrepp"]
+                    },
+                    {
+                        "q": "12. Hur många kilometer är det ungefär mellan två breddgrader?",
+                        "a": "Avståndet mellan två breddgrader är alltid ungefär 110 kilometer. Detta är användbart att veta för att kunna uppskatta avstånd i nord-sydlig riktning på en karta. Avståndet mellan längdgraderna varierar däremot, det är som längst vid ekvatorn och noll vid polerna.",
+                        "chips": ["gradnätet", "avstånd"]
+                    },
+                    {
+                        "q": "13. På vilken breddgrad ligger Stockholm?",
+                        "a": "Stockholm ligger på den 59:e nordliga breddgraden, vilket skrivs som 59° N. Det betyder att Stockholm ligger 59 grader norr om ekvatorn. Alla platser på samma breddgrad har samma avstånd till ekvatorn.",
+                        "chips": ["gradnätet", "positionering", "exempel"]
+                    },
+                    {
+                        "q": "14. Vad heter längdgraden på andra sidan jorden från nollmeridianen?",
+                        "a": "Längdgraden på motsatt sida av jorden från nollmeridianen är den 180:e längdgraden. Denna linje kallas för datumgränsen. Det är här som ett nytt dygn officiellt börjar på jorden.",
+                        "chips": ["gradnätet", "längdgrader", "begrepp"]
+                    },
+                    {
+                        "q": "15. Vilken längdgrad går genom Greenwich?",
+                        "a": "Den längdgrad som går genom Greenwich i London är nollmeridianen. Den har värdet 0 grader. Detta är utgångspunkten för att mäta alla andra längdgrader, antingen österut eller västerut.",
+                        "chips": ["gradnätet", "nollmeridianen"]
+                    },
+                    {
+                        "q": "16. På vilken längdgrad ligger Kanarieöarna?",
+                        "a": "Kanarieöarna ligger på den 15:e västliga längdgraden, vilket skrivs som 15° V. Det innebär att ögruppen ligger 15 grader väster om nollmeridianen i Greenwich. Platser på samma längdgrad har middag (klockan 12 på dagen) vid samma tidpunkt.",
+                        "chips": ["gradnätet", "positionering", "exempel"]
+                    },
+                    {
+                        "q": "17. Varför spricker en apelsin när man försöker platta ut skalet till en karta?",
+                        "a": "Att platta ut ett apelsinskal är ett bra exempel på varför det är svårt att göra en platt karta av det runda jordklotet. Skalet spricker och det blir tomrum mellan delarna eftersom en rund yta inte kan bli helt platt utan att den förvrängs. På samma sätt måste en världskarta sträckas ut och förvrängas för att bli platt, vilket gör att storlekar och former inte blir helt korrekta.",
+                        "chips": ["kartprojektioner", "orsak och verkan", "problematik"]
+                    },
+                    {
+                        "q": "18. Vad kallas metoderna för att rita upp jordklotet på en karta?",
+                        "a": "De olika metoderna för att rita en platt karta av det runda jordklotet kallas för kartprojektioner. Eftersom det är omöjligt att göra en perfekt platt avbildning, förvränger alla kartprojektioner verkligheten på något sätt. Vissa projektioner bevarar vinklar korrekt, medan andra visar ytor i rätt storlek.",
+                        "chips": ["kartprojektioner", "begrepp"]
+                    },
+                    {
+                        "q": "19. Vem utvecklade Mercators projektion?",
+                        "a": "Mercators projektion utvecklades i slutet av 1500-talet av nederländaren Gerardus Mercator. Han skapade en metod som kallas cylinderprojektion, där jordytan avbildades på en cylinder som sedan rullades ut. Denna projektion blev mycket populär bland sjöfarare.",
+                        "chips": ["kartprojektioner", "historia"]
+                    },
+                    {
+                        "q": "20. Vad är fördelen med Mercators projektion?",
+                        "a": "Den stora fördelen med Mercators projektion är att vinklarna är räta, vilket gör det enkelt att navigera med kompass. En rak linje på kartan motsvarar en konstant kompasskurs. Därför har den länge använts för sjökort och för att visa stora områden.",
+                        "chips": ["kartprojektioner", "för- och nackdelar", "jämförelser"]
+                    },
+                    {
+                        "q": "21. Vad är nackdelen med Mercators projektion?",
+                        "a": "Nackdelen med Mercators projektion är att den kraftigt förstorar områden som ligger nära polerna. Detta gör att till exempel Grönland ser ut att vara lika stort som Afrika, fast Afrika i verkligheten är cirka 14 gånger större. Projektionen ger alltså en felaktig bild av länders och kontinenters verkliga storlekar.",
+                        "chips": ["kartprojektioner", "för- och nackdelar", "jämförelser"]
+                    },
+                    {
+                        "q": "22. Vilken projektion visar rätt storlek på områden men har fel vinklar?",
+                        "a": "Mollweides projektion är ett exempel på en projektion som visar områdenas storlekar i rätt förhållande till varandra. Däremot blir vinklarna mellan breddgrader och längdgrader inte räta. Detta gör att kartan inte är lämplig för navigering där man behöver bestämma en exakt kurs.",
+                        "chips": ["kartprojektioner", "jämförelser"]
+                    },
+                    {
+                        "q": "23. Vilken projektion används ofta för att visa polarområden?",
+                        "a": "För att visa polarområdena, som Arktis, används ofta en planprojektion. Då överförs jordklotets yta till en platt yta som tangerar vid nordpolen. Även konisk projektion kan användas för att visa polarområdena med korrekt storlek, där kartans mitt utgår från jordens axel.",
+                        "chips": ["kartprojektioner", "användning"]
+                    },
+                    {
+                        "q": "24. Vilka problem kan kartprojektioner ge?",
+                        "a": "Kartprojektioner kan ge en felaktig världsbild eftersom de förvränger verkligheten. De kan få oss att tro att vissa länder är större än de är, som Grönland i Mercators projektion. De kan också ge en felaktig bild av avstånd och den kortaste vägen mellan två platser, vilket är viktigt att tänka på när man läser en karta.",
+                        "chips": ["kartprojektioner", "problematik", "källkritik"]
+                    },
+                    {
+                        "q": "25. Vad betyder 'eurocentrisk världsbild'?",
+                        "a": "En eurocentrisk världsbild innebär att Europa placeras i mitten av kartan och framställs som världens centrum. Detta kan leda till en uppfattning att Europa är den viktigaste världsdelen, medan andra delar av världen, som Australien eller Sydamerika, hamnar i utkanten. Det är en världsbild som formats av att många historiska världskartor gjordes av européer.",
+                        "chips": ["kartprojektioner", "samhälle", "källkritik"]
+                    },
+                    {
+                        "q": "26. Var ritades några av de första kartorna för 5000 år sedan?",
+                        "a": "För ungefär 5000 år sedan ritades några av de första kända kartorna i Mesopotamien, ett område som idag till största delen ligger i Irak. Dessa tidiga kartor var enkla och ritades på lertavlor. De visade ofta städer och den närmaste omgivningen.",
+                        "chips": ["kartans historia", "antiken"]
+                    },
+                    {
+                        "q": "27. Vem brukar kallas för geografins fader?",
+                        "a": "Vetenskapsmannen Ptolemaios, som levde under antiken, kallas ibland för geografins fader. Han anses ha skrivit den första geografiboken omkring år 150. I sin bok inkluderade han en världskarta med både längd- och breddgrader, vilket var mycket avancerat för sin tid.",
+                        "chips": ["kartans historia", "antiken"]
+                    },
+                    {
+                        "q": "28. Vad innehöll Ptolemaios bok från år 150?",
+                        "a": "Ptolemaios bok, som skrevs omkring år 150, innehöll bland annat en världskarta. Det unika med hans karta var att den använde ett system med längd- och breddgrader för att visa positioner, liknande det vi använder idag. Boken sammanfattade den geografiska kunskapen man hade under den tiden.",
+                        "chips": ["kartans historia", "antiken"]
+                    },
+                    {
+                        "q": "29. Varför ökade behovet av kartor på 1400-talet?",
+                        "a": "Behovet av kartor ökade kraftigt i slutet av 1400-talet när europeiska upptäcktsresande började ge sig ut på långa resor över haven. De sökte nya sjövägar till platser som Indien. För att kunna navigera säkert och dokumentera sina upptäckter behövde sjöfararna mer detaljerade och pålitliga kartor.",
+                        "chips": ["kartans historia", "upptäcktsresor", "orsak och verkan"]
+                    },
+                    {
+                        "q": "30. Vad visar en småskalig karta?",
+                        "a": "En småskalig karta visar ett mycket stort område, till exempel en hel världdel eller ett helt land som Sverige. Eftersom den täcker en så stor yta, innehåller den inte så många detaljer. Skalan skrivs med en stor siffra efter kolonet, som 1:3 000 000, vilket betyder att en centimeter på kartan är 30 kilometer i verkligheten.",
+                        "chips": ["kartans användning", "skala", "begrepp"]
+                    },
+                    {
+                        "q": "31. Vad visar en storskalig karta?",
+                        "a": "En storskalig karta visar ett litet område i stor detalj, till exempel en stadsdel eller en orienteringskarta över en skog. Eftersom den täcker ett litet område kan den visa mycket information, som enskilda hus och stigar. Skalan skrivs med en liten siffra efter kolonet, som 1:10 000, där en centimeter på kartan är 100 meter i verkligheten.",
+                        "chips": ["kartans användning", "skala", "begrepp"]
+                    },
+                    {
+                        "q": "32. Vad är en skalstav?",
+                        "a": "En skalstav är en linjal som är ritad direkt på kartan. Den visar hur lång en viss sträcka på kartan är i verkligheten, till exempel i meter eller kilometer. Med hjälp av skalstaven kan du enkelt mäta avstånd mellan två platser på kartan med en linjal eller till och med med fingrarna.",
+                        "chips": ["kartans användning", "skala", "begrepp"]
+                    },
+                    {
+                        "q": "33. Vad är en referenskarta?",
+                        "a": "En referenskarta visar hur ett område ser ut och vad som finns där, till exempel städer, vägar och sjöar. Den visar också hur olika platser förhåller sig till varandra, som avståndet mellan två städer. Vanliga exempel på referenskartor är vägkartor, orienteringskartor och topografiska kartor som visar terrängen.",
+                        "chips": ["karttyper", "begrepp"]
+                    },
+                    {
+                        "q": "34. Vad är en tematisk karta?",
+                        "a": "En tematisk karta, eller temakarta, är skapad för att visa ett specifikt tema eller ämne, inte bara hur ett område ser ut. Den kan till exempel visa befolkningstäthet, nederbörd eller risk för jordbävningar. Med hjälp av färger, symboler och diagram kan den visa mönster och samband.",
+                        "chips": ["karttyper", "begrepp"]
+                    },
+                    {
+                        "q": "35. Vilken karta använder du om du vill veta vädret i morgon?",
+                        "a": "Om du vill veta vädret i morgon använder du en tematisk karta, närmare bestämt en väderkarta. Denna typ av karta visar information som inte är direkt synlig i verkligheten, som temperatur, vindriktning och områden med regn eller solsken. Den är specialgjord för att visa just väderförhållanden.",
+                        "chips": ["karttyper", "användning", "exempel"]
+                    },
+                    {
+                        "q": "36. Vilken karta använder du om du vill hitta rätt i en stad?",
+                        "a": "För att hitta rätt i en främmande stad använder du en referenskarta. Det kan vara en tryckt stadskarta eller en digital karta i din telefon. Denna typ av karta visar stadens gator, torg och viktiga platser, och hjälper dig att förstå hur du ska ta dig från en plats till en annan.",
+                        "chips": ["karttyper", "användning", "exempel"]
+                    },
+                    {
+                        "q": "37. Vad betyder GPS?",
+                        "a": "GPS står för Global Positioning System. Det är en digital metod som används över hela världen för att bestämma en exakt position på jorden. Systemet använder signaler från satelliter för att räkna ut var du befinner dig.",
+                        "chips": ["digitala kartor", "GPS", "begrepp"]
+                    },
+                    {
+                        "q": "38. Hur många satelliter används i GPS-systemet?",
+                        "a": "GPS-systemet består av ett nätverk av satelliter som kretsar runt jorden. Det finns mer än 30 satelliter i systemet som går i olika banor. För att din GPS-mottagare ska kunna bestämma din position behöver den ta emot signaler från minst fyra av dessa satelliter samtidigt.",
+                        "chips": ["digitala kartor", "GPS", "teknik"]
+                    },
+                    {
+                        "q": "39. Vad behövs för att GPS ska fungera?",
+                        "a": "För att GPS ska fungera behövs det satelliter, en sändare och en mottagare. Satelliterna sänds upp i rymden och skickar ständigt ut signaler mot jorden. En GPS-mottagare, till exempel i din mobiltelefon, fångar upp dessa signaler och kan då beräkna sin exakta position.",
+                        "chips": ["digitala kartor", "GPS", "teknik"]
+                    },
+                    {
+                        "q": "40. Vad kan GPS visa förutom position?",
+                        "a": "Förutom din exakta position kan GPS också visa annan information. Den kan visa höjd över havet, vilken riktning du rör dig i och med vilken hastighet du färdas. Denna information används i allt från träningsappar till avancerade navigationssystem i flygplan och bilar.",
+                        "chips": ["digitala kartor", "GPS", "funktioner"]
+                    },
+                    {
+                        "q": "41. Vilken nytta har räddningstjänsten av GPS?",
+                        "a": "Räddningstjänsten har enorm nytta av GPS eftersom det kan rädda liv. När någon ringer 112 från en mobiltelefon kan SOS-centralen ofta få en GPS-position, vilket gör att ambulans, brandkår och polis snabbt kan hitta till platsen. Detta är extra viktigt om personen inte vet var den är, till exempel i en skog eller på en okänd väg.",
+                        "chips": ["GPS", "samhällsnytta", "säkerhet"]
+                    },
+                    {
+                        "q": "42. Vad står GIS för?",
+                        "a": "GIS står för Geografiska Informationssystem. Det är digitala system och programvaror som används för att samla in, bearbeta, analysera och presentera stora mängder geografisk data. Informationen visas ofta i olika lager på en karta, där varje lager representerar en viss typ av information.",
+                        "chips": ["digitala kartor", "GIS", "begrepp"]
+                    },
+                    {
+                        "q": "43. Vad kan GIS visa?",
+                        "a": "Ett GIS kan visa nästan all typ av information som är kopplad till en geografisk plats. Det kan visa hur marken används, var människor bor, var det finns skolor, eller var det är mycket trafik. Genom att kombinera olika lager av information kan man analysera samband och mönster, till exempel för att planera var nya bostadsområden ska byggas.",
+                        "chips": ["GIS", "funktioner", "dataanalys"]
+                    },
+                    {
+                        "q": "44. Vilken digital karttjänst är mest känd idag?",
+                        "a": "Den mest kända digitala karttjänsten idag är troligtvis Google Maps. Den startade runt år 2000 och har utvecklats till att täcka nästan hela jorden med detaljerade kartor. Tjänsten använder GIS för att kombinera satellitbilder, kartdata och användarinformation.",
+                        "chips": ["digitala kartor", "GIS", "exempel"]
+                    },
+                    {
+                        "q": "45. Vad innebär street view?",
+                        "a": "Street View är en funktion i digitala karttjänster som Google Maps. Den gör det möjligt att se 360-graders panoramabilder från gatunivå, nästan som om du stod där själv. Bilderna samlas in med hjälp av bilar och ibland bärbara kameror, och låter dig virtuellt förflytta dig längs gator och vägar.",
+                        "chips": ["digitala kartor", "funktioner", "begrepp"]
+                    },
+                    {
+                        "q": "46. Vem har uppdraget att kartlägga Sverige?",
+                        "a": "I Sverige är det den statliga myndigheten Lantmäteriet som har huvuduppdraget att kartlägga landet. De bygger sina kartor i databaser med geografisk information (GIS). Lantmäteriet tillhandahåller data om allt från vägar och sjöar till växtlighet och befolkning via sin hemsida Geodata-portalen.",
+                        "chips": ["digitala kartor", "samhälle", "myndigheter"]
+                    },
+                    {
+                        "q": "47. Vad är en risk med digitala kartor?",
+                        "a": "En risk med digitala kartor är kopplad till integritet och makt. Företag som Google samlar in enorma mängder data om var vi är och hur vi rör oss, vilket vissa är kritiska till. Dessutom kan samhället bli sårbart för IT-attacker som kan slå ut viktiga funktioner som är beroende av digitala kartor och positionering.",
+                        "chips": ["digitala kartor", "risker", "integritet"]
+                    },
+                    {
+                        "q": "48. Vad menas med 'sakernas internet'?",
+                        "a": "'Sakernas internet' (Internet of Things) betyder att allt fler vardagliga prylar, som kylskåp, bilar och klockor, kopplas upp till internet. Dessa enheter kan då kommunicera med varandra och samla in data. Inom kartor och GIS innebär det att man kan få realtidsinformation från en mängd olika källor, vilket kan användas för att till exempel styra trafikflöden eller spara energi.",
+                        "chips": ["GIS", "framtid", "teknik", "begrepp"]
+                    },
+                    {
+                        "q": "49. Vilken fördel kan GIS ge i städer?",
+                        "a": "GIS kan ge många fördelar i städer genom att göra dem 'smarta' och mer effektiva. Man kan övervaka och styra trafik för att minska köer och utsläpp, optimera kollektivtrafiken och snabbt hitta lediga parkeringsplatser. GIS används också för stadsplanering, för att bestämma var nya bostäder och parker bäst ska placeras baserat på hur människor rör sig.",
+                        "chips": ["GIS", "framtid", "samhällsnytta", "smarta städer"]
+                    },
+                    {
+                        "q": "50. Vilken nackdel kan GIS i framtiden medföra?",
+                        "a": "En stor nackdel med GIS i framtiden är risken för ökad övervakning och att personlig information missbrukas. När allt fler delar av samhället kopplas samman och analyseras finns en risk att människors privatliv kartläggs och att känslig information hamnar i fel händer. Samhället blir också mer sårbart för IT-attacker som kan slå ut samhällsviktiga funktioner som transporter och energiförsörjning.",
+                        "chips": ["GIS", "framtid", "risker", "övervakning"]
+                    }
+                ]
+            }
+        ];
+
+        // --- DOM Elements ---
+        const qaContainer = document.getElementById('qa-content-container');
+        const tocContainer = document.getElementById('table-of-contents');
+        const filterTagsContainer = document.getElementById('filter-tags-container');
+        const searchInput = document.getElementById('search-input');
+        const expandAllBtn = document.getElementById('expand-all');
+        const collapseAllBtn = document.getElementById('collapse-all');
+        const shuffleBtn = document.getElementById('shuffle-questions');
+        const resetBtn = document.getElementById('reset-order');
+
+        let activeFilters = new Set();
+        let currentSearchTerm = '';
+
+        // --- Render Functions ---
+
+        /**
+         * Creates and returns a single Q&A card element.
+         * @param {object} qaPair - The question-answer object.
+         * @returns {HTMLElement} The card element.
+         */
+        function createQaCard(qaPair) {
+            const card = document.createElement('div');
+            card.className = 'qa-card';
+            card.dataset.question = qaPair.q.toLowerCase();
+            card.dataset.answer = qaPair.a.toLowerCase();
+            card.dataset.chips = qaPair.chips.join(' ').toLowerCase();
+
+            card.innerHTML = `
+                <div class="qa-question" role="button" tabindex="0" aria-expanded="false">
+                    <span>${qaPair.q}</span>
+                    <span class="arrow">▶</span>
+                </div>
+                <div class="qa-answer-wrapper">
+                    <div class="qa-answer">
+                        <p>${qaPair.a}</p>
+                        <div class="qa-chips">
+                            ${qaPair.chips.map(chip => `<span class="qa-chip">${chip}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+
+        /**
+         * Renders all content sections and their Q&A cards.
+         * @param {array} data - The study data array to render.
+         */
+        function renderContent(data) {
+            qaContainer.innerHTML = ''; // Clear existing content
+            data.forEach(section => {
+                const sectionEl = document.createElement('section');
+                sectionEl.id = section.id;
+                sectionEl.className = 'content-section';
+
+                const sectionHeader = document.createElement('div');
+                sectionHeader.className = 'section-header';
+                sectionHeader.innerHTML = `
+                    <h2><span class="icon-dot"></span>${section.title}</h2>
+                    <p>${section.meta}</p>
+                `;
+                sectionEl.appendChild(sectionHeader);
+
+                const qaList = document.createElement('div');
+                qaList.className = 'qa-list';
+
+                section.qa.forEach(qaPair => {
+                    const card = createQaCard(qaPair);
+                    qaList.appendChild(card);
+                });
+
+                sectionEl.appendChild(qaList);
+                qaContainer.appendChild(sectionEl);
+            });
+        }
+
+        /**
+         * Renders the table of contents in the sidebar.
+         */
+        function renderToc() {
+            const ul = document.createElement('ul');
+            studyData.forEach(section => {
+                const li = document.createElement('li');
+                li.innerHTML = `<a href="#${section.id}">${section.title}</a>`;
+                ul.appendChild(li);
+            });
+            tocContainer.appendChild(ul);
+
+            // Update mobile menu listeners after TOC is rendered
+            if (typeof setupMobileMenu === 'function') {
+                setupMobileMenu();
+            }
+        }
+
+        /**
+         * Collects all unique key concepts and renders them as filter buttons.
+         */
+        function renderFilterTags() {
+            const allKeys = new Set();
+            studyData.forEach(section => {
+                section.key.forEach(k => allKeys.add(k));
+            });
+
+            allKeys.forEach(key => {
+                const button = document.createElement('button');
+                button.textContent = key;
+                button.dataset.key = key;
+                button.addEventListener('click', handleFilterClick);
+                filterTagsContainer.appendChild(button);
+            });
+        }
+
+        // --- Event Handlers & Logic ---
+
+        function handleCardClick(e) {
+            const questionHeader = e.target.closest('.qa-question');
+            if (!questionHeader) return;
+
+            const card = questionHeader.closest('.qa-card');
+            const isExpanded = card.classList.toggle('expanded');
+            questionHeader.setAttribute('aria-expanded', isExpanded);
+        }
+
+        function handleFilterClick(e) {
+            const key = e.target.dataset.key;
+            e.target.classList.toggle('active');
+
+            if (activeFilters.has(key)) {
+                activeFilters.delete(key);
+            } else {
+                activeFilters.add(key);
+            }
+            applyFiltersAndSearch();
+        }
+
+        function applyFiltersAndSearch() {
+            const searchTerm = currentSearchTerm.toLowerCase();
+            const activeFilterArray = [...activeFilters];
+
+            document.querySelectorAll('.qa-card').forEach(card => {
+                const questionText = card.dataset.question;
+                const answerText = card.dataset.answer;
+                const chipText = card.dataset.chips;
+
+                const matchesSearch = searchTerm === '' ||
+                    questionText.includes(searchTerm) ||
+                    answerText.includes(searchTerm) ||
+                    chipText.includes(searchTerm);
+
+                const matchesFilters = activeFilterArray.every(filter => {
+                    // Find the section this card belongs to
+                    const sectionId = card.closest('.content-section').id;
+                    const sectionData = studyData.find(s => s.id === sectionId);
+                    // Check if the section's key concepts include the active filter
+                    return sectionData.key.includes(filter);
+                });
+
+                if (matchesSearch && matchesFilters) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            updateSectionVisibility();
+        }
+
+        function updateSectionVisibility() {
+            document.querySelectorAll('.content-section').forEach(section => {
+                const visibleCards = section.querySelectorAll('.qa-card:not(.hidden)');
+                if (visibleCards.length === 0) {
+                    section.classList.add('hidden');
+                } else {
+                    section.classList.remove('hidden');
+                }
+            });
+        }
+
+        function expandCollapseAll(expand = true) {
+            document.querySelectorAll('.qa-card:not(.hidden)').forEach(card => {
+                const questionHeader = card.querySelector('.qa-question');
+                if (expand) {
+                    card.classList.add('expanded');
+                    questionHeader.setAttribute('aria-expanded', true);
+                } else {
+                    card.classList.remove('expanded');
+                    questionHeader.setAttribute('aria-expanded', false);
+                }
+            });
+        }
+
+        function shuffleQuestions() {
+            const shuffledData = JSON.parse(JSON.stringify(studyData)); // Deep copy
+            shuffledData.forEach(section => {
+                // Fisher-Yates shuffle algorithm
+                for (let i = section.qa.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [section.qa[i], section.qa[j]] = [section.qa[j], section.qa[i]];
+                }
+            });
+            renderContent(shuffledData);
+            applyFiltersAndSearch(); // Re-apply filters to the new DOM
+        }
+
+        function resetAll() {
+            searchInput.value = '';
+            currentSearchTerm = '';
+            activeFilters.clear();
+            document.querySelectorAll('.filter-tags button.active').forEach(btn => btn.classList.remove('active'));
+            renderContent(studyData);
+            applyFiltersAndSearch();
+        }
+
+        // --- Sidebar Active State Observer ---
+
+        function setupIntersectionObserver() {
+            const sections = document.querySelectorAll('.content-section');
+            const tocLinks = document.querySelectorAll('#table-of-contents a');
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    const link = document.querySelector(`#table-of-contents a[href="#${id}"]`);
+
+                    if (entry.isIntersecting) {
+                        tocLinks.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                });
+            }, { rootMargin: "-30% 0px -70% 0px", threshold: 0 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        }
+
+
+        // --- Mobile Menu Functionality ---
+        let mobileMenuInitialized = false;
+
+        function setupMobileMenu() {
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+            function openMenu() {
+                sidebar.classList.add('open');
+                sidebarOverlay.classList.add('active');
+                mobileMenuToggle.innerHTML = '✕';
+                mobileMenuToggle.setAttribute('aria-label', 'Stäng meny');
+            }
+
+            function closeMenu() {
+                sidebar.classList.remove('open');
+                sidebarOverlay.classList.remove('active');
+                mobileMenuToggle.innerHTML = '☰';
+                mobileMenuToggle.setAttribute('aria-label', 'Öppna meny');
+            }
+
+            function toggleMenu() {
+                if (sidebar.classList.contains('open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            }
+
+            // Only add these listeners once
+            if (!mobileMenuInitialized) {
+                mobileMenuToggle.addEventListener('click', toggleMenu);
+                sidebarOverlay.addEventListener('click', closeMenu);
+                mobileMenuInitialized = true;
+            }
+
+            // Update TOC link listeners (can be called multiple times)
+            const tocLinks = document.querySelectorAll('#table-of-contents a');
+            tocLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 920) {
+                        closeMenu();
+                    }
+                });
+            });
+        }
+
+        // --- Initialisation ---
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderContent(studyData);
+            renderToc();
+            renderFilterTags();
+            setupIntersectionObserver();
+            setupMobileMenu();
+
+            // Add event listeners
+            qaContainer.addEventListener('click', handleCardClick);
+            searchInput.addEventListener('input', (e) => {
+                currentSearchTerm = e.target.value;
+                applyFiltersAndSearch();
+            });
+
+            expandAllBtn.addEventListener('click', () => expandCollapseAll(true));
+            collapseAllBtn.addEventListener('click', () => expandCollapseAll(false));
+            shuffleBtn.addEventListener('click', shuffleQuestions);
+            resetBtn.addEventListener('click', resetAll);
+        });
+
+    </script>
+</body>
+
+</html>
