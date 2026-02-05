@@ -284,7 +284,7 @@ experience:
       across leading technology organizations in both enterprise and high-growth
       environments.
   - company: "Storytel"
-    logo: "/img/2storytel_logo.png"
+    logo: "/img/storytel.png"
     role: "CTO"
     location: "Stockholm, Sweden"
     dates: "August 2021 – June 2025"
